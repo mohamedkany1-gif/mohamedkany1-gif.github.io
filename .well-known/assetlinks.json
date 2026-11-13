@@ -1,11 +1,13 @@
 [
   {
-    "relation": ["delegate_permission/common.handle_all_urls"],
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
     "target": {
       "namespace": "android_app",
       "package_name": "io.github.mohamedkany1_gif.twa",
       "sha256_cert_fingerprints": [
-        "3B:43:AE:93:FD:C8:DA:FB:31:9A:E7:69:A8:5C:E9:04:C9:B2:58:82:C7:8F:44:0E:86:7D:6D:6B:68:62:B2:52"
+        "44:75:96:17:6A:EB:DE:6D:BF:D6:7D:21:88:A6:1D:3E:8D:90:75:03:57:EB:B2:BC:A9:AD:F5:AD:93:C4:3E:A8"
       ]
     }
   }
