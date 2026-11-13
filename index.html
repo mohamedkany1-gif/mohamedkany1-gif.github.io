@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>مخزن وخدمات البترول</title>
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#f2b705">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600&display=swap">
+<style>
+:root{--bg:#e9eef0;--card:#fff;--ink:#12232e;--mute:#566872;--line:#cbd5da;--sig:#f2b705;--ok:#1e7f4f;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a21;--card:#17262f;--ink:#e6eef2;--mute:#9aabb5;--line:#2a3b46;--ok:#5cc48a;--bad:#ff8a80;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0f1a21;--card:#17262f;--ink:#e6eef2;--mute:#9aabb5;--line:#2a3b46;--ok:#5cc48a;--bad:#ff8a80;color-scheme:dark}
+html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0 auto;max-width:640px;background:var(--bg);color:var(--ink);font:15px/1.6 "Readex Pro",system-ui,"Segoe UI",Tahoma,sans-serif;padding:14px 14px 96px}
+h1{font-size:19px;margin:4px 0 12px}
+input{width:100%;height:44px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);padding:0 12px;font:inherit;font-size:16px}
+label{display:block;margin-bottom:10px;font-size:13px;color:var(--mute)}
+label input{margin-top:4px}
+.chk{display:flex;gap:8px;align-items:center;color:var(--ink);font-size:15px}
+.chk input{width:22px;height:22px;margin:0}
+.btn{height:46px;padding:0 18px;border:0;border-radius:8px;background:var(--sig);color:#12232e;font:inherit;font-weight:600;width:100%;margin-top:6px;cursor:pointer}
+.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.row{display:flex;gap:8px;margin-top:12px}
+.row .btn{margin:0;flex:1}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden;border-inline-start:6px solid var(--sig)}
+.card.neg{border-inline-start-color:var(--bad)}
+.form{padding:12px;border-inline-start:1px solid var(--line)}
+.form[data-t=in] .o{display:none}
+.form[data-t=out] .i{display:none}
+.job{padding:12px}
+.hd{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px;cursor:pointer}
+.mute,.hd small{display:block;color:var(--mute);font-size:12.5px}
+.qty{font-size:24px;font-weight:600;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
+.ln{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border-top:1px dashed var(--line);font-size:13.5px}
+.ln span{display:block}
+.ln.in b{color:var(--ok)}
+.ln.out b{color:var(--bad)}
+.ok{color:var(--ok)}
+.bad{color:var(--bad)}
+.x{all:unset;cursor:pointer;color:var(--mute);font-size:22px;padding:0 8px}
+.empty{color:var(--mute);text-align:center;padding:28px 8px}
+.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px}
+.seg button{all:unset;flex:1;text-align:center;padding:11px 4px;cursor:pointer;background:var(--card)}
+.seg .on{background:var(--sig);color:#12232e;font-weight:600}
+nav{position:fixed;inset-inline:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+nav button{all:unset;flex:1;text-align:center;padding:13px 2px;cursor:pointer;font-size:13.5px;color:var(--mute);border-top:3px solid transparent}
+nav .on{color:var(--ink);font-weight:600;border-top-color:var(--sig)}
+#msg{position:fixed;inset-inline:14px;bottom:calc(70px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);border-radius:8px;padding:10px 14px;display:none;z-index:5}
+button:focus-visible,input:focus-visible{outline:2px solid var(--sig);outline-offset:2px}
+.sr{display:flex;gap:8px;margin-top:4px}
+.sr input{margin:0;flex:1}
+.sr .btn{width:auto;margin:0;height:44px;padding:0 16px}
+#scan{position:fixed;inset:0;z-index:9;background:#000;display:flex;flex-direction:column}
+#scan[hidden]{display:none}
+#scan video{flex:1;width:100%;min-height:0;object-fit:cover}
+#scan .aim{position:absolute;inset-inline:12%;top:45%;height:2px;background:var(--sig);box-shadow:0 0 8px var(--sig)}
+#scan .bar{padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));background:var(--card);text-align:center}
+</style>
+</head>
+<body>
+<h1>مخزن وخدمات البترول</h1>
+<main id="app"></main>
+<div id="msg" role="status"></div>
+<div id="scan" hidden><video id="sv" playsinline muted></video><div class="aim"></div><div class="bar"><span class="mute">وجّه الكاميرا على الباركود</span><button class="btn ghost" data-a="scanx">إلغاء</button></div></div>
+<nav id="nav"></nav>
+<script>
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),K=v=>String(v||'').trim().toLowerCase();
+const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
+const nid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const CAP=300,ST=['جديد','شغّال','خلص'],R=n=>Math.round(n*1e3)/1e3;
+let tab='stock',q='',type='in',open='',more=100,chunks={},J=[],M=[],col=null,dl=null,ready=false,warned=false,armed='',tm;
+const rebuild=()=>{M=Object.keys(chunks).sort().flatMap(k=>chunks[k])};
+function say(t){const m=$('#msg');m.textContent=t;m.style.display='block';clearTimeout(tm);tm=setTimeout(()=>m.style.display='none',3200)}
+const sure=i=>{if(armed===i)return true;armed=i;say('اضغط × تاني للتأكيد');setTimeout(()=>armed='',3000);return false};
+async function persist(id){
+  rebuild();refresh();
+  if(col){try{await col.doc(id).set({items:id==='jobs'?J:chunks[id]})}catch(e){say('معرفتش أحفظ، جرّب تاني')}}
+  else{try{localStorage.setItem('wh',JSON.stringify({chunks,J}))}catch(e){}}
+}
+function groups(){const g=new Map();for(const e of M){const k=K(e.s)||K(e.n);let x=g.get(k);if(!x){x={k,s:e.s,n:e.n,q:0,w:'',d:'',l:[]};g.set(k,x)}x.q+=e.t==='in'?e.q:-e.q;x.l.push(e);if(e.d>=x.d){x.d=e.d;x.n=e.n||x.n;x.s=e.s||x.s}if(e.w)x.w=e.w}return g}
+const line=e=>`<div class="ln ${e.t}"><div><b>${e.t==='in'?'دخول':'خروج'} ${e.q}</b><span class="mute">${esc(e.d)}</span>${e.p?`<span class="mute">${e.t==='in'?'من':'إلى'}: ${esc(e.p)}</span>`:''}${e.r?`<span class="mute">${e.t==='in'?'استلمها':'سُحبت لـ'}: ${esc(e.r)}</span>`:''}${e.j?`<span class="mute">أمر شغل: ${esc(e.j)}</span>`:''}${e.t==='out'?(e.ok?'<span class="ok">اتراجعت</span>':'<span class="bad">لسه محتاجة مراجعة</span>'):''}</div><button class="x" data-a="del" data-i="${e.i}" aria-label="حذف الحركة">×</button></div>`;
+const card=x=>`<article class="card${x.q<0?' neg':''}"><button class="hd" data-a="tog" data-k="${esc(x.k)}"><span><b>${esc(x.n||x.s)}</b><small>سيريال: ${esc(x.s||'-')}</small>${x.w?`<small>المكان: ${esc(x.w)}</small>`:''}</span><span class="qty">${R(x.q)}</span></button>${open===x.k?x.l.slice().reverse().map(line).join(''):''}</article>`;
+function stockList(){
+  if(!ready)return '<p class="empty">بيحمّل…</p>';
+  const s=K(q),g=[...groups().values()].filter(x=>!s||K(x.s+' '+x.n).includes(s)).sort((a,b)=>a.d<b.d?1:-1);
+  if(!g.length)return `<p class="empty">${M.length?'مفيش نتيجة للبحث ده':'المخزن فاضي. سجّل أول حركة دخول من تبويب حركة'}</p>`;
+  return g.slice(0,more).map(card).join('')+(g.length>more?`<button class="btn ghost" data-a="more">عرض ${g.length-more} صنف كمان</button>`:'');
+}
+function reviewList(){
+  const r=M.filter(e=>e.t==='out'&&!e.ok).reverse();
+  if(!r.length)return '<p class="empty">مفيش حاجة مستنية مراجعة</p>';
+  return r.slice(0,more).map(e=>`<article class="card job"><b>${esc(e.n||e.s)}</b> × ${e.q}<span class="mute">${esc([e.d,e.p&&'إلى '+e.p,e.r&&'سُحبت لـ '+e.r].filter(Boolean).join('، '))}</span><button class="btn" data-a="chk" data-i="${e.i}">تمت المراجعة</button></article>`).join('');
+}
+function jobList(){
+  if(!J.length)return '<p class="empty">مفيش أوامر خدمة لسه</p>';
+  return J.slice().reverse().map(j=>`<article class="card job"><div class="row" style="margin:0;justify-content:space-between"><div><b>${esc(j.cl)}</b><span class="mute">${esc([j.st,j.sv,j.d].filter(Boolean).join('، '))}</span></div><button class="x" data-a="delj" data-i="${j.i}" aria-label="حذف">×</button></div><button class="btn ghost" data-a="cyc" data-i="${j.i}">الحالة: ${ST[j.s]} (اضغط للتغيير)</button></article>`).join('');
+}
+function opts(){return [...groups().values()].slice(0,500).map(x=>`<option value="${esc(x.s||x.n)}">${esc(x.n)}</option>`).join('')}
+const views={
+ stock:()=>`<span class="sr"><input id="q" type="search" placeholder="دوّر بالسيريال أو الاسم" value="${esc(q)}" aria-label="بحث"><button class="btn" data-a="scan" data-v="q">امسح</button></span><div id="list">${stockList()}</div><div class="row"><button class="btn ghost" data-a="exp" data-v="m">تصدير الحركات لإكسل</button><button class="btn ghost" data-a="exp" data-v="j">تصدير الخدمات</button></div>`,
+ move:()=>`<div class="seg"><button data-a="type" data-v="in" class="${type==='in'?'on':''}">دخول للمخزن</button><button data-a="type" data-v="out" class="${type==='out'?'on':''}">خروج من المخزن</button></div><div class="card form" id="f" data-t="${type}"><label>السيريال أو الباركود<span class="sr"><input id="s" list="sl" autocomplete="off"><button class="btn" type="button" data-a="scan" data-v="s">امسح</button></span></label><datalist id="sl">${opts()}</datalist><label>اسم الصنف<input id="n"></label><label>الكمية<input id="qt" type="number" inputmode="decimal" min="0" step="any"></label><label>التاريخ<input id="d" type="date" value="${today()}"></label><label class="i">مكان التخزين في المخزن<input id="w"></label><label><span class="i">استُلمت من</span><span class="o">صُرفت إلى (موقع أو بئر أو عميل)</span><input id="p"></label><label><span class="i">اللي استلمها</span><span class="o">سُحبت لمين</span><input id="r"></label><label>رقم أمر الشغل (لو فيه)<input id="j"></label><label class="chk o"><input id="ok" type="checkbox">تمت المراجعة النهائية قبل الخروج</label><button class="btn" data-a="savem">سجّل الحركة</button></div>`,
+ review:()=>`<div id="list">${reviewList()}</div>`,
+ jobs:()=>`<div class="card form"><label>العميل أو الشركة<input id="jc"></label><label>الموقع أو البئر<input id="js"></label><label>نوع الخدمة<input id="jv"></label><label>التاريخ<input id="jd" type="date" value="${today()}"></label><button class="btn" data-a="savej">أضف أمر خدمة</button></div><div id="list">${jobList()}</div>`
+};
+const lists={stock:stockList,review:reviewList,jobs:jobList};
+const NAV=[['stock','المخزن'],['move','حركة'],['review','مراجعة'],['jobs','خدمات']];
+function nav(){const p=M.filter(e=>e.t==='out'&&!e.ok).length;$('#nav').innerHTML=NAV.map(([k,l])=>`<button data-a="tab" data-v="${k}" class="${tab===k?'on':''}">${l}${k==='review'&&p?` (${p})`:''}</button>`).join('')}
+function full(){$('#app').innerHTML=views[tab]();nav()}
+function refresh(){const el=$('#list');if(el&&lists[tab])el.innerHTML=lists[tab]();const s=$('#sl');if(s)s.innerHTML=opts();nav()}
+function saveM(){
+  const g=id=>$('#'+id).value.trim(),t=type,qty=parseFloat(g('qt')),s=g('s'),n=g('n');
+  if(!(qty>0)||!(s||n))return say('اكتب السيريال أو الاسم، والكمية');
+  const x=groups().get(K(s)||K(n));
+  if(t==='out'&&(!x||qty>x.q)&&!warned){warned=true;return say(`الكمية أكتر من المتاح (${x?R(x.q):0}). اضغط تاني لو متأكد`)}
+  const ids=Object.keys(chunks).sort();let id=ids[ids.length-1];
+  if(!id||chunks[id].length>=CAP){id='mv'+String(ids.length+1).padStart(5,'0');chunks[id]=[]}
+  chunks[id].push({i:nid(),c:id,t,s,n:n||(x&&x.n)||'',q:qty,d:g('d')||today(),w:t==='in'?g('w'):'',p:g('p'),r:g('r'),j:g('j'),ok:t==='out'&&$('#ok').checked});
+  persist(id);
+  ['s','n','qt','w','p','r','j'].forEach(k=>$('#'+k).value='');$('#ok').checked=false;warned=false;say('اتسجّلت');
+}
+function saveJ(){const g=id=>$('#'+id).value.trim();if(!g('jc'))return say('اكتب اسم العميل');J.push({i:nid(),cl:g('jc'),st:g('js'),sv:g('jv'),d:g('jd'),s:0});persist('jobs');['jc','js','jv'].forEach(k=>$('#'+k).value='');say('اتضافت')}
+async function exp(v){
+  const rows=v==='m'?[['التاريخ','النوع','السيريال','الصنف','الكمية','مكان التخزين','من أو إلى','الشخص','أمر الشغل','المراجعة النهائية'],...M.map(e=>[e.d,e.t==='in'?'دخول':'خروج',e.s,e.n,e.q,e.w,e.p,e.r,e.j,e.t==='out'?(e.ok?'تمت':'لسه'):''])]:[['التاريخ','العميل','الموقع','الخدمة','الحالة'],...J.map(j=>[j.d,j.cl,j.st,j.sv,ST[j.s]])];
+  const data='\ufeff'+rows.map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  const fn=v==='m'?'warehouse-movements.csv':'service-jobs.csv';
+  if(dl){try{await dl.save({filename:fn,data})}catch(e){if(!e||e.code!=='declined')say('معرفتش أحفظ الملف')}return}
+  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'text/csv;charset=utf-8'}));a.download=fn;document.body.appendChild(a);a.click();a.remove();
+}
+let stream=null,st=0;
+async function scan(target){
+  if(!('BarcodeDetector' in window))return say('الكاميرا هنا مش بتقرا الباركود. اكتب الرقم أو استخدم سكانر');
+  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false})}catch(e){return say('اسمح للتطبيق باستخدام الكاميرا')}
+  const v=$('#sv');v.srcObject=stream;try{await v.play()}catch(e){}
+  $('#scan').hidden=false;
+  const det=new BarcodeDetector(),tick=async()=>{
+    if(!stream)return;
+    try{const r=await det.detect(v);if(r.length&&r[0].rawValue){const val=r[0].rawValue;scanStop();navigator.vibrate&&navigator.vibrate(80);got(target,val);return}}catch(e){}
+    st=setTimeout(tick,250);
+  };
+  tick();
+}
+function scanStop(){clearTimeout(st);if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$('#scan').hidden=true}
+function got(target,val){
+  const el=$('#'+target);if(!el)return;el.value=val;
+  if(target==='q'){q=val;more=100;refresh();return}
+  el.dispatchEvent(new Event('change',{bubbles:true}));
+  const x=groups().get(K(val));say(x?'الخامة موجودة: '+(x.n||val):'خامة جديدة، اكتب اسمها');
+  ($('#n').value?$('#qt'):$('#n')).focus();
+}
+document.addEventListener('click',ev=>{
+  const b=ev.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,v=b.dataset.v,i=b.dataset.i;
+  if(a==='tab'){tab=v;more=100;full()}
+  else if(a==='tog'){open=open===b.dataset.k?'':b.dataset.k;refresh()}
+  else if(a==='more'){more+=100;refresh()}
+  else if(a==='type'){type=v;$('#f').dataset.t=v;document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x.dataset.v===v))}
+  else if(a==='savem')saveM();
+  else if(a==='del'){const e=M.find(x=>x.i===i);if(e&&sure(i)){chunks[e.c]=chunks[e.c].filter(x=>x.i!==i);persist(e.c)}}
+  else if(a==='chk'){const e=M.find(x=>x.i===i);if(e){e.ok=true;persist(e.c)}}
+  else if(a==='savej')saveJ();
+  else if(a==='cyc'){const j=J.find(x=>x.i===i);if(j){j.s=(j.s+1)%3;persist('jobs')}}
+  else if(a==='delj'){if(sure(i)){J=J.filter(x=>x.i!==i);persist('jobs')}}
+  else if(a==='scan')scan(v);
+  else if(a==='scanx')scanStop();
+  else if(a==='exp')exp(v);
+});
+document.addEventListener('input',ev=>{warned=false;if(ev.target.id==='q'){q=ev.target.value;more=100;refresh()}});
+document.addEventListener('change',ev=>{if(ev.target.id==='s'){const x=groups().get(K(ev.target.value));if(x){if(!$('#n').value)$('#n').value=x.n||'';if(!$('#w').value)$('#w').value=x.w||''}}});
+document.addEventListener('keydown',ev=>{if(ev.key==='Enter'&&ev.target.id==='s'){ev.preventDefault();ev.target.dispatchEvent(new Event('change',{bubbles:true}));($('#n').value?$('#qt'):$('#n')).focus()}});
+full();
+(async()=>{
+  try{
+    const U=n=>claude.use(n).catch(()=>null);
+    const [u,db,d]=await Promise.all([U('user'),U('db'),U('downloads')]);dl=d;
+    if(u&&db){
+      const id=await u.id();col=db.collection('data/users/'+id);
+      const t=setTimeout(()=>{ready=true;refresh();say('التخزين مش بيرد دلوقتي، ممكن البيانات تكون قديمة')},10000);
+      col.onSnapshot(s=>{clearTimeout(t);chunks={};J=[];s.docs.forEach(x=>{const it=(x.data()||{}).items||[];if(x.id==='jobs')J=it;else if(x.id.startsWith('mv'))chunks[x.id]=it});rebuild();ready=true;refresh()},()=>say('مشكلة في الوصول للتخزين'));
+      return;
+    }
+  }catch(e){}
+  try{const o=JSON.parse(localStorage.getItem('wh')||'{}');chunks=o.chunks||{};J=o.J||[]}catch(e){}
+  rebuild();ready=true;refresh();
+})();
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+</script>
+</body>
+</html>
