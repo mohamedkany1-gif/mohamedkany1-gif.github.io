@@ -913,7 +913,7 @@ async function loadDatabase(){
   const it=byId.get(m.item_id)||{};
   const rawKind=String(m.kind||'').toLowerCase();
   const kind=['in','دخول','استلام','receipt','inbound','add','إضافة','توريد'].includes(rawKind)?'in':'out';
-  const reviewed=!!m.reviewed_at || ['reviewed','approved','مراجع','تمت المراجعة'].includes(String(m.status||'').toLowerCase());
+  const reviewed=!!m.reviewed_at || ['reviewed','approved','مراجع','تمت المراجعة','معتمد'].includes(String(m.status||'').toLowerCase());
   return {i:m.id,c:'db',t:kind,s:it.serial_number||it.barcode||'',n:it.name||'',model:it.model||'',size:it.size||'',desc:it.description||'',q:Number(m.qty||0),d:m.movement_date||m.created_at?.slice(0,10)||today(),created_at:m.created_at||'',w:m.warehouse_location||it.location||'',p:m.party||'',r:m.person||'',j:m.job_ref||'',note:m.note||'',reference_number:m.reference_number||'',site_id:m.site_id||'',status:m.status||'',attachment_path:m.attachment_path||'',ok:reviewed,item_id:m.item_id};
  });
  J=(jobs||[]).map(j=>({i:j.id,cl:j.client||'',st:j.site||'',sv:j.service_type||'',d:j.job_date||'',s:Math.max(0,Math.min(2,Number(j.status)||0))}));
@@ -1010,6 +1010,7 @@ function groups(){
  const g=new Map();
 
  for(const e of M){
+  if(!e.ok)continue;
   const k=K(e.s)||K(e.n);
   let x=g.get(k);
 
@@ -1102,7 +1103,7 @@ const line=e=>`
   <span class="movement-type-icon">${e.t==='in'?'↓':'↑'}</span>
   <span class="movement-compact-copy"><b>${e.t==='in'?'استلام مخزني':'صرف مخزني'}</b><small>${esc(e.d||'بدون تاريخ')} · ${e.t==='in'?'وارد':'منصرف'}</small></span>
  </div>
- <span class="movement-compact-end"><b>${e.t==='in'?'+':'−'}${R(e.q)}</b><small>${e.t==='out'?(e.ok?'تمت المراجعة':'بانتظار المراجعة'):'مسجلة'}</small></span>
+ <span class="movement-compact-end"><b>${e.ok?(e.t==='in'?'+':'−'):'…'}${R(e.q)}</b><small>${e.ok?'تمت المراجعة':'معلقة، لا تدخل الرصيد'}</small></span>
  <button class="x movement-delete" data-a="del" data-i="${e.i}" aria-label="حذف الحركة" title="حذف الحركة">×</button>
 </div>`;
 
@@ -1132,7 +1133,7 @@ async function loadStockSearch(resetPage=false){
    const lines=(row.movements||[]).map(m=>{
     const raw=String(m.kind||'').toLowerCase();
     const kind=['in','دخول','استلام','receipt','inbound','add','إضافة','توريد'].includes(raw)?'in':'out';
-    const reviewed=!!m.reviewed_at||['reviewed','approved','مراجع','تمت المراجعة'].includes(String(m.status||'').toLowerCase());
+    const reviewed=!!m.reviewed_at||['reviewed','approved','مراجع','تمت المراجعة','معتمد'].includes(String(m.status||'').toLowerCase());
     return {i:m.id,c:'db',t:kind,s:it.serial_number||it.barcode||'',n:it.name||'',model:it.model||'',size:it.size||'',desc:it.description||'',q:Number(m.qty||0),d:m.movement_date||m.created_at?.slice(0,10)||today(),created_at:m.created_at||'',w:m.warehouse_location||it.location||'',p:m.party||'',r:m.person||'',j:m.job_ref||'',note:m.note||'',reference_number:m.reference_number||'',site_id:m.site_id||'',status:m.status||'',attachment_path:m.attachment_path||'',ok:reviewed,item_id:m.item_id};
    });
    const first=lines[0]||{};
@@ -1165,13 +1166,13 @@ function stockList(){
 }
 
 function reviewList(){
- const r=M.filter(e=>e.t==='out'&&!e.ok).reverse();
- if(!r.length)return '<p class="empty">مفيش حاجة مستنية مراجعة</p>';
+ const r=M.filter(e=>!e.ok).reverse();
+ if(!r.length)return '<p class="empty">مفيش حركات مستنية مراجعة</p>';
  return r.slice(0,more).map(e=>`
  <article class="card job">
-  <b>${esc(e.n||e.s)}</b> × ${e.q}
-  <span class="mute">${esc([e.d,e.model&&'موديل '+e.model,e.w&&'مكان '+e.w,e.p&&'إلى '+e.p,e.r&&'سُحبت لـ '+e.r].filter(Boolean).join('، '))}</span>
-  <button class="btn" data-a="chk" data-i="${e.i}" style="margin-top:14px">تمت المراجعة</button>
+  <b>${esc(e.n||e.s)} · ${e.t==='in'?'وارد':'منصرف'} × ${R(e.q)}</b>
+  <span class="mute">${esc([e.d,e.model&&'موديل '+e.model,e.w&&'مكان '+e.w,e.p&&(e.t==='in'?'من ':'إلى ')+e.p,e.r&&'المستلم '+e.r,e.j&&'أمر شغل '+e.j].filter(Boolean).join('، '))}</span>
+  <button class="btn" data-a="chk" data-i="${e.i}" style="margin-top:14px">مراجعة واعتماد الحركة</button>
  </article>`).join('');
 }
 
@@ -1303,8 +1304,8 @@ async function savePurchaseRequest(status){
 
 function dashboardView(){
  const pending=purchaseRequests.filter(x=>['submitted','pending_approval'].includes(x.status)).length;
- const incoming=M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0);
- const outgoing=M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0);
+ const incoming=M.filter(x=>x.t==='in'&&x.ok).reduce((n,x)=>n+x.q,0);
+ const outgoing=M.filter(x=>x.t==='out'&&x.ok).reduce((n,x)=>n+x.q,0);
  const modules=[
   ['stock','📦','إدارة المخزون','الأصناف والأرصدة والحركات'],
   ['purchases','🧾','المشتريات','طلبات الشراء ومتابعة التوريد'],
@@ -1369,7 +1370,7 @@ function financeView(){return `${moduleHeader('الحسابات والتكالي
 function notificationsView(){return `${moduleHeader('الإشعارات','تنبيهات انخفاض المخزون وحركة النظام')}<div class="row"><button class="btn ghost" data-a="reload-erp">تحديث الإشعارات</button></div>${rowsTable(erpNotifications,[['created_at','التاريخ'],['title','التنبيه'],['body','التفاصيل'],['severity','الأهمية'],['is_read','الحالة',r=>r.is_read?'مقروء':'جديد']], 'لا توجد إشعارات أو لم يتم تطبيق ملف إعداد قاعدة البيانات.')}`}
 
 function reportsView(){
- const incoming=M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0),outgoing=M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0),pending=purchaseRequests.filter(x=>['submitted','pending_approval'].includes(x.status)).length;
+ const incoming=M.filter(x=>x.t==='in'&&x.ok).reduce((n,x)=>n+x.q,0),outgoing=M.filter(x=>x.t==='out'&&x.ok).reduce((n,x)=>n+x.q,0),pending=purchaseRequests.filter(x=>['submitted','pending_approval'].includes(x.status)).length;
  return `${moduleHeader('تقارير الإدارة','مؤشرات تشغيلية وتقارير قابلة للطباعة والتصدير')}<div class="erp-kpis"><div class="erp-kpi"><span>أصناف المخزن</span><b>${itemRows.length}</b></div><div class="erp-kpi"><span>إجمالي الوارد</span><b>${R(incoming)}</b></div><div class="erp-kpi"><span>إجمالي المنصرف</span><b>${R(outgoing)}</b></div><div class="erp-kpi"><span>طلبات الشراء</span><b>${purchaseRequests.length}</b></div><div class="erp-kpi"><span>بانتظار الاعتماد</span><b>${pending}</b></div><div class="erp-kpi"><span>الموردون</span><b>${erpData.suppliers.length}</b></div><div class="erp-kpi"><span>المشروعات</span><b>${erpData.projects.length}</b></div><div class="erp-kpi"><span>أوامر الصيانة</span><b>${erpData.maintenance.length}</b></div><div class="erp-kpi"><span>أوامر الشراء</span><b>${(erpData.orders||[]).length}</b></div><div class="erp-kpi"><span>الأصول</span><b>${erpData.assets.length}</b></div></div><section class="form report-filter"><h3>تقرير حركة المخزون</h3><div class="pr-grid">${field('من تاريخ','report-from','','date')}${field('إلى تاريخ','report-to','','date')}<label>نوع الحركة<select id="report-kind"><option value="all">كل الحركات</option><option value="in">وارد</option><option value="out">منصرف</option></select></label><label>المشروع أو الموقع<input id="report-site" placeholder="اكتب اسم الموقع أو الجهة"></label></div><div class="row"><button class="btn" data-a="report-export">تصدير التقرير Excel</button><button class="btn ghost" data-a="report-print">طباعة التقرير</button></div><p class="mute">يعتمد التقرير على الحركات المحملة من قاعدة البيانات. اختر الفترة والنوع لتصفية النتائج.</p><div id="report-results">${rowsTable(M.slice().sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,100),[['d','التاريخ'],['t','النوع',r=>r.t==='in'?'وارد':'منصرف'],['n','الصنف'],['q','الكمية'],['p','الجهة'],['r','المستلم أو المسلم'],['j','أمر الشغل'],['w','المخزن']], 'لا توجد حركات مسجلة.')}</div></section><div class="row"><button class="btn ghost" data-a="export-erp">تصدير ملخص النظام</button><button class="btn ghost" data-a="reload-erp">تحديث البيانات</button></div>`
 }
 function auditView(){return `${moduleHeader('سجل المراجعة','العمليات المسجلة في قاعدة البيانات')}<p class="mute">يعرض السجل المتاح حسب صلاحيات حسابك.</p>${rowsTable(erpAuditRows,[['created_at','التاريخ'],['actor_id','المستخدم'],['action','العملية'],['module','الوحدة'],['record_table','الجدول'],['record_id','رقم السجل']], 'لا توجد سجلات مراجعة أو لا تتوفر صلاحية العرض.')}`}
@@ -1386,9 +1387,9 @@ function stockView(){
  const gs=[...groups().values()];
  const positive=gs.filter(x=>x.q>0);
  const zero=gs.filter(x=>x.q<=0);
- const incoming=M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0);
- const outgoing=M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0);
- const pending=M.filter(x=>x.t==='out'&&!x.ok).length;
+ const incoming=M.filter(x=>x.t==='in'&&x.ok).reduce((n,x)=>n+x.q,0);
+ const outgoing=M.filter(x=>x.t==='out'&&x.ok).reduce((n,x)=>n+x.q,0);
+ const pending=M.filter(x=>!x.ok).length;
  const recent=M.slice().sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,5);
  return `<div class="stock-workspace stock-pro stock-redesign">
   <section class="stock-hero"><div class="stock-hero-copy"><span class="eyebrow">SIGMA PETROLEUM SERVICES / WAREHOUSE</span><h2>المخزون</h2><p>متابعة الأرصدة والأصناف وتفاصيل كل حركة مخزنية.</p><div class="stock-hero-actions"><button class="btn" data-a="tab" data-v="move">＋ تسجيل حركة</button><button class="btn ghost" data-a="reload-erp">↻ تحديث</button></div></div><div class="stock-hero-side"><span>LIVE STOCK</span><b>Σ</b><small>INVENTORY CONTROL</small></div></section>
@@ -1479,7 +1480,6 @@ const views={
    <input id="r">
   </label>
   <label>رقم أمر الشغل (لو فيه)<input id="j"></label>
-  <label class="chk o"><input id="ok" type="checkbox"> تمت المراجعة النهائية قبل الخروج</label>
   <button class="btn" data-a="savem" style="margin-top:14px">موافق، سجّل الحركة</button>
  </div>`,
 
@@ -1668,14 +1668,13 @@ async function saveM(){
   if(t==='out'&&(!existing||qty>existing.q))return say(`تم إيقاف الصرف. الرصيد المتاح ${existing?R(existing.q):0} ولا يسمح النظام برصيد سالب.`);
   try{
    const item=await findOrCreateDbItem({name:name||(existing&&existing.n)||serial,serial_number:serial||(existing&&existing.s)||'',model:model||(existing&&existing.model)||'',size:size||(existing&&existing.size)||'',description:desc||(existing&&existing.desc)||suggestDesc(name),location:g('w')||(existing&&existing.w)||''});
-   const reviewed=t==='out'&&$('#ok').checked;
    const idempotencyKey=crypto.randomUUID();
    const args={
     p_item_id:item.id,p_kind:t,p_qty:qty,p_party:g('p')||null,p_person:g('r')||null,
     p_job_ref:g('j')||null,p_note:desc||null,p_created_by:authProfile.id,
     p_movement_date:g('d')||today(),p_warehouse_location:g('w')||null,
-    p_status:reviewed?'reviewed':'pending',p_reviewed_by:reviewed?authProfile.id:null,
-    p_reviewed_at:reviewed?new Date().toISOString():null,
+    p_status:'pending',p_reviewed_by:null,
+    p_reviewed_at:null,
     p_reference_number:null,p_site_id:null,p_idempotency_key:idempotencyKey
    };
    const {data:movementResult,error}=await db.rpc('wh_register_movement',args);
@@ -1683,7 +1682,7 @@ async function saveM(){
    if(!movementResult?.id)throw new Error('لم تُرجع قاعدة البيانات رقم الحركة');
    await loadDatabase();
    ['s','n','model','size','desc','qt','w','p','r','j'].forEach(k=>{if($('#'+k))$('#'+k).value=''});
-   $('#ok').checked=false;warned=false;selectedItem=null;say(movementResult.duplicate?'الحركة مسجلة بالفعل ولم يتم تكرارها':'اتسجّلت الحركة مع تحديث سجل المراجعة ذريًا');
+   warned=false;selectedItem=null;say(movementResult.duplicate?'الحركة مسجلة بالفعل ولم يتم تكرارها':'اتسجلت الحركة كمعلقة. لن تؤثر في الرصيد حتى اعتمادها.');
   }catch(e){console.error(e);say('فشل حفظ الحركة: '+(e.message||'راجع صلاحيات قاعدة البيانات'));}
  });
 }
@@ -1896,10 +1895,12 @@ document.addEventListener('click',async ev=>{
   }
  }
  else if(a==='chk'){
-  if(!isAdmin())return say('اعتماد الحركات متاح لمسؤول المخزن فقط');
+  if(!['admin','reviewer'].includes(String(authProfile?.role||'').toLowerCase()))return say('اعتماد الحركات متاح لمسؤول المخزن أو المراجع فقط');
   const e=M.find(x=>x.i===i);
   if(e){
-   db.from('wh_movements').update({status:'reviewed',reviewed_by:authProfile.id,reviewed_at:new Date().toISOString()}).eq('id',i).then(async r=>{if(r.error)say('فشلت المراجعة');else{await loadDatabase();if(tab==='stock')await loadStockSearch(true);say('تمت المراجعة');}});
+   const {data,error}=await db.rpc('wh_review_movement',{p_movement_id:i});
+   if(error)say('تعذر اعتماد الحركة: '+error.message);
+   else{await loadDatabase();if(tab==='stock')await loadStockSearch(true);say(data?.duplicate?'الحركة معتمدة بالفعل':'تم اعتماد الحركة وتحديث الرصيد');}
   }
  }
  else if(a==='save-supplier'){
@@ -2130,3 +2131,4 @@ try{
 </script>
 </body>
 </html>
+
