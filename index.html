@@ -3,189 +3,2130 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>مخزن وخدمات البترول</title>
+<title>MAKHZAN ERP | Sigma Petroleum Services | Refresh 22</title>
 <link rel="manifest" href="manifest.webmanifest">
-<meta name="theme-color" content="#f2b705">
+<meta name="theme-color" content="#09090b">
 <link rel="apple-touch-icon" href="icon-192.png">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&display=swap">
 <style>
-:root{--bg:#e9eef0;--card:#fff;--ink:#12232e;--mute:#566872;--line:#cbd5da;--sig:#f2b705;--ok:#1e7f4f;--bad:#b3261e;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1a21;--card:#17262f;--ink:#e6eef2;--mute:#9aabb5;--line:#2a3b46;--ok:#5cc48a;--bad:#ff8a80;color-scheme:dark}}
-:root[data-theme="dark"]{--bg:#0f1a21;--card:#17262f;--ink:#e6eef2;--mute:#9aabb5;--line:#2a3b46;--ok:#5cc48a;--bad:#ff8a80;color-scheme:dark}
-html{background:var(--bg);scroll-padding-top:env(safe-area-inset-top,0px)}
-*{box-sizing:border-box}
-body{margin:0 auto;max-width:640px;background:var(--bg);color:var(--ink);font:15px/1.6 "Readex Pro",system-ui,"Segoe UI",Tahoma,sans-serif;padding:14px 14px 96px}
-h1{font-size:19px;margin:4px 0 12px}
-input{width:100%;height:44px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);padding:0 12px;font:inherit;font-size:16px}
-label{display:block;margin-bottom:10px;font-size:13px;color:var(--mute)}
-label input{margin-top:4px}
-.chk{display:flex;gap:8px;align-items:center;color:var(--ink);font-size:15px}
-.chk input{width:22px;height:22px;margin:0}
-.btn{height:46px;padding:0 18px;border:0;border-radius:8px;background:var(--sig);color:#12232e;font:inherit;font-weight:600;width:100%;margin-top:6px;cursor:pointer}
-.ghost{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.row{display:flex;gap:8px;margin-top:12px}
-.row .btn{margin:0;flex:1}
-.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:10px 0;overflow:hidden;border-inline-start:6px solid var(--sig)}
-.card.neg{border-inline-start-color:var(--bad)}
-.form{padding:12px;border-inline-start:1px solid var(--line)}
-.form[data-t=in] .o{display:none}
-.form[data-t=out] .i{display:none}
-.job{padding:12px}
-.hd{all:unset;box-sizing:border-box;display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;padding:12px;cursor:pointer}
-.mute,.hd small{display:block;color:var(--mute);font-size:12.5px}
-.qty{font-size:24px;font-weight:600;min-width:52px;text-align:center;font-variant-numeric:tabular-nums}
-.ln{display:flex;justify-content:space-between;gap:8px;padding:10px 12px;border-top:1px dashed var(--line);font-size:13.5px}
-.ln span{display:block}
-.ln.in b{color:var(--ok)}
-.ln.out b{color:var(--bad)}
-.ok{color:var(--ok)}
-.bad{color:var(--bad)}
-.x{all:unset;cursor:pointer;color:var(--mute);font-size:22px;padding:0 8px}
-.empty{color:var(--mute);text-align:center;padding:28px 8px}
-.seg{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-bottom:10px}
-.seg button{all:unset;flex:1;text-align:center;padding:11px 4px;cursor:pointer;background:var(--card)}
-.seg .on{background:var(--sig);color:#12232e;font-weight:600}
-nav{position:fixed;inset-inline:0;bottom:0;display:flex;background:var(--card);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
-nav button{all:unset;flex:1;text-align:center;padding:13px 2px;cursor:pointer;font-size:13.5px;color:var(--mute);border-top:3px solid transparent}
-nav .on{color:var(--ink);font-weight:600;border-top-color:var(--sig)}
-#msg{position:fixed;inset-inline:14px;bottom:calc(70px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);border-radius:8px;padding:10px 14px;display:none;z-index:5}
-button:focus-visible,input:focus-visible{outline:2px solid var(--sig);outline-offset:2px}
-.sr{display:flex;gap:8px;margin-top:4px}
-.sr input{margin:0;flex:1}
-.sr .btn{width:auto;margin:0;height:44px;padding:0 16px}
-#scan{position:fixed;inset:0;z-index:9;background:#000;display:flex;flex-direction:column}
-#scan[hidden]{display:none}
-#scan video{flex:1;width:100%;min-height:0;object-fit:cover}
-#scan .aim{position:absolute;inset-inline:12%;top:45%;height:2px;background:var(--sig);box-shadow:0 0 8px var(--sig)}
-#scan .bar{padding:12px 14px calc(12px + env(safe-area-inset-bottom,0px));background:var(--card);text-align:center}
+:root {
+  --bg: #09090b;
+  --surface: #121215;
+  --surface-hover: #1c1c21;
+  --card: #18181b;
+  --border: #27272a;
+  --text: #fafafa;
+  --muted: #a1a1aa;
+  --accent: #dc2626;
+  --accent-hover: #b91c1c;
+  --success: #22c55e;
+  --success-bg: rgba(34, 197, 94, 0.1);
+  --danger: #ef4444;
+  --danger-bg: rgba(239, 68, 68, 0.1);
+  --radius: 6px;
+  color-scheme: dark;
+}
+
+html {
+  background: var(--bg);
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 1180px;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.6 "Readex Pro", system-ui, -apple-system, sans-serif;
+  padding: 24px 16px 120px;
+  letter-spacing: -0.01em;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+h1 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+h1::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 16px;
+  background: var(--accent);
+}
+
+input, select, textarea {
+  width: 100%;
+  height: 50px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--text);
+  padding: 0 16px;
+  font: inherit;
+  font-size: 14px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+input:focus, select:focus {
+  outline: none;
+  border-color: var(--text);
+  background: var(--surface-hover);
+}
+
+label {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 12.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+}
+label input, label select {
+  margin-top: 8px;
+}
+
+.chk {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  color: var(--text);
+  font-size: 14px;
+  cursor: pointer;
+  background: var(--surface);
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-bottom: 16px;
+  transition: border-color 0.2s;
+}
+.chk:hover { border-color: var(--muted); }
+.chk input {
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+.btn {
+  height: 50px;
+  padding: 0 24px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--text);
+  color: var(--bg);
+  font: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  width: 100%;
+  margin-top: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+.btn:hover { background: var(--muted); }
+.btn:active { transform: scale(0.99); }
+.btn:disabled { opacity: 0.4; cursor: wait; transform: none; }
+
+.ghost {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.ghost:hover {
+  background: var(--surface-hover);
+  color: var(--text);
+  border-color: var(--text);
+}
+
+.row { display: flex; gap: 12px; margin-top: 14px; }
+.row .btn { margin: 0; flex: 1; }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin: 16px 0;
+  overflow: hidden;
+  border-inline-start: 4px solid var(--accent);
+  transition: border-color 0.2s;
+}
+.card:hover { border-color: var(--muted); }
+.card.neg { border-inline-start-color: var(--danger); }
+
+.form {
+  padding: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.form[data-t=in] .o { display: none; }
+.form[data-t=out] .i { display: none; }
+
+.job { padding: 20px; }
+.hd {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  padding: 20px;
+  background: transparent;
+  border: 0;
+  text-align: inherit;
+  color: inherit;
+  font: inherit;
+}
+.mute, .hd small {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+  margin-top: 4px;
+}
+.desc-txt {
+  color: var(--success);
+  margin-top: 8px;
+  font-weight: 500;
+  font-size: 13px;
+}
+.qty {
+  font-size: 18px;
+  font-weight: 700;
+  min-width: 56px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+  background: var(--surface);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.ln {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  background: var(--surface);
+}
+.ln span { display: block; }
+.ln.in b { color: var(--success); }
+.ln.out b { color: var(--danger); }
+.ok { color: var(--success); font-weight: 600; }
+.bad { color: var(--danger); font-weight: 600; }
+
+.x {
+  all: unset;
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 18px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius);
+  background: var(--card);
+  transition: background 0.2s, color 0.2s;
+}
+.x:hover { background: var(--danger-bg); color: var(--danger); }
+
+.empty {
+  color: var(--muted);
+  text-align: center;
+  padding: 60px 20px;
+  font-size: 14px;
+  background: var(--card);
+  border-radius: var(--radius);
+  border: 1px dashed var(--border);
+  margin: 20px 0;
+}
+
+.seg {
+  display: flex;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 4px;
+  margin-bottom: 24px;
+  gap: 4px;
+}
+.seg button {
+  all: unset;
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+  border-radius: var(--radius);
+  color: var(--muted);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+.seg .on {
+  background: var(--text);
+  color: var(--bg);
+}
+
+nav {
+  position: fixed;
+  inset-inline: 16px;
+  bottom: 16px;
+  max-width: 608px;
+  margin: 0 auto;
+  display: flex;
+  background: rgba(18, 18, 21, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 6px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  z-index: 9;
+}
+nav button {
+  all: unset;
+  flex: 1;
+  text-align: center;
+  padding: 12px 4px;
+  cursor: pointer;
+  font-size: 11.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  border-radius: var(--radius);
+  transition: all 0.2s ease;
+}
+nav button:hover { color: var(--text); background: var(--surface-hover); }
+nav .on {
+  color: var(--bg);
+  background: var(--text);
+}
+
+#msg {
+  position: fixed;
+  inset-inline: 20px;
+  bottom: 90px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  display: none;
+  z-index: 100;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+  font-weight: 600;
+  text-align: center;
+  font-size: 13.5px;
+  animation: fadeIn 0.2s ease;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+button:focus-visible, input:focus-visible {
+  outline: 1px solid var(--text);
+  outline-offset: 1px;
+}
+
+.sr { display: flex; gap: 10px; margin-top: 8px; }
+.sr input { margin: 0; flex: 1; }
+.sr .btn { width: auto; margin: 0; height: 50px; padding: 0 20px; }
+
+#scan {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+#scan[hidden] { display: none; }
+#scan video { flex: 1; width: 100%; min-height: 0; object-fit: cover; }
+#scan .aim {
+  position: absolute;
+  inset-inline: 15%;
+  top: 45%;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+}
+#scan .bar {
+  padding: 24px;
+  padding-bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+  background: var(--card);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+
+.available {
+  padding: 16px;
+  border-radius: var(--radius);
+  background: var(--success-bg);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  margin: 14px 0 20px;
+  font-weight: 500;
+  color: var(--success);
+  font-size: 13.5px;
+}
+.available b { color: var(--success); font-weight: 700; }
+
+.about-card { text-align: center; padding: 50px 24px; }
+.about-dev { font-size: 18px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; margin: 0 0 8px; color: var(--text); direction: ltr; }
+.about-ver { font-size: 12px; color: var(--muted); margin: 0; letter-spacing: 0.2em; text-transform: uppercase; direction: ltr; }
+
+.auth-box {
+  max-width: 400px;
+  margin: 80px auto;
+  padding: 36px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+  text-align: center;
+}
+.auth-box h2 { margin: 0 0 24px; font-size: 18px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text); }
+
+.pr-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:14px 0}
+.pr-stat{background:var(--surface);border:1px solid var(--border);padding:14px;border-radius:var(--radius)}
+.pr-stat b{display:block;font-size:20px;margin-top:4px}
+.pr-line{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;margin:12px 0}
+.pr-line-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.pr-line label{margin-bottom:10px}
+.pr-line input,.pr-line select{height:44px}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pr-card{padding:18px}
+.pr-badge{display:inline-block;padding:4px 9px;border:1px solid var(--border);border-radius:20px;font-size:11px;color:var(--muted)}
+.pr-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.pr-actions .btn{width:auto;flex:1;min-width:120px}
+.pr-empty-note{padding:12px;background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);color:var(--muted);font-size:12px;margin:10px 0}
+.erp-wrap{padding:8px 0 28px}
+.erp-welcome{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin:10px 0 22px}
+.erp-welcome h2{font-size:25px;margin:0 0 5px}.erp-welcome p{margin:0;color:var(--muted)}
+.erp-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:16px 0 24px}
+.erp-kpi{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:17px;min-height:105px}
+.erp-kpi span{color:var(--muted);font-size:12px}.erp-kpi b{display:block;font-size:27px;margin-top:7px}
+.erp-section-title{display:flex;justify-content:space-between;align-items:center;margin:26px 0 12px}.erp-section-title h3{margin:0}
+.erp-modules{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.erp-module{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;text-align:right;min-height:116px;cursor:pointer;color:var(--text);font:inherit}
+.erp-module:hover{border-color:var(--accent);background:var(--surface-hover)}.erp-module b{display:block;font-size:15px;margin:8px 0 4px}.erp-module small{color:var(--muted)}
+.erp-module .ico{font-size:21px}.erp-module.disabled{opacity:.62;cursor:default}
+.erp-lower{display:grid;grid-template-columns:1.3fr 1fr;gap:14px;margin-top:18px}.erp-panel{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:16px;min-width:0}
+.erp-panel h3{margin:0 0 12px}.erp-row{display:flex;justify-content:space-between;gap:10px;padding:11px 0;border-top:1px solid var(--border);font-size:13px}
+.erp-tag{font-size:11px;border:1px solid var(--border);border-radius:30px;padding:3px 8px;color:var(--muted);white-space:nowrap}
+@media(max-width:760px){.erp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.erp-modules{grid-template-columns:repeat(2,minmax(0,1fr))}.erp-lower{grid-template-columns:1fr}.erp-welcome h2{font-size:21px}nav{overflow-x:auto;justify-content:flex-start}nav button{min-width:75px;flex:0 0 auto}}
+@media(max-width:420px){.pr-grid{grid-template-columns:1fr}.pr-actions .btn{min-width:100%}nav button{font-size:10px;padding-inline:5px}.erp-kpi{padding:12px}.erp-kpi b{font-size:23px}}
+
+
+.erp-table-wrap{overflow:auto;border:1px solid var(--border);border-radius:8px;margin:12px 0 22px}.erp-table{width:100%;border-collapse:collapse;min-width:560px;font-size:12px}.erp-table th,.erp-table td{padding:11px 10px;border-bottom:1px solid var(--border);text-align:right;white-space:nowrap}.erp-table th{color:var(--muted);background:var(--surface);font-weight:600}.erp-table tr:last-child td{border-bottom:0}.erp-section-title{margin:18px 0 12px}.erp-section-title h3{margin:0}.erp-module{cursor:pointer}.erp-module:disabled{opacity:.5}.form h3{margin-top:0}.erp-table-wrap+ .form{margin-top:20px}
+
+
+/* MAKHZAN ERP UI refresh */
+:root{--bg:#0b0d11;--surface:#11151c;--surface-hover:#1a202a;--card:#141922;--border:#252d39;--text:#f4f6fa;--muted:#929dad;--accent:#e23b43;--accent-hover:#c92d35;--radius:12px}
+body{max-width:none;margin:0;padding:28px 30px 42px 30px;padding-right:292px;background:radial-gradient(ellipse at 78% -20%,rgba(226,59,67,.10),transparent 34%),var(--bg);min-height:100vh}
+.app-header{min-height:62px;margin:0 0 28px;padding:0 0 18px;border-bottom:1px solid var(--border)}
+.brand-lockup{display:flex;align-items:center;gap:13px}.brand-mark{width:42px;height:42px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(145deg,#f04b52,#a91620);font-size:25px;font-weight:700;box-shadow:0 8px 24px #d52c3533}.app-header h1{font-size:15px;letter-spacing:.02em}.app-header h1:before{display:none}.brand-lockup small{display:block;color:var(--muted);font-size:9px;letter-spacing:.18em;direction:ltr;text-align:right;margin-top:2px}.header-meta{display:flex;align-items:center;gap:9px;color:var(--muted);font-size:11px}.live-dot,.nav-online i,.data-status i{width:7px;height:7px;border-radius:50%;background:#35c779;display:inline-block;box-shadow:0 0 0 4px #35c77918}.header-divider{height:20px;width:1px;background:var(--border);margin:0 6px}
+#app{min-width:0}nav#nav{position:fixed;inset:18px 18px 18px auto;width:246px;max-width:none;margin:0;padding:16px 12px;display:flex;flex-direction:column;align-items:stretch;gap:12px;overflow-y:auto;overflow-x:hidden;background:rgba(17,21,28,.97);border:1px solid var(--border);border-radius:18px;box-shadow:0 18px 55px #0007;z-index:20}nav#nav[hidden]{display:none}.nav-brand{display:flex;align-items:center;gap:10px;padding:4px 8px 15px;border-bottom:1px solid var(--border);direction:ltr;text-align:left}.nav-brand-mark{display:grid;place-items:center;width:37px;height:37px;border-radius:10px;background:var(--accent);font-size:22px;font-weight:700}.nav-brand b{display:block;font-size:13px;letter-spacing:.12em}.nav-brand small{display:block;font-size:9px;color:var(--muted);letter-spacing:.16em}.nav-group{display:flex;flex-direction:column;gap:3px}.nav-group-title{font-size:10px;color:#778294;padding:3px 10px 5px;font-weight:600}.nav-group button{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:10px;width:100%;min-height:38px;padding:7px 10px;border-radius:9px;color:#aeb7c5;font:500 11.5px "Readex Pro",sans-serif;cursor:pointer;transition:.18s}.nav-group button:hover{background:#ffffff0a;color:var(--text)}.nav-group button.on{background:linear-gradient(90deg,#e23b4324,#e23b4308);color:#fff;border:1px solid #e23b4338}.nav-indicator{width:5px;height:5px;border-radius:50%;background:#5c6675;flex:0 0 auto}.nav-group button.on .nav-indicator{background:var(--accent);box-shadow:0 0 0 4px #e23b431c}.nav-group button em{font-style:normal;margin-right:auto;min-width:19px;text-align:center;padding:1px 5px;border-radius:20px;background:var(--accent);color:white;font-size:10px}.nav-bottom{margin-top:auto;padding:12px 9px 2px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:7px}.nav-online{font-size:10px;color:#9eabb9;display:flex;align-items:center;gap:8px}.nav-online i{width:6px;height:6px}.nav-bottom small{font-size:8px;letter-spacing:.12em;color:#647083;direction:ltr;text-align:right}
+.erp-wrap{padding:0 0 20px}.hero-panel{position:relative;overflow:hidden;display:flex;align-items:stretch;justify-content:space-between;min-height:205px;padding:27px 30px;border:1px solid #3b3038;border-radius:18px;background:linear-gradient(110deg,#171a22 0%,#1b1720 58%,#28151b 100%);box-shadow:0 18px 50px #0003}.hero-copy{position:relative;z-index:2}.eyebrow{font-size:9px;letter-spacing:.18em;color:#e66a70;direction:ltr;display:block;font-weight:700}.hero-copy h2{font-size:29px;margin:8px 0 4px}.hero-copy>p{margin:0;color:#aab2bf;font-size:12px}.hero-user{display:flex;align-items:center;gap:9px;margin-top:23px}.user-avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ffffff16;border:1px solid #ffffff25;color:white;font-weight:700}.hero-user b,.hero-user small{display:block}.hero-user b{font-size:11px}.hero-user small{font-size:9px;color:#a6afbd}.hero-side{width:230px;position:relative;display:grid;place-items:center;overflow:hidden}.hero-symbol{font-size:108px;font-weight:700;color:#ffffff0b;line-height:1;z-index:1}.hero-orbit{position:absolute;width:150px;height:150px;border:1px solid #e24a5540;border-radius:50%}.orbit-two{width:205px;height:205px;border-color:#ffffff12}.hero-caption{position:absolute;bottom:5px;font-size:8px;letter-spacing:.2em;color:#a7a0a8;direction:ltr}.dashboard-heading{display:flex;justify-content:space-between;align-items:end;margin:27px 0 12px}.dashboard-heading h3{margin:4px 0 0;font-size:17px}.data-status{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:10px}.data-status i{width:6px;height:6px}.dashboard-kpis{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0}.erp-kpi{border-radius:13px;min-height:112px;padding:15px 17px;text-align:right;color:var(--text);font:inherit;position:relative;overflow:hidden}.kpi-click{cursor:pointer;transition:transform .18s,border-color .18s,background .18s}.kpi-click:hover{transform:translateY(-3px);border-color:#b33d48;background:#191e28}.erp-kpi span{font-size:11px}.erp-kpi b{font-size:28px;margin-top:4px}.erp-kpi small{font-size:9px;color:#778496;display:block;margin-top:2px}.attention-kpi{background:linear-gradient(140deg,#24191f,#171922);border-color:#6c303b}.quick-actions{margin-top:26px}.quick-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.quick-action{display:flex;align-items:center;gap:10px;min-height:58px;padding:11px 13px;background:#141922;border:1px solid var(--border);border-radius:11px;color:var(--text);font:inherit;text-align:right;cursor:pointer;transition:.18s}.quick-action:hover{border-color:var(--accent);background:#1b1d25}.quick-action>span{width:29px;height:29px;display:grid;place-items:center;border-radius:8px;background:#e23b4318;color:#ff777d;font-size:17px}.quick-action b{font-size:10px;font-weight:600}.quick-action i{font-style:normal;color:#758194;margin-right:auto}.modules-heading{margin-top:30px}.module-count{font-size:10px;color:var(--muted);border:1px solid var(--border);padding:4px 9px;border-radius:20px}.dashboard-modules{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.erp-module{min-height:142px;border-radius:13px;padding:14px 15px;transition:transform .18s,border-color .18s,background .18s}.erp-module:hover{transform:translateY(-2px);border-color:#91404a;background:#191e28}.module-top{display:flex;align-items:center;justify-content:space-between}.erp-module .ico{width:35px;height:35px;display:grid;place-items:center;border-radius:10px;background:#ffffff08;font-size:18px}.module-arrow{color:#758194;font-size:14px}.erp-module b{font-size:12px;margin:10px 0 3px}.erp-module small{font-size:9px;line-height:1.6}.module-foot{margin-top:10px}.status-pill{display:inline-flex;align-items:center;gap:6px;font-size:9px;padding:3px 8px;border-radius:20px;background:#ffffff08;color:#aeb8c5}.status-pill i{width:5px;height:5px;border-radius:50%;background:#d8a34b}.status-ready i{background:#35c779}.status-ready{color:#8ed8ae}.dashboard-lower{grid-template-columns:1.35fr 1fr;gap:12px;margin-top:16px}.erp-panel{border-radius:13px;padding:17px}.panel-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.panel-heading h3{font-size:14px;margin:3px 0 0}.text-link{border:0;background:transparent;color:#e66a70;font:inherit;font-size:10px;cursor:pointer}.activity-row{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--border)}.activity-icon{width:29px;height:29px;display:grid;place-items:center;border-radius:9px;font-size:18px}.activity-in{background:#1a3b2c;color:#55d18c}.activity-out{background:#3a2027;color:#ff747b}.activity-info{min-width:0;flex:1}.activity-info b,.activity-info small{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.activity-info b{font-size:10px}.activity-info small{font-size:9px;color:var(--muted);margin-top:3px}.activity-row strong{font-size:12px;direction:ltr}.positive{color:#55d18c}.negative{color:#ff747b}.dashboard-footer{display:flex;justify-content:space-between;border-top:1px solid var(--border);margin-top:22px;padding-top:12px;color:#657184;font-size:9px}.dashboard-footer span:first-child{direction:ltr;letter-spacing:.12em}
+.form,.card,.pr-card{border-radius:13px}.btn{border-radius:10px;background:var(--accent);color:white;letter-spacing:0;text-transform:none}.btn:hover{background:var(--accent-hover)}.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--border)}input,select,textarea{border-radius:9px;background:#0f141b}input:focus,select:focus{border-color:#d34a52;background:#151b24}.erp-section-title{margin-top:8px}.erp-table-wrap{border-radius:12px}.erp-table th{background:#171d27}.erp-table tr:hover td{background:#ffffff05}.auth-box{border-radius:18px}
+@media(max-width:900px){body{padding-right:275px;padding-left:20px}.dashboard-modules{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero-side{width:150px}}
+@media(max-width:650px){body{padding:15px 12px 104px;max-width:none}.app-header{margin-bottom:17px;padding-bottom:13px}.brand-mark{width:36px;height:36px}.app-header h1{font-size:12px}.brand-lockup small{font-size:7px}.header-meta{font-size:0;gap:0}.header-meta .header-divider,#header-user{display:none}nav#nav{inset:auto 8px calc(8px + env(safe-area-inset-bottom,0px)) 8px;width:auto;max-width:none;height:66px;padding:7px;display:flex;flex-direction:row;align-items:center;gap:0;overflow-x:auto;overflow-y:hidden;border-radius:15px;background:rgba(17,21,28,.97)}.nav-brand,.nav-group-title,.nav-bottom{display:none}.nav-group{display:contents}.nav-group button{min-width:75px;width:auto;min-height:48px;flex:0 0 auto;display:flex;flex-direction:column;justify-content:center;gap:3px;padding:5px 8px;font-size:9px;text-align:center}.nav-indicator{display:none}.nav-group button.on{border-radius:10px}.nav-group button em{position:absolute;margin:0;transform:translate(21px,-13px);font-size:8px;min-width:15px;padding:0 4px}.hero-panel{min-height:175px;padding:20px;border-radius:15px}.hero-copy h2{font-size:23px}.hero-copy>p{font-size:10px;max-width:220px}.hero-side{width:85px}.hero-symbol{font-size:70px}.hero-orbit{width:100px;height:100px}.orbit-two{width:135px;height:135px}.hero-caption{font-size:6px;white-space:nowrap}.hero-user{margin-top:17px}.dashboard-heading{margin-top:22px}.dashboard-heading h3{font-size:15px}.data-status{font-size:8px}.dashboard-kpis{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.erp-kpi{min-height:100px;padding:12px}.erp-kpi b{font-size:25px}.erp-kpi span{font-size:10px}.quick-grid{gap:7px}.quick-action{min-height:54px;padding:8px;gap:7px}.quick-action b{font-size:9px}.dashboard-modules{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.erp-module{min-height:133px;padding:11px}.erp-module b{font-size:11px}.erp-module small{font-size:8px}.dashboard-lower{grid-template-columns:1fr}.dashboard-footer{font-size:8px}.erp-welcome{align-items:flex-start}.erp-kpis:not(.dashboard-kpis){grid-template-columns:repeat(2,minmax(0,1fr))}.erp-lower{grid-template-columns:1fr}.erp-table{min-width:540px}.form{padding:16px}.auth-box{margin:45px auto;padding:25px 18px}}
+@media(max-width:380px){.hero-side{width:55px}.hero-copy h2{font-size:21px}.quick-action b{font-size:8px}.module-count{font-size:8px}.data-status{max-width:110px;text-align:left}}
+
+
+/* MAKHZAN warehouse workspace refresh */
+.stock-workspace{display:grid;gap:18px;padding:4px 0 24px}
+.stock-hero{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px;border:1px solid var(--border);border-radius:16px;background:linear-gradient(135deg,#19191f,#111116 65%,#241313)}
+.stock-hero h2{font-size:clamp(21px,4vw,30px);margin:5px 0 8px}.stock-hero p{color:var(--muted);margin:0;line-height:1.8}.stock-hero-mark{width:76px;height:76px;display:grid;place-items:center;border-radius:20px;background:#dc26261c;border:1px solid #dc26264a;color:#f87171;font-size:34px;font-weight:700;flex:none}
+.stock-kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.stock-kpi{border:1px solid var(--border);background:var(--card);border-radius:13px;padding:15px;min-width:0}.stock-kpi span{display:block;color:var(--muted);font-size:12px}.stock-kpi b{display:block;font-size:25px;margin-top:8px;overflow-wrap:anywhere}.stock-kpi small{display:block;color:var(--muted);margin-top:4px}
+.stock-process{border:1px solid var(--border);background:var(--surface);border-radius:15px;padding:17px}.stock-process-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:15px}.stock-process-head h3{margin:0}.stock-process-head small{color:var(--muted)}.stock-flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.stock-step{position:relative;min-width:0;text-align:center;padding:13px 8px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);cursor:pointer;min-height:98px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px}.stock-step:after{content:'←';position:absolute;left:-9px;top:37%;color:var(--muted);font-size:16px;z-index:1}.stock-step:nth-child(5):after{display:none}.stock-step .step-no{width:25px;height:25px;display:grid;place-items:center;border-radius:50%;background:#dc26261c;color:#f87171;font-weight:700}.stock-step b{font-size:12px}.stock-step small{font-size:10px;color:var(--muted);line-height:1.5}.stock-step:hover,.stock-step:focus-visible{border-color:var(--accent);outline:none;background:var(--surface-hover)}
+.stock-tools{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.stock-search{flex:1;min-width:min(100%,260px);display:flex;gap:8px}.stock-search input{flex:1;min-width:0}.stock-shortcuts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.stock-shortcut{display:flex;align-items:center;gap:10px;text-align:right;padding:13px;border:1px solid var(--border);border-radius:12px;background:var(--card);color:var(--text);cursor:pointer;min-width:0}.stock-shortcut span{font-size:20px}.stock-shortcut b{font-size:12px}.stock-shortcut:hover{border-color:var(--accent)}.stock-list-shell{border:1px solid var(--border);border-radius:15px;padding:15px;background:var(--surface)}.stock-list-shell h3{margin:0 0 12px}.stock-list-shell #list{display:grid;gap:10px}.stock-list-shell .card{margin:0;border-radius:12px;background:var(--card);border-color:var(--border)}.stock-recent{border:1px solid var(--border);border-radius:15px;padding:15px;background:var(--surface)}.stock-recent h3{margin:0 0 12px}.stock-recent .activity-row{padding:11px 0;border-bottom:1px solid var(--border)}.movement-open{cursor:pointer}.movement-open:hover,.movement-open:focus-visible{outline:1px solid var(--accent);outline-offset:2px;background:var(--surface-hover)}.ln.movement-open{border-radius:8px;padding:8px}.stock-recent .activity-row:last-child{border-bottom:0}
+@media(max-width:720px){.stock-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-step:after{display:none}.stock-shortcuts{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-hero{padding:17px}.stock-hero-mark{width:58px;height:58px;border-radius:15px}}
+@media(max-width:380px){.stock-kpi{padding:12px}.stock-kpi b{font-size:21px}.stock-shortcut{padding:10px}}
+
+
+/* MAKHZAN Refresh 08: enterprise usability layer */
+:root{--bg:#0b1017;--surface:#121a24;--surface-hover:#1b2735;--card:#151f2b;--border:#2a3949;--text:#f3f6fa;--muted:#9aaabd;--accent:#d83b45;--accent-hover:#b92c36;--radius:13px}
+body{font-family:"Readex Pro",system-ui,sans-serif;line-height:1.65}
+.app-header{border-color:#2a3949}
+.erp-section-title{gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--border)}
+.form,.erp-panel,.erp-kpi,.erp-module,.stock-list-shell,.stock-recent,.stock-process,.stock-hero{box-shadow:0 10px 28px rgba(0,0,0,.12)}
+.form{border-radius:15px}
+.btn{border-radius:10px;letter-spacing:0;font-size:13px;text-transform:none}
+input,select,textarea{border-radius:10px}
+.erp-table-tools{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:12px 0 0}
+.erp-table-search{max-width:360px;height:42px;font-size:12px}
+.erp-table-count{font-size:11px;color:var(--muted);white-space:nowrap}
+.erp-table-wrap{border-radius:12px;background:var(--card)}
+.erp-table{min-width:620px;font-size:12px}
+.erp-table th{position:sticky;top:0;z-index:1;background:#1a2634;color:#dce5ef}
+.erp-table tbody tr:hover{background:#ffffff08}
+.erp-table td{max-width:280px;overflow:hidden;text-overflow:ellipsis}
+.erp-table tr[hidden]{display:none}
+.ops-watch{margin:20px 0;padding:17px;background:linear-gradient(135deg,#172331,#121a24);border:1px solid var(--border);border-radius:15px}
+.ops-watch-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ops-watch-grid button{padding:14px;text-align:right;border:1px solid var(--border);border-radius:11px;background:#0f1721;color:var(--text);cursor:pointer}
+.ops-watch-grid button:hover{border-color:var(--accent);background:var(--surface-hover)}
+.ops-watch-grid span,.ops-watch-grid small{display:block;color:var(--muted);font-size:11px}
+.ops-watch-grid b{display:block;font-size:25px;margin:5px 0}
+.report-filter{margin-top:20px}
+.report-filter .row .btn{flex:1}
+.erp-tag{background:#ffffff05}
+.status-pill{letter-spacing:0}
+@media(max-width:900px){.ops-watch-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:620px){body{padding:16px 12px 110px}.erp-table-tools{align-items:stretch}.erp-table-search{max-width:none}.ops-watch-grid{grid-template-columns:1fr 1fr}.report-filter .row{flex-direction:column}.report-filter .row .btn{width:100%}}
+@media print{body{padding:0;background:#fff;color:#111}.app-header,nav,#msg,.btn,.erp-table-tools{display:none!important}.erp-table-wrap{overflow:visible;border:0}.erp-table{min-width:0;color:#111}.erp-table th,.erp-table td{color:#111;border:1px solid #bbb}.erp-panel,.form{box-shadow:none;background:#fff;color:#111}}
+
+
+/* Refresh 09 · Inventory page visual redesign only */
+.stock-pro{gap:20px;max-width:1500px;margin-inline:auto}
+.stock-pro .stock-hero{min-height:190px;padding:27px 30px;border:1px solid #344455;background:linear-gradient(112deg,#182431 0%,#17202b 58%,#302027 100%);box-shadow:0 16px 38px #0003;overflow:hidden}
+.stock-hero-copy{min-width:0}.stock-pro .stock-hero h2{font-size:clamp(25px,4vw,34px);letter-spacing:-.5px;margin:9px 0 5px}.stock-pro .stock-hero p{font-size:12px;color:#b1bdca}.stock-hero-actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:20px}.stock-hero-actions .btn{min-height:40px;padding:9px 15px}.stock-hero-side{width:190px;min-height:125px;display:flex;flex-direction:column;align-items:center;justify-content:center;border-right:1px solid #ffffff16;position:relative;flex:none;color:#aebaca}.stock-hero-side b{font-size:76px;line-height:1;color:#e35a62;text-shadow:0 8px 30px #e23b4333}.stock-hero-side span,.stock-hero-side small{font-size:8px;letter-spacing:.2em;direction:ltr}.stock-hero-side small{color:#78889a}
+.stock-kpis-pro{grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}.stock-pro .stock-kpi{position:relative;padding:16px 17px;border-radius:13px;background:linear-gradient(145deg,#182330,#141c26);border-color:#2b3b4b;min-height:112px}.stock-pro .stock-kpi:before{content:'';position:absolute;right:0;top:14px;bottom:14px;width:3px;border-radius:4px;background:#64788e}.stock-pro .stock-kpi:nth-child(2):before{background:#35b982}.stock-pro .stock-kpi:nth-child(3):before{background:#3999d6}.stock-pro .stock-kpi:nth-child(4):before{background:#d69a48}.stock-pro .stock-kpi:nth-child(5):before{background:#e15a62}.stock-pro .stock-kpi span{font-size:11px}.stock-pro .stock-kpi b{font-size:27px;margin-top:10px;direction:ltr;text-align:right}.stock-pro .stock-kpi small{font-size:9px;margin-top:3px}.stock-section-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:15px}.stock-section-top h3{font-size:16px;margin:4px 0}.stock-section-top p{font-size:10px;color:var(--muted);margin:0}.stock-count{padding:6px 11px;border:1px solid #344456;border-radius:8px;background:#1a2633;color:#d7e1eb;font-size:10px;white-space:nowrap}
+.stock-catalog{padding:19px;border-color:#304052;background:#121a24;border-radius:16px}.stock-tools-pro{padding:12px;background:#0e151e;border:1px solid #283746;border-radius:11px;margin-bottom:14px}.stock-tools-pro .stock-search{min-width:220px}.stock-tools-pro .stock-search input{height:42px;background:#151f2a;border-color:#304052}.stock-tools-pro .btn{min-height:40px;white-space:nowrap}.stock-catalog #list{gap:11px}.stock-catalog #list>.card{border:1px solid #2b3b4c;background:#17212d;box-shadow:0 5px 15px #0002;transition:border-color .18s,transform .18s}.stock-catalog #list>.card:hover{border-color:#526b83;transform:translateY(-1px)}
+.stock-process-pro{padding:19px;border-radius:16px;background:#121a24;border-color:#304052}.stock-process-pro .stock-flow{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}.stock-process-pro .stock-step{min-height:92px;background:#17212d;border-color:#2d3d4e;border-radius:11px;padding:12px 8px}.stock-process-pro .stock-step .step-no{width:23px;height:23px;background:#29394a;color:#d7e4f0;font-size:10px}.stock-process-pro .stock-step b{font-size:11px}.stock-process-pro .stock-step small{font-size:9px}.stock-process-pro .stock-step:hover{border-color:#d34b55;background:#1c2937}.stock-recent-pro{padding:19px;border-radius:16px;background:#121a24;border-color:#304052}.stock-recent-pro .activity-row{padding:13px 9px;border-top:1px solid #263544;border-bottom:0;border-radius:8px;gap:12px}.stock-recent-pro .activity-row:hover{background:#1a2633}.stock-recent-pro .activity-info b{font-size:11px}.stock-recent-pro .activity-info small{font-size:9px}.stock-open-hint{font-size:9px;color:#8ea0b3;white-space:nowrap}
+@media(max-width:950px){.stock-kpis-pro{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:720px){.stock-pro{gap:14px}.stock-pro .stock-hero{padding:19px;min-height:0}.stock-hero-side{width:75px;min-height:90px}.stock-hero-side b{font-size:54px}.stock-hero-side span,.stock-hero-side small{font-size:6px}.stock-pro .stock-hero h2{font-size:24px}.stock-pro .stock-hero p{font-size:10px}.stock-hero-actions{margin-top:14px}.stock-hero-actions .btn{font-size:10px;padding:8px 10px}.stock-kpis-pro{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.stock-pro .stock-kpi{min-height:98px;padding:13px}.stock-pro .stock-kpi b{font-size:23px}.stock-catalog,.stock-process-pro,.stock-recent-pro{padding:13px}.stock-tools-pro{display:grid}.stock-tools-pro .stock-search{min-width:0}.stock-tools-pro>.btn{width:100%}.stock-process-pro .stock-flow{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-open-hint{display:none}}
+@media(max-width:380px){.stock-hero-side{width:53px}.stock-hero-side b{font-size:43px}.stock-hero-actions{gap:6px}.stock-hero-actions .btn{font-size:9px}.stock-pro .stock-kpi span{font-size:9px}}
+
+
+/* Compact warehouse movement rows */
+.ln.movement-compact{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 13px;margin-top:7px;border:1px solid var(--border);border-radius:12px;background:var(--surface);min-height:66px;cursor:pointer;transition:border-color .18s,background .18s}
+.movement-compact-main{display:flex;align-items:center;gap:10px;min-width:0}
+.movement-type-icon{display:flex!important;align-items:center;justify-content:center;width:34px;height:34px;flex:0 0 34px;border-radius:10px;background:var(--card);font-size:19px;font-weight:800}
+.ln.in .movement-type-icon{color:var(--success)}.ln.out .movement-type-icon{color:var(--danger)}
+.movement-compact-copy{min-width:0}.movement-compact-copy b{display:block;font-size:13px}.movement-compact-copy small,.movement-compact-end small{display:block;margin-top:4px;color:var(--muted);font-size:11px}
+.movement-compact-end{text-align:left;flex:0 0 auto}.movement-compact-end b{font-size:15px}.ln.in .movement-compact-end b{color:var(--success)}.ln.out .movement-compact-end b{color:var(--danger)}
+.movement-delete{flex:0 0 30px;width:30px;height:30px;font-size:16px}
+.movements-container{display:grid;gap:2px;padding-top:8px}
+.module-open-label{font-size:12px;color:var(--accent);font-weight:700}.module-foot{justify-content:flex-start}
+
+/* Refresh 15: compact movement entry layout */
+#f.form{
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:10px 12px;
+ padding:16px;
+ margin-top:10px;
+}
+#f.form>label{display:flex;flex-direction:column;gap:5px;min-width:0;margin:0;font-size:12px}
+#f.form>label:first-of-type,
+#f.form>#available,
+#f.form>label:nth-of-type(4),
+#f.form>label:nth-of-type(10),
+#f.form>label.chk,
+#f.form>button[data-a="savem"],
+#f.form>button[data-a="fill"]{grid-column:1/-1}
+#f.form input:not([type="checkbox"]),#f.form select{height:40px;min-height:40px;padding:8px 10px;font-size:13px;width:100%;min-width:0}
+#f.form .sr{display:flex;gap:7px;min-width:0}
+#f.form .sr input{flex:1;min-width:0}
+#f.form .sr .btn{min-width:65px;padding:8px 12px}
+#f.form #available{padding:8px 11px;margin:0;font-size:11px;min-height:34px}
+#f.form>button[data-a="fill"]{justify-self:start;min-height:34px;padding:7px 12px;font-size:11px;margin-top:-5px!important}
+#f.form>button[data-a="savem"]{margin-top:2px!important;min-height:43px}
+#f.form>label.chk{display:flex;flex-direction:row;align-items:center;gap:8px;padding:7px 10px;border:1px solid var(--border);border-radius:9px}
+#f.form>label.chk input{width:17px;height:17px;min-height:0}
+#f.form .available{line-height:1.5}
+@media(max-width:560px){
+ #f.form{padding:12px;gap:9px 9px}
+ #f.form>label{font-size:11px}
+ #f.form input:not([type="checkbox"]),#f.form select{height:38px;min-height:38px;font-size:12px;padding:7px}
+ #f.form .sr .btn{min-width:54px;padding:7px 8px;font-size:11px}
+}
+@media(max-width:340px){#f.form{grid-template-columns:1fr}#f.form>label,#f.form>#available,#f.form>button{grid-column:1}}
+
+
+/* Refresh 16: compact transaction form and feedback */
+#f.form{gap:8px 10px;padding:13px;max-width:920px;margin-inline:auto}
+#f.form>label{font-size:11px;gap:4px}
+#f.form input:not([type=checkbox]){height:36px;min-height:36px;padding:6px 9px}
+#f.form>button[data-a=fill]{justify-self:start;min-height:32px;padding:6px 10px;font-size:11px}
+#f.form>button[data-a=savem]{min-height:42px;margin-top:2px!important}
+#f.form #available{padding:6px 9px;min-height:30px}
+@media(max-width:620px){#f.form{grid-template-columns:repeat(2,minmax(0,1fr));gap:7px 8px;padding:11px}#f.form>label{font-size:10px}#f.form input:not([type=checkbox]){height:35px;min-height:35px;font-size:12px}#f.form>label:nth-of-type(4),#f.form>label:nth-of-type(10){grid-column:1/-1}}
+
+
+/* Refresh 19: inventory-only visual redesign and aligned movement form */
+.stock-redesign{gap:15px}
+.stock-redesign .stock-hero{min-height:150px;padding:24px 26px;border-radius:18px;background:linear-gradient(115deg,#171e29 0%,#111923 62%,#28171b 100%);border-color:#344254}
+.stock-redesign .stock-hero h2{font-size:clamp(25px,4vw,34px);letter-spacing:-.5px}
+.stock-redesign .stock-hero p{font-size:12px;color:#aab7c7}
+.stock-redesign .stock-hero-side{width:150px;min-height:105px;border:1px solid #ffffff16;border-radius:15px;background:#ffffff08;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;flex:none}
+.stock-redesign .stock-hero-side b{font-size:48px;line-height:1.1;color:#f06b72}
+.stock-redesign .stock-hero-side span,.stock-redesign .stock-hero-side small{font-size:8px;letter-spacing:1.5px;color:#9eacbd}
+.stock-redesign .stock-kpis-pro{grid-template-columns:repeat(5,minmax(0,1fr));gap:9px}
+.stock-redesign .stock-kpi{min-height:105px;padding:15px;border-radius:14px;background:linear-gradient(150deg,#172332,#121a24);border-color:#2b3b4c}
+.stock-redesign .stock-kpi span{font-size:11px;color:#b2c0cf}
+.stock-redesign .stock-kpi b{font-size:26px;color:#f4f7fb;font-variant-numeric:tabular-nums}
+.stock-redesign .stock-kpi small{font-size:9px;color:#8f9eaf}
+.stock-redesign .stock-catalog,.stock-redesign .stock-recent-pro{padding:20px;border:1px solid #2b3b4c;border-radius:17px;background:#111923}
+.stock-redesign .stock-section-top{align-items:center;margin-bottom:16px}
+.stock-redesign .stock-section-top h3{font-size:18px;color:#f3f6fa}
+.stock-redesign .stock-section-top p{font-size:11px;color:#93a3b5}
+.stock-redesign .stock-count{font-size:11px;background:#1b2a39;border-color:#34495d;color:#dce7f2}
+.stock-redesign .stock-tools-pro{padding:12px;background:#0d141d;border-color:#283747;border-radius:13px}
+.stock-redesign .stock-search input{height:44px;border-radius:10px;background:#172230;border-color:#34475a}
+.stock-redesign .stock-tools-pro .btn{min-height:42px;border-radius:10px}
+.stock-redesign #list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-items:start}
+.stock-redesign #list>.empty,.stock-redesign #list>button{grid-column:1/-1}
+.stock-redesign #list>.stock-item-card{display:block;min-width:0;padding:0;overflow:hidden;border:1px solid #2b3b4c;border-radius:14px;background:#172230;box-shadow:0 8px 22px #0002;transition:border-color .18s,transform .18s}
+.stock-redesign #list>.stock-item-card:hover{border-color:#536d86;transform:translateY(-2px)}
+.stock-item-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:15px 16px;border-bottom:1px solid #2b3b4c}
+.stock-item-name{display:flex;align-items:center;gap:10px;min-width:0}
+.stock-item-symbol{width:37px;height:37px;display:grid;place-items:center;flex:0 0 37px;border-radius:11px;background:#26394d;color:#b8cde2;font-size:20px}
+.stock-item-name>div{min-width:0}.stock-item-name b{display:block;font-size:13px;overflow-wrap:anywhere;color:#f4f7fa}.stock-item-name small{display:block;font-size:10px;color:#92a2b4;margin-top:4px;direction:ltr;text-align:right}
+.stock-balance{min-width:82px;text-align:center;padding:7px 10px;border:1px solid #315344;border-radius:10px;background:#173126}
+.stock-balance small{display:block;font-size:9px;color:#9bbca9}.stock-balance b{display:block;font-size:21px;line-height:1.3;color:#61d39a;font-variant-numeric:tabular-nums}
+.stock-item-card.neg .stock-balance{border-color:#69383d;background:#321d22}.stock-item-card.neg .stock-balance b{color:#ff858b}
+.stock-item-meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;padding:13px 16px}
+.stock-item-meta>span{min-width:0;padding:8px 10px;border-radius:9px;background:#111b26;border:1px solid #263747}
+.stock-item-meta small{display:block;font-size:9px;color:#8799ac}.stock-item-meta b{display:block;margin-top:3px;font-size:10px;color:#d9e2ec;overflow-wrap:anywhere}
+.stock-item-meta .stock-item-description{grid-column:1/-1}
+.stock-item-movements{padding:0 13px 13px}.stock-item-movements-title{display:flex;justify-content:space-between;align-items:center;padding:8px 3px;color:#c4d0dc;font-size:10px}.stock-item-movements-title small{color:#8496a9}
+.stock-item-card .movement-compact{padding:9px 10px;min-height:55px;margin-top:6px;background:#111b26;border-color:#293a4b}
+.stock-item-card .movement-type-icon{width:29px;height:29px;flex-basis:29px}
+.stock-item-card .movement-compact-copy b{font-size:10px}.stock-item-card .movement-compact-copy small,.stock-item-card .movement-compact-end small{font-size:9px}
+.stock-redesign .stock-recent-pro .activity-row{padding:12px 10px;gap:12px;border:1px solid #263747;border-radius:11px;margin-top:7px;background:#151f2b}
+.stock-redesign .stock-recent-pro .activity-info b{font-size:11px}.stock-redesign .stock-recent-pro .activity-info small{font-size:9px}
+/* Movement form: fixed two-column alignment, with full-width shared fields */
+#f.form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 14px;max-width:980px;padding:20px;margin:16px auto;border:1px solid var(--border);border-radius:15px;background:var(--card);align-items:end}
+#f.form>datalist{display:none}
+#f.form>label{display:flex;flex-direction:column;justify-content:flex-end;gap:6px;min-width:0;margin:0;font-size:11px;line-height:1.5}
+#f.form>label input{box-sizing:border-box;width:100%;min-width:0;height:42px;min-height:42px;padding:8px 11px}
+#f.form>label:nth-of-type(1),#f.form>button[data-a=fill],#f.form>#available,#f.form>label:nth-of-type(5),#f.form>label:nth-of-type(8),#f.form>button[data-a=savem]{grid-column:1/-1}
+#f.form>button[data-a=fill]{justify-self:start;margin:0!important}
+#f.form>#available{box-sizing:border-box;width:100%;margin:0;padding:10px 13px;min-height:42px}
+#f.form>label.chk{align-self:center;min-height:42px;box-sizing:border-box}
+#f.form>button[data-a=savem]{width:100%;min-height:46px;margin:0!important}
+@media(max-width:760px){.stock-redesign .stock-kpis-pro{grid-template-columns:repeat(2,minmax(0,1fr))}.stock-redesign #list{grid-template-columns:1fr}.stock-redesign .stock-hero{padding:18px}.stock-redesign .stock-hero-side{width:94px;min-height:88px}.stock-redesign .stock-hero-side b{font-size:39px}}
+@media(max-width:560px){.stock-redesign .stock-catalog,.stock-redesign .stock-recent-pro{padding:12px}.stock-redesign .stock-tools-pro{display:grid}.stock-redesign .stock-tools-pro>.btn{width:100%}#f.form{grid-template-columns:1fr;gap:10px;padding:13px}#f.form>label,#f.form>button[data-a=fill],#f.form>#available,#f.form>button[data-a=savem]{grid-column:1}#f.form>label:nth-of-type(1),#f.form>label:nth-of-type(5),#f.form>label:nth-of-type(10){grid-column:1}}
+
+
+
+/* Refresh 20: unified MAKHZAN design system, inventory visual language extended across all modules */
+:root{--bg:#0b1119;--surface:#111b26;--surface-hover:#1b2938;--card:#162230;--border:#2b3c4e;--text:#f2f6fa;--muted:#96a8ba;--accent:#df505a;--accent-hover:#c43b46;--success:#35bd83;--danger:#ef6972;--radius:14px}
+body{max-width:1600px;padding:22px 22px 120px;background:radial-gradient(ellipse at 85% 0%,#182638 0,transparent 36%),var(--bg)}
+.app-header{padding:12px 16px;margin-bottom:20px;border:1px solid #2b3c4e;border-radius:16px;background:linear-gradient(110deg,#172432,#111a25 72%,#251b22);box-shadow:0 10px 30px #0003}
+.brand-mark,.nav-brand-mark{border-radius:11px!important;background:#29394a!important;color:#f08086!important}
+#app{min-width:0}
+#app>.erp-wrap,#app>.erp-wrap:not(.stock-redesign){max-width:1500px;margin:0 auto;display:grid;gap:16px}
+.erp-section-title{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 20px;margin:0 0 2px;border:1px solid #2b3c4e;border-radius:16px;background:linear-gradient(112deg,#182635,#121c27 68%,#251c24);box-shadow:0 12px 30px #0002}
+.erp-section-title h3{margin:0;font-size:clamp(19px,2.5vw,25px);color:#f2f6fa}
+.erp-tag{padding:6px 10px;border:1px solid #35495d;border-radius:9px;background:#1b2a39;color:#b8c8d8;font-size:10px}
+#app .form:not(#f),#app .erp-panel,#app .report-filter{padding:19px;border:1px solid #2b3c4e;border-radius:16px;background:linear-gradient(145deg,#162331,#111b26);box-shadow:0 10px 28px #0002}
+#app .form:not(#f)>h3,#app .erp-panel h3,#app>h3{margin:0 0 14px;color:#eaf0f6;font-size:16px}
+#app label{color:#aebdcb;font-size:11px;letter-spacing:0;margin-bottom:12px}
+#app input:not([type=checkbox]),#app select,#app textarea{border:1px solid #34485c;border-radius:10px;background:#0f1924;color:#f1f5f9;min-height:42px}
+#app input:focus,#app select:focus,#app textarea:focus{border-color:#d95a64;background:#142130;box-shadow:0 0 0 3px #d95a6418}
+#app textarea{padding:10px 12px;min-height:86px}
+#app .btn{min-height:42px;height:auto;padding:10px 16px;border-radius:10px;background:linear-gradient(135deg,#df505a,#bd3945);color:#fff;font-size:12px;font-weight:700;box-shadow:0 5px 14px #b9323d22}
+#app .btn:hover{background:linear-gradient(135deg,#ee626b,#ca424d)}
+#app .btn.ghost{background:#172535;border:1px solid #35495d;color:#d7e1eb;box-shadow:none}
+#app .btn.ghost:hover{background:#223448;border-color:#60768d}
+#app .row{gap:10px;flex-wrap:wrap}
+#app .pr-grid{gap:12px}
+#app .pr-line,#app .pr-stat,#app .erp-kpi,#app .erp-module{border:1px solid #2b3c4e;border-radius:13px;background:linear-gradient(145deg,#192838,#141f2b);box-shadow:0 7px 20px #0002}
+#app .pr-line{padding:14px}
+#app .pr-stat,#app .erp-kpi{padding:15px}
+#app .erp-kpi span,#app .pr-stat span{color:#a7b7c7}
+#app .erp-kpi b,#app .pr-stat b{color:#f1f5f9;font-variant-numeric:tabular-nums}
+#app .erp-table-tools{padding:12px 14px;margin:12px 0 0;border:1px solid #2b3c4e;border-bottom:0;border-radius:13px 13px 0 0;background:#121e2a}
+#app .erp-table-wrap{border:1px solid #2b3c4e;border-radius:0 0 13px 13px;background:#121e2a;overflow:auto}
+#app .erp-table{border-collapse:separate;border-spacing:0;width:100%;min-width:620px}
+#app .erp-table th{padding:13px 12px;background:#1d2c3b;color:#dce6ef;border-bottom:1px solid #3a4e62;font-size:11px;white-space:nowrap}
+#app .erp-table td{padding:12px;border-bottom:1px solid #263747;color:#d2dce6;font-size:11px}
+#app .erp-table tbody tr:nth-child(even){background:#ffffff03}
+#app .erp-table tbody tr:hover{background:#26394b66}
+#app .pr-empty-note{padding:12px 14px;border:1px solid #4b4350;border-radius:11px;background:#28222b;color:#d7c7ce;font-size:11px}
+#app .status-pill{border-radius:20px;padding:4px 9px}
+#app .erp-row{padding:12px 0;border-bottom:1px solid #2b3c4e}
+#app .erp-wrap>h3{margin:8px 0 0;color:#e7edf4}
+#app .erp-kpis{gap:10px}
+#app .erp-module{padding:16px;text-align:right;color:#eef3f8;transition:transform .18s,border-color .18s,background .18s}
+#app .erp-module:hover{transform:translateY(-2px);border-color:#647b92;background:linear-gradient(145deg,#203247,#172433)}
+#app .erp-module small{color:#9eafc0}
+#app .erp-module .ico{border-radius:11px;background:#26394d;color:#e77a81}
+#app .activity-row{border-radius:10px}
+#app .activity-row:hover{background:#1b2b3b}
+#app .available{border:1px solid #315344;border-radius:10px;background:#142b23;color:#9ee0bd}
+#app .seg{border:1px solid #2b3c4e;border-radius:12px;background:#121e2a;padding:5px}
+#app .seg button{border-radius:9px}
+#app .seg button.on{background:#d94b56;color:white}
+#app .auth-box{border:1px solid #2b3c4e;border-radius:18px;background:linear-gradient(145deg,#182635,#111b26);box-shadow:0 18px 50px #0005}
+#app .auth-box h2{color:#f2f6fa}
+#nav{border:1px solid #2b3c4e;border-radius:16px;background:linear-gradient(180deg,#152230,#101923);box-shadow:0 12px 30px #0003}
+#nav .nav-group-title{color:#8296aa}
+#nav button{border-radius:10px;color:#bdc9d5}
+#nav button:hover{background:#1d2d3e;color:#fff}
+#nav button.on{background:linear-gradient(100deg,#39242b,#202d3b);color:#fff;border:1px solid #69404a}
+#nav .nav-indicator{background:#df505a}
+#msg{border-radius:12px}
+@media(max-width:760px){body{padding:12px 10px 110px}.app-header{padding:10px 12px;margin-bottom:14px}.erp-section-title{padding:14px;align-items:flex-start;flex-direction:column}.erp-section-title h3{font-size:19px}#app .form:not(#f),#app .erp-panel,#app .report-filter{padding:13px}#app .erp-table-tools{padding:9px}#app .pr-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#app .row>.btn{flex:1 1 100%}}
+@media(max-width:420px){#app .pr-grid{grid-template-columns:1fr}#app .erp-kpis{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* Keep the approved inventory and transaction layouts unchanged while sharing global color tokens. */
+.stock-redesign .stock-hero,.stock-redesign .stock-kpi,.stock-redesign .stock-catalog,.stock-redesign .stock-recent-pro,.stock-redesign #list>.stock-item-card{color:var(--text)}
+
+
+/* Refresh 22: redesigned login experience, authentication logic and identifiers preserved */
+body:has(.auth-screen){min-height:100svh;padding:0 24px 24px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(ellipse at 12% 15%,#263344 0,transparent 34%),#0b1119}
+body:has(.auth-screen) .app-header{display:none}
+body:has(.auth-screen) #app{width:100%;max-width:1120px;margin:auto}
+.auth-screen{min-height:min(690px,calc(100svh - 48px));display:grid;grid-template-columns:minmax(0,1fr) minmax(300px,.88fr);overflow:hidden;border:1px solid #2b3c4e;border-radius:25px;background:#121d29;box-shadow:0 28px 90px #0008;direction:rtl}
+.auth-panel{padding:clamp(28px,5vw,62px);display:flex;flex-direction:column;justify-content:center;background:linear-gradient(155deg,#182635,#111b26 72%)}
+.auth-brand-row{display:flex;align-items:center;gap:12px;margin-bottom:clamp(36px,7vh,66px)}
+.auth-brand-symbol{width:48px;height:48px;display:grid;place-items:center;border:1px solid #78434a;border-radius:14px;background:linear-gradient(145deg,#573039,#2a222c);color:#f18a90;font-size:27px;font-weight:700}
+.auth-brand-copy b,.auth-brand-copy small{display:block;direction:ltr;text-align:right}.auth-brand-copy b{font-size:13px;letter-spacing:.13em;color:#f1f5f9}.auth-brand-copy small{margin-top:4px;color:#8192a4;font-size:8px;letter-spacing:.13em}
+.auth-kicker{font-size:9px;letter-spacing:.2em;color:#e17a80;font-weight:700}.auth-welcome h2{font-size:clamp(25px,4vw,34px);margin:10px 0 7px;color:#f4f7fa}.auth-welcome p{margin:0 0 28px;color:#9eafc0;font-size:12px;line-height:1.9}
+.auth-fields label{display:block;margin:17px 0 8px;color:#c1ccd7;font-size:11px;font-weight:600}.auth-input-wrap{display:flex;align-items:center;gap:10px;height:52px;padding:0 13px;border:1px solid #35495d;border-radius:12px;background:#0d1722;transition:border-color .2s,box-shadow .2s}.auth-input-wrap:focus-within{border-color:#d65a64;box-shadow:0 0 0 3px #d65a641a}.auth-field-icon{width:25px;flex:none;color:#d77b81;font-size:10px;text-align:center;font-weight:700}.auth-input-wrap input{height:100%;min-height:0;padding:0;border:0!important;outline:0;background:transparent!important;box-shadow:none!important;font-size:12px}.auth-input-wrap input:focus{background:transparent!important}
+.auth-submit{height:51px!important;display:flex;align-items:center;justify-content:space-between;margin-top:25px!important;padding:0 17px!important;border-radius:12px!important;background:linear-gradient(110deg,#d95861,#b83d49)!important}.auth-submit span:first-child{font-size:12px}.auth-submit-arrow{font-size:19px;line-height:1}.auth-foot{display:flex;align-items:center;gap:9px;margin-top:27px;color:#8192a4;font-size:10px}.auth-secure-dot{width:7px;height:7px;border-radius:50%;background:#43c68b;box-shadow:0 0 0 4px #43c68b18}
+.auth-visual{position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;min-height:100%;background:radial-gradient(ellipse at 50% 48%,#46252d 0,#241e29 40%,#172331 78%);border-inline-start:1px solid #344254}.auth-visual-grid{position:absolute;inset:0;opacity:.2;background-image:linear-gradient(#8494a522 1px,transparent 1px),linear-gradient(90deg,#8494a522 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(transparent,#000 25%,#000 80%,transparent)}.auth-orbit{position:absolute;width:330px;height:330px;border:1px solid #e16b7530;border-radius:50%}.auth-orbit-one{transform:scale(1.35)}.auth-orbit-two{transform:scale(1.75);border-color:#ffffff12}.auth-visual-content{position:relative;z-index:1;text-align:center;padding:25px}.auth-visual-mark{display:grid;place-items:center;width:92px;height:92px;margin:0 auto 26px;border:1px solid #e16b7555;border-radius:27px;background:linear-gradient(145deg,#5b3038aa,#252b39aa);color:#f18a90;font-size:54px;font-weight:700;box-shadow:0 18px 55px #0005}.auth-visual-overline{font-size:9px;letter-spacing:.2em;color:#e58b91;direction:ltr;display:block}.auth-visual-content h3{margin:12px 0;font-size:clamp(26px,4vw,39px);line-height:1.25;letter-spacing:.07em;direction:ltr}.auth-visual-content p{color:#aab7c5;font-size:11px;line-height:2}.auth-visual-bottom{position:absolute;inset:auto 22px 20px;display:flex;justify-content:space-between;gap:10px;color:#8494a5;font-size:8px;letter-spacing:.12em;direction:ltr}
+@media(max-width:700px){body:has(.auth-screen){padding:14px;justify-content:flex-start}.auth-screen{min-height:calc(100svh - 28px);grid-template-columns:1fr;border-radius:20px}.auth-panel{padding:30px 24px;justify-content:center}.auth-brand-row{margin-bottom:38px}.auth-visual{display:none}.auth-welcome h2{font-size:27px}.auth-welcome p{margin-bottom:22px}.auth-foot{margin-top:23px}}
+@media(max-width:360px){.auth-panel{padding:25px 18px}.auth-brand-row{margin-bottom:30px}.auth-welcome h2{font-size:24px}}
+
+
+/* Refresh 22: advanced inventory history search */
+.stock-search-pro{padding:14px;background:linear-gradient(145deg,#101923,#0d151e);border:1px solid #2b3c4e;border-radius:14px;margin-bottom:14px}
+.stock-search-main{display:flex;align-items:center;gap:10px;min-height:54px;padding:0 13px;background:#172330;border:1px solid #405267;border-radius:11px;transition:border-color .18s,box-shadow .18s}
+.stock-search-main:focus-within{border-color:#d94a53;box-shadow:0 0 0 3px #d94a5318}
+.stock-search-glass{font-size:25px;color:#e46b72;line-height:1}
+.stock-search-main input{flex:1;min-width:0;height:50px;padding:0;border:0!important;outline:0;background:transparent!important;box-shadow:none!important;font-size:12px;color:#f3f6fa}
+.stock-search-main input::placeholder{color:#8292a4}
+.stock-clear-search{width:29px;height:29px;flex:0 0 29px;border:1px solid #3b4a5b;border-radius:8px;background:#202d3b;color:#cbd5df;font-size:20px;line-height:1;cursor:pointer}
+.stock-search-actions{display:flex;gap:8px;margin-top:10px}.stock-search-actions .btn{min-height:37px;font-size:11px}
+.stock-filter-row{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.stock-filter{padding:7px 13px;border:1px solid #344659;border-radius:20px;background:#172330;color:#aebccc;font:inherit;font-size:10px;cursor:pointer;transition:.18s}
+.stock-filter:hover{border-color:#d94a53;color:#fff}.stock-filter.active{background:#d83b4520;border-color:#d94a53;color:#ff9298}
+.stock-search-hint{margin-top:10px;color:#78899b;font-size:9px}
+.stock-results-summary{display:flex;align-items:center;gap:8px;margin:4px 2px 11px;color:#aab8c7;font-size:10px}
+.stock-results-summary b{display:grid;place-items:center;min-width:25px;height:22px;padding:0 6px;border-radius:7px;background:#d83b4520;color:#ff9298;font-size:11px}
+.stock-results-summary small{color:#718195}
+.stock-no-results{display:flex;flex-direction:column;align-items:center;gap:7px;padding:32px 15px;border:1px dashed #3a4a5c;border-radius:13px;background:#111b26;text-align:center}
+.stock-no-results>span{font-size:30px;color:#df626a}.stock-no-results b{font-size:13px}.stock-no-results small{font-size:10px;color:#91a0b1}.stock-no-results .btn{margin-top:7px;font-size:10px}
+@media(max-width:720px){.stock-search-pro{padding:10px}.stock-search-main{min-height:50px;padding:0 9px}.stock-search-main input{font-size:10px}.stock-search-actions{display:grid;grid-template-columns:1fr 1fr}.stock-search-actions .btn{width:100%;padding:8px 5px}.stock-filter-row{gap:6px}.stock-filter{font-size:9px;padding:7px 10px}.stock-search-hint{font-size:8px}}
 </style>
 </head>
 <body>
-<h1>مخزن وخدمات البترول</h1>
+<div class="app-header">
+  <div class="brand-lockup"><span class="brand-mark">Σ</span><div><h1>Sigma Petroleum Services</h1><small>ENTERPRISE RESOURCE PLANNING</small></div></div>
+  <div class="header-meta"><span class="live-dot"></span><span>نظام التشغيل</span><span class="header-divider"></span><span id="header-user">MAKHZAN ERP</span></div>
+</div>
 <main id="app"></main>
 <div id="msg" role="status"></div>
-<div id="scan" hidden><video id="sv" playsinline muted></video><div class="aim"></div><div class="bar"><span class="mute">وجّه الكاميرا على الباركود</span><button class="btn ghost" data-a="scanx">إلغاء</button></div></div>
-<nav id="nav"></nav>
+<div id="scan" hidden>
+<video id="sv" playsinline muted></video>
+<div class="aim"></div>
+<div class="bar">
+<span class="mute">وجّه الكاميرا على الباركود</span>
+<button class="btn ghost" data-a="scanx" style="margin-top:14px">إلغاء</button>
+</div>
+</div>
+<nav id="nav" hidden></nav>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),K=v=>String(v||'').trim().toLowerCase();
+const $=s=>document.querySelector(s),
+esc=s=>String(s??'').replace(/[&<>"']/g,c=>'&#'+c.charCodeAt(0)+';'),
+K=v=>String(v||'').trim().toLowerCase();
+
+const SUPABASE_URL='https://uneknrbifsfuypmqrzdb.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_gh2838P-4vRn_jz2cxwqyA_GpkstDPD';
+const LOGIN_FUNCTION_URL=`${SUPABASE_URL}/functions/v1/bright-worker`;
+
 const today=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,10);
-const nid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,5);
+const nid=()=>crypto.randomUUID();
 const CAP=300,ST=['جديد','شغّال','خلص'],R=n=>Math.round(n*1e3)/1e3;
-let tab='stock',q='',type='in',open='',more=100,chunks={},J=[],M=[],col=null,dl=null,ready=false,warned=false,armed='',tm;
-const rebuild=()=>{M=Object.keys(chunks).sort().flatMap(k=>chunks[k])};
-function say(t){const m=$('#msg');m.textContent=t;m.style.display='block';clearTimeout(tm);tm=setTimeout(()=>m.style.display='none',3200)}
-const sure=i=>{if(armed===i)return true;armed=i;say('اضغط × تاني للتأكيد');setTimeout(()=>armed='',3000);return false};
-async function persist(id){
-  rebuild();refresh();
-  if(col){try{await col.doc(id).set({items:id==='jobs'?J:chunks[id]})}catch(e){say('معرفتش أحفظ، جرّب تاني')}}
-  else{try{localStorage.setItem('wh',JSON.stringify({chunks,J}))}catch(e){}}
+
+let tab='dashboard',q='',type='in',more=100,chunks={},J=[],M=[],col=null,dl=null,ready=false,warned=false,armed='',tm,stockFilter='all';
+let stockSearchItems=[],stockSearchTotal=0,stockSearchPage=0,stockSearchLoading=false,stockSearchError='',stockSearchTimer=null,stockSearchRequest=0;
+const STOCK_PAGE_SIZE=25;
+let db=null, itemRows=[];
+let purchaseRequests=[], purchaseRequestItems=[], purchaseDepartments=[], purchaseProjects=[], purchaseSites=[], purchaseLoadError='';
+let erpData={suppliers:[],projects:[],sites:[],departments:[],warehouses:[],assets:[],maintenance:[],approvals:[],orders:[]};
+let erpCounts={suppliers:0,departments:0,projects:0,sites:0,warehouses:0,assets:0,maintenance:0,orders:0,approvals:0};
+let erpAuditRows=[];
+let erpProfiles=[], erpRoles=[], erpReceipts=[], erpCosts=[], erpNotifications=[], erpOrderItems=[];
+let loggedIn=false;
+let selectedItem=null;
+let authProfile=null;
+let authSession=null;
+let idleTimer=null;
+let lastActivity=Date.now();
+const IDLE_LIMIT=15*60*1000;
+const isAdmin=()=>String(authProfile?.role||'').toLowerCase()==='admin';
+function expireIdleSession(){
+ if(db?.auth)db.auth.signOut({scope:'local'}).catch(()=>{});
+ clearSession();
+ full();
+ say('انتهت الجلسة بسبب عدم النشاط. سجل الدخول مرة أخرى');
 }
-function groups(){const g=new Map();for(const e of M){const k=K(e.s)||K(e.n);let x=g.get(k);if(!x){x={k,s:e.s,n:e.n,q:0,w:'',d:'',l:[]};g.set(k,x)}x.q+=e.t==='in'?e.q:-e.q;x.l.push(e);if(e.d>=x.d){x.d=e.d;x.n=e.n||x.n;x.s=e.s||x.s}if(e.w)x.w=e.w}return g}
-const line=e=>`<div class="ln ${e.t}"><div><b>${e.t==='in'?'دخول':'خروج'} ${e.q}</b><span class="mute">${esc(e.d)}</span>${e.p?`<span class="mute">${e.t==='in'?'من':'إلى'}: ${esc(e.p)}</span>`:''}${e.r?`<span class="mute">${e.t==='in'?'استلمها':'سُحبت لـ'}: ${esc(e.r)}</span>`:''}${e.j?`<span class="mute">أمر شغل: ${esc(e.j)}</span>`:''}${e.t==='out'?(e.ok?'<span class="ok">اتراجعت</span>':'<span class="bad">لسه محتاجة مراجعة</span>'):''}</div><button class="x" data-a="del" data-i="${e.i}" aria-label="حذف الحركة">×</button></div>`;
-const card=x=>`<article class="card${x.q<0?' neg':''}"><button class="hd" data-a="tog" data-k="${esc(x.k)}"><span><b>${esc(x.n||x.s)}</b><small>سيريال: ${esc(x.s||'-')}</small>${x.w?`<small>المكان: ${esc(x.w)}</small>`:''}</span><span class="qty">${R(x.q)}</span></button>${open===x.k?x.l.slice().reverse().map(line).join(''):''}</article>`;
-function stockList(){
-  if(!ready)return '<p class="empty">بيحمّل…</p>';
-  const s=K(q),g=[...groups().values()].filter(x=>!s||K(x.s+' '+x.n).includes(s)).sort((a,b)=>a.d<b.d?1:-1);
-  if(!g.length)return `<p class="empty">${M.length?'مفيش نتيجة للبحث ده':'المخزن فاضي. سجّل أول حركة دخول من تبويب حركة'}</p>`;
-  return g.slice(0,more).map(card).join('')+(g.length>more?`<button class="btn ghost" data-a="more">عرض ${g.length-more} صنف كمان</button>`:'');
+function touchSession(){
+ if(!loggedIn)return;
+ lastActivity=Date.now();
+ clearTimeout(idleTimer);
+ idleTimer=setTimeout(expireIdleSession,IDLE_LIMIT);
 }
-function reviewList(){
-  const r=M.filter(e=>e.t==='out'&&!e.ok).reverse();
-  if(!r.length)return '<p class="empty">مفيش حاجة مستنية مراجعة</p>';
-  return r.slice(0,more).map(e=>`<article class="card job"><b>${esc(e.n||e.s)}</b> × ${e.q}<span class="mute">${esc([e.d,e.p&&'إلى '+e.p,e.r&&'سُحبت لـ '+e.r].filter(Boolean).join('، '))}</span><button class="btn" data-a="chk" data-i="${e.i}">تمت المراجعة</button></article>`).join('');
+['pointerdown','keydown','touchstart','click'].forEach(evt=>document.addEventListener(evt,touchSession,{passive:true}));
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&loggedIn){if(Date.now()-lastActivity>=IDLE_LIMIT){expireIdleSession();}else touchSession();}});
+
+function loadSession(){
+ try{
+  authSession=JSON.parse(sessionStorage.getItem('warehouse_session')||'null');
+  authProfile=JSON.parse(sessionStorage.getItem('warehouse_profile')||'null');
+
+  if(authSession&&authSession.expires_at&&authSession.expires_at*1000>Date.now()&&authProfile?.id&&authSession?.user?.id===authProfile.id&&authProfile?.role){
+   loggedIn=true;
+   touchSession();
+  }else{
+   clearSession();
+  }
+ }catch(e){
+  clearSession();
+ }
 }
-function jobList(){
-  if(!J.length)return '<p class="empty">مفيش أوامر خدمة لسه</p>';
-  return J.slice().reverse().map(j=>`<article class="card job"><div class="row" style="margin:0;justify-content:space-between"><div><b>${esc(j.cl)}</b><span class="mute">${esc([j.st,j.sv,j.d].filter(Boolean).join('، '))}</span></div><button class="x" data-a="delj" data-i="${j.i}" aria-label="حذف">×</button></div><button class="btn ghost" data-a="cyc" data-i="${j.i}">الحالة: ${ST[j.s]} (اضغط للتغيير)</button></article>`).join('');
+
+function clearSession(){
+ loggedIn=false;
+ clearTimeout(idleTimer);
+ authSession=null;
+ authProfile=null;
+ sessionStorage.removeItem('warehouse_session');
+ sessionStorage.removeItem('warehouse_profile');
 }
-function opts(){return [...groups().values()].slice(0,500).map(x=>`<option value="${esc(x.s||x.n)}">${esc(x.n)}</option>`).join('')}
-const views={
- stock:()=>`<span class="sr"><input id="q" type="search" placeholder="دوّر بالسيريال أو الاسم" value="${esc(q)}" aria-label="بحث"><button class="btn" data-a="scan" data-v="q">امسح</button></span><div id="list">${stockList()}</div><div class="row"><button class="btn ghost" data-a="exp" data-v="m">تصدير الحركات لإكسل</button><button class="btn ghost" data-a="exp" data-v="j">تصدير الخدمات</button></div>`,
- move:()=>`<div class="seg"><button data-a="type" data-v="in" class="${type==='in'?'on':''}">دخول للمخزن</button><button data-a="type" data-v="out" class="${type==='out'?'on':''}">خروج من المخزن</button></div><div class="card form" id="f" data-t="${type}"><label>السيريال أو الباركود<span class="sr"><input id="s" list="sl" autocomplete="off"><button class="btn" type="button" data-a="scan" data-v="s">امسح</button></span></label><datalist id="sl">${opts()}</datalist><label>اسم الصنف<input id="n"></label><label>الكمية<input id="qt" type="number" inputmode="decimal" min="0" step="any"></label><label>التاريخ<input id="d" type="date" value="${today()}"></label><label class="i">مكان التخزين في المخزن<input id="w"></label><label><span class="i">استُلمت من</span><span class="o">صُرفت إلى (موقع أو بئر أو عميل)</span><input id="p"></label><label><span class="i">اللي استلمها</span><span class="o">سُحبت لمين</span><input id="r"></label><label>رقم أمر الشغل (لو فيه)<input id="j"></label><label class="chk o"><input id="ok" type="checkbox">تمت المراجعة النهائية قبل الخروج</label><button class="btn" data-a="savem">سجّل الحركة</button></div>`,
- review:()=>`<div id="list">${reviewList()}</div>`,
- jobs:()=>`<div class="card form"><label>العميل أو الشركة<input id="jc"></label><label>الموقع أو البئر<input id="js"></label><label>نوع الخدمة<input id="jv"></label><label>التاريخ<input id="jd" type="date" value="${today()}"></label><button class="btn" data-a="savej">أضف أمر خدمة</button></div><div id="list">${jobList()}</div>`
+
+loadSession();
+
+function say(t){
+ const m=$('#msg');
+ m.textContent=t;
+ m.style.display='block';
+ clearTimeout(tm);
+ tm=setTimeout(()=>m.style.display='none',3200);
+}
+
+const sure=i=>{
+ if(armed===i)return true;
+ armed=i;
+ say('اضغط × تاني للتأكيد');
+ setTimeout(()=>armed='',3000);
+ return false;
 };
-const lists={stock:stockList,review:reviewList,jobs:jobList};
-const NAV=[['stock','المخزن'],['move','حركة'],['review','مراجعة'],['jobs','خدمات']];
-function nav(){const p=M.filter(e=>e.t==='out'&&!e.ok).length;$('#nav').innerHTML=NAV.map(([k,l])=>`<button data-a="tab" data-v="${k}" class="${tab===k?'on':''}">${l}${k==='review'&&p?` (${p})`:''}</button>`).join('')}
-function full(){$('#app').innerHTML=views[tab]();nav()}
-function refresh(){const el=$('#list');if(el&&lists[tab])el.innerHTML=lists[tab]();const s=$('#sl');if(s)s.innerHTML=opts();nav()}
-function saveM(){
-  const g=id=>$('#'+id).value.trim(),t=type,qty=parseFloat(g('qt')),s=g('s'),n=g('n');
-  if(!(qty>0)||!(s||n))return say('اكتب السيريال أو الاسم، والكمية');
-  const x=groups().get(K(s)||K(n));
-  if(t==='out'&&(!x||qty>x.q)&&!warned){warned=true;return say(`الكمية أكتر من المتاح (${x?R(x.q):0}). اضغط تاني لو متأكد`)}
-  const ids=Object.keys(chunks).sort();let id=ids[ids.length-1];
-  if(!id||chunks[id].length>=CAP){id='mv'+String(ids.length+1).padStart(5,'0');chunks[id]=[]}
-  chunks[id].push({i:nid(),c:id,t,s,n:n||(x&&x.n)||'',q:qty,d:g('d')||today(),w:t==='in'?g('w'):'',p:g('p'),r:g('r'),j:g('j'),ok:t==='out'&&$('#ok').checked});
-  persist(id);
-  ['s','n','qt','w','p','r','j'].forEach(k=>$('#'+k).value='');$('#ok').checked=false;warned=false;say('اتسجّلت');
+
+async function persist(){
+ rebuild();
+ refresh();
 }
-function saveJ(){const g=id=>$('#'+id).value.trim();if(!g('jc'))return say('اكتب اسم العميل');J.push({i:nid(),cl:g('jc'),st:g('js'),sv:g('jv'),d:g('jd'),s:0});persist('jobs');['jc','js','jv'].forEach(k=>$('#'+k).value='');say('اتضافت')}
-async function exp(v){
-  const rows=v==='m'?[['التاريخ','النوع','السيريال','الصنف','الكمية','مكان التخزين','من أو إلى','الشخص','أمر الشغل','المراجعة النهائية'],...M.map(e=>[e.d,e.t==='in'?'دخول':'خروج',e.s,e.n,e.q,e.w,e.p,e.r,e.j,e.t==='out'?(e.ok?'تمت':'لسه'):''])]:[['التاريخ','العميل','الموقع','الخدمة','الحالة'],...J.map(j=>[j.d,j.cl,j.st,j.sv,ST[j.s]])];
-  const data='\ufeff'+rows.map(r=>r.map(c=>'"'+String(c??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
-  const fn=v==='m'?'warehouse-movements.csv':'service-jobs.csv';
-  if(dl){try{await dl.save({filename:fn,data})}catch(e){if(!e||e.code!=='declined')say('معرفتش أحفظ الملف')}return}
-  const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([data],{type:'text/csv;charset=utf-8'}));a.download=fn;document.body.appendChild(a);a.click();a.remove();
+
+async function initDatabase(){
+ if(!window.supabase?.createClient) throw new Error('مكتبة الاتصال بقاعدة البيانات لم تعمل');
+ db=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{
+  auth:{persistSession:false,autoRefreshToken:false,detectSessionInUrl:false}
+ });
+ const {error}=await db.auth.setSession({
+  access_token:authSession.access_token,
+  refresh_token:authSession.refresh_token
+ });
+ if(error) throw error;
+ await loadDatabase();
 }
-let stream=null,st=0;
-async function scan(target){
-  if(!('BarcodeDetector' in window))return say('الكاميرا هنا مش بتقرا الباركود. اكتب الرقم أو استخدم سكانر');
-  try{stream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false})}catch(e){return say('اسمح للتطبيق باستخدام الكاميرا')}
-  const v=$('#sv');v.srcObject=stream;try{await v.play()}catch(e){}
-  $('#scan').hidden=false;
-  const det=new BarcodeDetector(),tick=async()=>{
-    if(!stream)return;
-    try{const r=await det.detect(v);if(r.length&&r[0].rawValue){const val=r[0].rawValue;scanStop();navigator.vibrate&&navigator.vibrate(80);got(target,val);return}}catch(e){}
-    st=setTimeout(tick,250);
-  };
-  tick();
-}
-function scanStop(){clearTimeout(st);if(stream)stream.getTracks().forEach(t=>t.stop());stream=null;$('#scan').hidden=true}
-function got(target,val){
-  const el=$('#'+target);if(!el)return;el.value=val;
-  if(target==='q'){q=val;more=100;refresh();return}
-  el.dispatchEvent(new Event('change',{bubbles:true}));
-  const x=groups().get(K(val));say(x?'الخامة موجودة: '+(x.n||val):'خامة جديدة، اكتب اسمها');
-  ($('#n').value?$('#qt'):$('#n')).focus();
-}
-document.addEventListener('click',ev=>{
-  const b=ev.target.closest('[data-a]');if(!b)return;const a=b.dataset.a,v=b.dataset.v,i=b.dataset.i;
-  if(a==='tab'){tab=v;more=100;full()}
-  else if(a==='tog'){open=open===b.dataset.k?'':b.dataset.k;refresh()}
-  else if(a==='more'){more+=100;refresh()}
-  else if(a==='type'){type=v;$('#f').dataset.t=v;document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x.dataset.v===v))}
-  else if(a==='savem')saveM();
-  else if(a==='del'){const e=M.find(x=>x.i===i);if(e&&sure(i)){chunks[e.c]=chunks[e.c].filter(x=>x.i!==i);persist(e.c)}}
-  else if(a==='chk'){const e=M.find(x=>x.i===i);if(e){e.ok=true;persist(e.c)}}
-  else if(a==='savej')saveJ();
-  else if(a==='cyc'){const j=J.find(x=>x.i===i);if(j){j.s=(j.s+1)%3;persist('jobs')}}
-  else if(a==='delj'){if(sure(i)){J=J.filter(x=>x.i!==i);persist('jobs')}}
-  else if(a==='scan')scan(v);
-  else if(a==='scanx')scanStop();
-  else if(a==='exp')exp(v);
-});
-document.addEventListener('input',ev=>{warned=false;if(ev.target.id==='q'){q=ev.target.value;more=100;refresh()}});
-document.addEventListener('change',ev=>{if(ev.target.id==='s'){const x=groups().get(K(ev.target.value));if(x){if(!$('#n').value)$('#n').value=x.n||'';if(!$('#w').value)$('#w').value=x.w||''}}});
-document.addEventListener('keydown',ev=>{if(ev.key==='Enter'&&ev.target.id==='s'){ev.preventDefault();ev.target.dispatchEvent(new Event('change',{bubbles:true}));($('#n').value?$('#qt'):$('#n')).focus()}});
-full();
-(async()=>{
+
+async function loadDatabase(){
+ const [{data:items,error:ie},{data:moves,error:me},{data:jobs,error:je}]=await Promise.all([
+  db.from('wh_items').select('*').eq('active',true).order('name'),
+  db.from('wh_movements').select('*').order('movement_date',{ascending:true}),
+  db.from('wh_service_jobs').select('*').order('job_date',{ascending:false})
+ ]);
+ if(ie)throw ie;if(me)throw me;if(je)throw je;
+ itemRows=items||[];
+ try{
+  const [{data:prs,error:pre},{data:prItems,error:prie},{data:departments,error:de},{data:projects,error:pe},{data:sites,error:se}]=await Promise.all([
+   db.from('erp_purchase_requests').select('*').order('request_date',{ascending:false}).limit(100),
+   db.from('erp_purchase_request_items').select('*'),
+   db.from('erp_departments').select('*').eq('is_active',true).order('name'),
+   db.from('erp_projects').select('*').eq('status','active').order('name'),
+   db.from('erp_sites').select('*').eq('status','active').order('name')
+  ]);
+  if(pre)throw pre;if(prie)throw prie;if(de)throw de;if(pe)throw pe;if(se)throw se;
+  purchaseRequests=prs||[];purchaseRequestItems=prItems||[];purchaseDepartments=departments||[];purchaseProjects=projects||[];purchaseSites=sites||[];purchaseLoadError='';
+ }catch(erpError){
+  purchaseLoadError=erpError.message||'تعذر تحميل بيانات المشتريات';
+  console.warn('ERP purchase data unavailable:',erpError);
+ }
+ const countTables={suppliers:'erp_suppliers',departments:'erp_departments',projects:'erp_projects',sites:'erp_sites',warehouses:'erp_warehouses',assets:'wh_assets',maintenance:'erp_maintenance_orders',orders:'erp_purchase_orders',approvals:'erp_approvals'};
+ await Promise.all(Object.entries(countTables).map(async ([key,table])=>{
+  try{const {count,error}=await db.from(table).select('id',{count:'exact',head:true});if(!error)erpCounts[key]=count||0;}
+  catch(e){console.warn('ERP dashboard count unavailable:',table,e);}
+ }));
+ const moduleTables={suppliers:'erp_suppliers',projects:'erp_projects',sites:'erp_sites',departments:'erp_departments',warehouses:'erp_warehouses',assets:'wh_assets',assetMovements:'erp_asset_movements',maintenance:'erp_maintenance_orders',approvals:'erp_approvals',orders:'erp_purchase_orders'};
+ await Promise.all(Object.entries(moduleTables).map(async ([key,table])=>{try{const {data,error}=await db.from(table).select('*').order('created_at',{ascending:false}).limit(250);if(!error)erpData[key]=data||[];else console.warn('ERP module load:',table,error.message);}catch(e){console.warn('ERP module load:',table,e.message);}}));
+ try{const {data,error}=await db.from('erp_audit_logs').select('*').order('created_at',{ascending:false}).limit(200);if(!error)erpAuditRows=data||[];}catch(e){console.warn('ERP audit log unavailable',e.message)}
+ const extraTables=[
+  ['erpProfiles','wh_profiles','created_at'],
+  ['erpRoles','erp_roles','created_at'],
+  ['erpReceipts','erp_goods_receipts','created_at'],
+  ['erpCosts','erp_cost_entries','created_at'],
+  ['erpNotifications','erp_notifications','created_at'],
+  ['erpOrderItems','erp_purchase_order_items',null]
+ ];
+ await Promise.all(extraTables.map(async ([key,table,sortColumn])=>{
   try{
-    const U=n=>claude.use(n).catch(()=>null);
-    const [u,db,d]=await Promise.all([U('user'),U('db'),U('downloads')]);dl=d;
-    if(u&&db){
-      const id=await u.id();col=db.collection('data/users/'+id);
-      const t=setTimeout(()=>{ready=true;refresh();say('التخزين مش بيرد دلوقتي، ممكن البيانات تكون قديمة')},10000);
-      col.onSnapshot(s=>{clearTimeout(t);chunks={};J=[];s.docs.forEach(x=>{const it=(x.data()||{}).items||[];if(x.id==='jobs')J=it;else if(x.id.startsWith('mv'))chunks[x.id]=it});rebuild();ready=true;refresh()},()=>say('مشكلة في الوصول للتخزين'));
-      return;
-    }
+   let query=db.from(table).select('*');
+   if(sortColumn)query=query.order(sortColumn,{ascending:false});
+   const {data,error}=await query.limit(300);
+   if(error)throw error;
+   if(key==='erpOrderItems')erpOrderItems=data||[];
+   else if(key==='erpProfiles')erpProfiles=data||[];
+   else if(key==='erpRoles')erpRoles=data||[];
+   else if(key==='erpReceipts')erpReceipts=data||[];
+   else if(key==='erpCosts')erpCosts=data||[];
+   else if(key==='erpNotifications')erpNotifications=data||[];
+  }catch(e){console.warn('Optional module unavailable:',table,e.message)}
+ }));
+
+ const byId=new Map(itemRows.map(x=>[x.id,x]));
+ M=(moves||[]).map(m=>{
+  const it=byId.get(m.item_id)||{};
+  const rawKind=String(m.kind||'').toLowerCase();
+  const kind=['in','دخول','استلام','receipt','inbound','add','إضافة','توريد'].includes(rawKind)?'in':'out';
+  const reviewed=!!m.reviewed_at || ['reviewed','approved','مراجع','تمت المراجعة'].includes(String(m.status||'').toLowerCase());
+  return {i:m.id,c:'db',t:kind,s:it.serial_number||it.barcode||'',n:it.name||'',model:it.model||'',size:it.size||'',desc:it.description||'',q:Number(m.qty||0),d:m.movement_date||m.created_at?.slice(0,10)||today(),created_at:m.created_at||'',w:m.warehouse_location||it.location||'',p:m.party||'',r:m.person||'',j:m.job_ref||'',note:m.note||'',reference_number:m.reference_number||'',site_id:m.site_id||'',status:m.status||'',attachment_path:m.attachment_path||'',ok:reviewed,item_id:m.item_id};
+ });
+ J=(jobs||[]).map(j=>({i:j.id,cl:j.client||'',st:j.site||'',sv:j.service_type||'',d:j.job_date||'',s:Math.max(0,Math.min(2,Number(j.status)||0))}));
+ rebuild();ready=true;refresh();
+}
+
+async function findOrCreateDbItem(data){
+ let found=itemRows.find(x=>(data.serial_number&&x.serial_number===data.serial_number)||(data.barcode&&x.barcode===data.barcode));
+ if(!found)found=itemRows.find(x=>K(x.name)===K(data.name)&&K(x.model)===K(data.model)&&K(x.size)===K(data.size));
+ const payload={name:data.name||found?.name||'صنف بدون اسم',serial_number:data.serial_number||found?.serial_number||null,barcode:data.barcode||found?.barcode||null,model:data.model||found?.model||null,size:data.size||found?.size||null,description:data.description||found?.description||null,unit:found?.unit||'قطعة',location:data.location||found?.location||null,active:true,updated_at:new Date().toISOString()};
+ if(found){
+  const {data:updated,error}=await db.from('wh_items').update(payload).eq('id',found.id).select().single();
+  if(error)throw error;
+  itemRows=itemRows.map(x=>x.id===found.id?updated:x);
+  return updated;
+ }
+ const {data:created,error}=await db.from('wh_items').insert({...payload,created_by:authProfile.id}).select().single();
+ if(error)throw error;
+ itemRows.push(created);return created;
+}
+
+
+const EQUIP_HINTS=[
+ [/valve|محبس|صمام|بلف/i,'صمام للتحكم في فتح وغلق وتنظيم تدفق السوائل أو الغازات في الخطوط'],
+ [/pump|مضخ|طلمب/i,'مضخة لرفع وضخ السوائل أو سوائل الحفر بضغط عالٍ داخل الخطوط والآبار'],
+ [/gauge|manometer|عداد|مقياس ضغط/i,'عداد لقياس ومراقبة مستوى الضغط أو الحرارة في المعدات'],
+ [/sensor|transmitter|حساس|مستشعر/i,'حساس إلكتروني لقياس الضغط أو الحرارة أو التدفق وإرسال القراءات للتحكم'],
+ [/flange|فلانش|شفة/i,'وصلة ربط معدنية لتوصيل المواسير والمحابس ببعضها بإحكام'],
+ [/bop|blowout|مانع انفجار/i,'صمام أمان رئيسي يُركب على رأس البئر لمنع تدفق السوائل والغازات'],
+ [/filter|strainer|فلتر|مصفا/i,'وحدة تنقية لاحتجاز الشوائب والرواسب وحماية المضخات والخطوط'],
+ [/pipe|tubing|casing|ماسور|أنبوب/i,'أنبوب معدني لنقل النفط أو الغاز أو سوائل الحفر وتبطين الآبار'],
+ [/compressor|كمبريسور|ضاغط/i,'ضاغط لرفع ضغط الغاز أو الهواء اللازم لتشغيل المعدات'],
+ [/regulator|منظم/i,'منظم لتثبيت وتخفيض ضغط الغاز أو السوائل عند مستوى آمن'],
+ [/actuator|مشغل/i,'وحدة تشغيل آلية لفتح وغلق الصمامات عن بُعد'],
+ [/bit|دقاق|رأس حفر/i,'رأس حفر لاختراق الطبقات الصخرية أثناء عمليات حفر آبار البترول والغاز']
+];
+
+function suggestDesc(name){
+ if(!name)return '';
+ for(const [rx,txt] of EQUIP_HINTS){
+  if(rx.test(name))return txt;
+ }
+ return '';
+}
+
+function parseScan(raw){
+ const txt=String(raw||'').trim();
+ if(!txt)return {name:'',serial:'',model:'',location:'',size:'',hasTags:false};
+
+ const flat=txt.replace(/[\r\n]+/g,' | ');
+ const rxSerial=/(?:^|[\s|,;\/\-])(?:serial(?:\s*(?:no|number|#))?|s\/n|sn|n\*|\*n)\s*[:=\-#]?\s*([a-zA-Z0-9\-_\/\.]+)/i;
+ const rxPn=/(?:^|[\s|,;\/\-])(?:p\/n|pn|part\s*(?:no|number|#)?)\s*[:=\-#]?\s*([a-zA-Z0-9\-_\/\.]+)/i;
+ const rxModel=/(?:^|[\s|,;\/\-])(?:model(?:\s*(?:no|number|#))?|mod|m\/n|mn|موديل|طراز)\s*[:=\-#]?\s*([a-zA-Z0-9\u0600-\u06FF\-_\/\.]+)/i;
+ const rxLoc=/(?:^|[\s|,;\/\-])(?:zone|loc|location|مكان|منطقة)\s*[:=\-#]?\s*([a-zA-Z0-9\(\)\s\u0600-\u06FF\-_\/\.]+)/i;
+ const rxSize=/(?:^|[\s|,;\/\-])(?:size|مقاس|المقاس)\s*[:=\-#]?\s*([^\s|,;]+(?:\s*(?:inch|in|mm|cm|بوصة|مم|سم|"))?)/i;
+
+ const mSer=flat.match(rxSerial);
+ const mPn=flat.match(rxPn);
+ const mMod=flat.match(rxModel);
+ const mLoc=flat.match(rxLoc);
+ const mSiz=flat.match(rxSize);
+
+ let serial=mSer?mSer[1]:(mPn?mPn[1]:'');
+ let model=mMod?mMod[1]:(mSer&&mPn?mPn[1]:'');
+ let location=mLoc?mLoc[1].trim():'';
+ let size=mSiz?mSiz[1].trim():'';
+ const hasTags=Boolean(mSer||mPn||mMod||mLoc||mSiz||/[|;\n]/.test(txt));
+
+ let name='';
+ const rxFirstTag=/(?:^|[\s|,;\/\-])(?:serial(?:\s*(?:no|number|#))?|s\/n|sn|n\*|\*n|p\/n|pn|part\s*(?:no|number|#)?|model(?:\s*(?:no|number|#))?|mod|m\/n|mn|موديل|طراز|zone|loc|location|مكان|منطقة|size|مقاس|المقاس)\s*[:=\-#]?\s*[a-zA-Z0-9\u0600-\u06FF\-_\/\.]+/i;
+ const tagMatch=flat.match(rxFirstTag);
+
+ if(tagMatch){
+  name=flat.slice(0,tagMatch.index).split(/[|;]/)[0].replace(/[\s|,;:\-]+$/,'').trim();
+ }else if(/[|;\n]/.test(txt)){
+  const parts=flat.split(/[|;]/).map(p=>p.trim()).filter(Boolean);
+  name=parts[0]||'';
+  if(!serial&&parts[1])serial=parts[1];
+  if(!model&&parts[2])model=parts[2];
+ }else if(!/\s/.test(txt)){
+  serial=txt;
+ }else{
+  name=txt;
+ }
+
+ return {name,serial,model,location,size,hasTags};
+}
+
+function rebuild(){
+ M=Array.isArray(M)?M:[];
+}
+
+function groups(){
+ const g=new Map();
+
+ for(const e of M){
+  const k=K(e.s)||K(e.n);
+  let x=g.get(k);
+
+  if(!x){
+   x={k,s:e.s,n:e.n,model:e.model||'',size:e.size||'',desc:e.desc||'',q:0,w:'',d:'',l:[]};
+   g.set(k,x);
+  }
+
+  x.q+=e.t==='in'?e.q:-e.q;
+  x.l.push(e);
+
+  if(e.d>=x.d){
+   x.d=e.d;
+   x.n=e.n||x.n;
+   x.s=e.s||x.s;
+   x.model=e.model||x.model;
+   x.size=e.size||x.size;
+   x.desc=e.desc||x.desc;
+  }
+
+  if(e.model)x.model=e.model;
+  if(e.size)x.size=e.size;
+  if(e.desc)x.desc=e.desc;
+  if(e.w)x.w=e.w;
+ }
+
+ return g;
+}
+
+function findItem(value){
+ const v=K(value);
+ if(!v)return null;
+ const all=[...groups().values()];
+ return all.find(x=>K(x.s)===v||K(x.n)===v)
+ ||all.find(x=>K(x.s).includes(v)||K(x.n).includes(v)||K(x.model)===v||K(x.w).includes(v))
+ ||null;
+}
+
+function updateAvailable(qty,found){
+ const box=$('#available');
+ if(!box)return;
+ box.innerHTML=found
+ ?`الكمية المتاحة في المخزن: <b>${R(qty)}</b>`
+ :'الصنف غير موجود في الحركات السابقة';
+}
+
+function applyScannedText(rawText,showMessage=true){
+ const sEl=$('#s');
+ if(!sEl)return;
+ const parsed=parseScan(rawText);
+
+ if(parsed.serial)sEl.value=parsed.serial;
+ if(parsed.name&&$('#n'))$('#n').value=parsed.name;
+ if(parsed.model&&$('#model'))$('#model').value=parsed.model;
+ if(parsed.location&&$('#w'))$('#w').value=parsed.location;
+ if(parsed.size&&$('#size'))$('#size').value=parsed.size;
+
+ const lookupKey=parsed.serial||parsed.name||sEl.value;
+ const x=findItem(lookupKey);
+ selectedItem=x;
+
+ if(x){
+  if(!$('#n').value)$('#n').value=x.n||'';
+  if(!$('#model').value)$('#model').value=x.model||'';
+  if(!$('#size').value)$('#size').value=x.size||'';
+  if(!$('#desc').value)$('#desc').value=x.desc||'';
+  if(!$('#w').value)$('#w').value=x.w||'';
+  updateAvailable(x.q,true);
+  if(showMessage)say(parsed.hasTags?'تم تحليل الباركود وملء البيانات تلقائيًا':'تم ملء بيانات الصنف تلقائيًا');
+ }else{
+  updateAvailable(0,false);
+  const currentName=$('#n').value.trim();
+  if(currentName&&$('#desc')&&!$('#desc').value.trim()){
+   const hint=suggestDesc(currentName);
+   if(hint)$('#desc').value=hint;
+  }
+  if(showMessage)say(parsed.hasTags?'تم استخراج بيانات الباركود. راجعها وأكمل الناقص':'الصنف غير مسجل. أدخل بياناته أول مرة');
+ }
+}
+
+function fillItem(showMessage=true){
+ const s=$('#s');
+ if(!s)return;
+ applyScannedText(s.value,showMessage);
+}
+
+const line=e=>`
+<div class="ln ${e.t} movement-open movement-compact" data-a="movement-details" data-i="${e.i}" role="button" tabindex="0" aria-label="فتح تفاصيل ${e.t==='in'?'استلام مخزني':'صرف مخزني'}">
+ <div class="movement-compact-main">
+  <span class="movement-type-icon">${e.t==='in'?'↓':'↑'}</span>
+  <span class="movement-compact-copy"><b>${e.t==='in'?'استلام مخزني':'صرف مخزني'}</b><small>${esc(e.d||'بدون تاريخ')} · ${e.t==='in'?'وارد':'منصرف'}</small></span>
+ </div>
+ <span class="movement-compact-end"><b>${e.t==='in'?'+':'−'}${R(e.q)}</b><small>${e.t==='out'?(e.ok?'تمت المراجعة':'بانتظار المراجعة'):'مسجلة'}</small></span>
+ <button class="x movement-delete" data-a="del" data-i="${e.i}" aria-label="حذف الحركة" title="حذف الحركة">×</button>
+</div>`;
+
+const card=x=>`
+<article class="card stock-item-card${x.q<0?' neg':''}">
+ <div class="stock-item-head"><div class="stock-item-name"><span class="stock-item-symbol">▦</span><div><b>${esc(x.n||x.s)}</b><small>السيريال: ${esc(x.s||'-')}</small></div></div><div class="stock-balance"><small>الرصيد الحالي</small><b>${R(x.q)}</b></div></div>
+ <div class="stock-item-meta">${x.model?`<span><small>الموديل</small><b>${esc(x.model)}</b></span>`:''}${x.size?`<span><small>المقاس</small><b>${esc(x.size)}</b></span>`:''}${x.w?`<span><small>مكان التخزين</small><b>${esc(x.w)}</b></span>`:''}${x.desc?`<span class="stock-item-description"><small>الاستخدام</small><b>${esc(x.desc)}</b></span>`:''}</div>
+ <div class="stock-item-movements"><div class="stock-item-movements-title"><b>سجل الحركة</b><small>${x.l.length} حركة</small></div><div class="movements-container">${x.l.slice().reverse().map(line).join('')}</div></div>
+</article>`;
+
+async function loadStockSearch(resetPage=false){
+ if(!db||!loggedIn)return;
+ if(resetPage)stockSearchPage=0;
+ const request=++stockSearchRequest;
+ stockSearchLoading=true;stockSearchError='';
+ const list=$('#list');if(list)list.innerHTML='<div class="stock-no-results"><span>⌕</span><b>جاري البحث داخل قاعدة البيانات</b><small>يتم جلب صفحة النتائج المطلوبة فقط.</small></div>';
+ try{
+  const {data,error}=await db.rpc('wh_search_stock',{
+   p_search:q.trim()||null,p_kind:stockFilter,p_page:stockSearchPage,p_page_size:STOCK_PAGE_SIZE
+  });
+  if(error)throw error;
+  if(request!==stockSearchRequest)return;
+  const payload=typeof data==='string'?JSON.parse(data):data;
+  stockSearchTotal=Number(payload?.total_count||0);
+  stockSearchItems=(payload?.items||[]).map(row=>{
+   const it=row.item||{};
+   const lines=(row.movements||[]).map(m=>{
+    const raw=String(m.kind||'').toLowerCase();
+    const kind=['in','دخول','استلام','receipt','inbound','add','إضافة','توريد'].includes(raw)?'in':'out';
+    const reviewed=!!m.reviewed_at||['reviewed','approved','مراجع','تمت المراجعة'].includes(String(m.status||'').toLowerCase());
+    return {i:m.id,c:'db',t:kind,s:it.serial_number||it.barcode||'',n:it.name||'',model:it.model||'',size:it.size||'',desc:it.description||'',q:Number(m.qty||0),d:m.movement_date||m.created_at?.slice(0,10)||today(),created_at:m.created_at||'',w:m.warehouse_location||it.location||'',p:m.party||'',r:m.person||'',j:m.job_ref||'',note:m.note||'',reference_number:m.reference_number||'',site_id:m.site_id||'',status:m.status||'',attachment_path:m.attachment_path||'',ok:reviewed,item_id:m.item_id};
+   });
+   const first=lines[0]||{};
+   return {k:K(it.serial_number||it.name),s:it.serial_number||it.barcode||'',n:it.name||'',model:it.model||'',size:it.size||'',desc:it.description||'',q:Number(row.balance||0),w:it.location||'',d:row.last_date||first.d||'',l:lines};
+  });
+  stockSearchLoading=false;
+  const current=$('#list');if(current)current.innerHTML=stockList();
+ }catch(e){
+  if(request!==stockSearchRequest)return;
+  stockSearchLoading=false;stockSearchError=e.message||'تعذر البحث';
+  const current=$('#list');if(current)current.innerHTML=`<div class="stock-no-results"><span>!</span><b>تعذر تنفيذ البحث من قاعدة البيانات</b><small>${esc(stockSearchError)}</small><button class="btn ghost" data-a="stock-retry">إعادة المحاولة</button></div>`;
+ }
+}
+function scheduleStockSearch(){
+ clearTimeout(stockSearchTimer);
+ stockSearchTimer=setTimeout(()=>loadStockSearch(true),300);
+}
+
+function stockList(){
+ if(stockSearchLoading)return '<div class="stock-no-results"><span>⌕</span><b>جاري البحث</b><small>لحظة واحدة.</small></div>';
+ const g=stockSearchItems;
+ const start=stockSearchPage*STOCK_PAGE_SIZE+1;
+ const end=Math.min(stockSearchPage*STOCK_PAGE_SIZE+g.length,stockSearchTotal);
+ const countLabel=`<div class="stock-results-summary"><span>نتائج البحث</span><b>${stockSearchTotal}</b><small>${stockSearchTotal?`عرض ${start} إلى ${end}`:'لا توجد نتائج'}</small></div>`;
+ if(!g.length)
+  return countLabel+`<div class="stock-no-results"><span>⌕</span><b>${q||stockFilter!=='all'?'ملقيناش نتائج مطابقة':'لا توجد حركات مخزنية'}</b><small>${q?'جرّب كلمة أقصر أو ابحث برقم الإذن أو اسم الجهة.':'سجّل حركة مخزنية أو غيّر التصفية.'}</small><button class="btn ghost" data-a="stock-clear">مسح البحث والتصفية</button></div>`;
+ const prev=stockSearchPage>0?`<button class="btn ghost" data-a="stock-page" data-v="prev">السابق</button>`:'';
+ const next=(stockSearchPage+1)*STOCK_PAGE_SIZE<stockSearchTotal?`<button class="btn ghost" data-a="stock-page" data-v="next">التالي</button>`:'';
+ return countLabel+g.map(card).join('')+`<div class="row" style="justify-content:center;gap:10px;margin-top:15px">${prev}<span class="mute">صفحة ${stockSearchPage+1} من ${Math.max(1,Math.ceil(stockSearchTotal/STOCK_PAGE_SIZE))}</span>${next}</div>`;
+}
+
+function reviewList(){
+ const r=M.filter(e=>e.t==='out'&&!e.ok).reverse();
+ if(!r.length)return '<p class="empty">مفيش حاجة مستنية مراجعة</p>';
+ return r.slice(0,more).map(e=>`
+ <article class="card job">
+  <b>${esc(e.n||e.s)}</b> × ${e.q}
+  <span class="mute">${esc([e.d,e.model&&'موديل '+e.model,e.w&&'مكان '+e.w,e.p&&'إلى '+e.p,e.r&&'سُحبت لـ '+e.r].filter(Boolean).join('، '))}</span>
+  <button class="btn" data-a="chk" data-i="${e.i}" style="margin-top:14px">تمت المراجعة</button>
+ </article>`).join('');
+}
+
+function jobList(){
+ if(!J.length)return '<p class="empty">مفيش أوامر خدمة لسه</p>';
+ return J.slice().reverse().map(j=>`
+ <article class="card job">
+  <div class="row" style="margin:0;justify-content:space-between">
+   <div>
+    <b>${esc(j.cl)}</b>
+    <span class="mute">${esc([j.st,j.sv,j.d].filter(Boolean).join('، '))}</span>
+   </div>
+   <button class="x" data-a="delj" data-i="${j.i}" aria-label="حذف">×</button>
+  </div>
+  <button class="btn ghost" data-a="cyc" data-i="${j.i}" style="margin-top:14px">الحالة: ${ST[j.s]} (اضغط للتغيير)</button>
+ </article>`).join('');
+}
+
+function purchaseStatusLabel(status){
+ const map={draft:'مسودة',submitted:'مرسل',pending_approval:'بانتظار الاعتماد',approved:'معتمد',rejected:'مرفوض',ordered:'تم إصدار أمر توريد',partially_received:'استلام جزئي',completed:'مكتمل',cancelled:'ملغي'};
+ return map[status]||status||'غير محدد';
+}
+function purchaseOptions(rows,placeholder){
+ return `<option value="">${placeholder}</option>`+rows.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('');
+}
+function purchaseItemOptions(){
+ return `<option value="">صنف من المخزن، اختياري</option>`+itemRows.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}${x.model?' | '+esc(x.model):''}${x.size?' | '+esc(x.size):''}</option>`).join('');
+}
+function purchaseLineHtml(){
+ return `<div class="pr-line">
+  <div class="pr-line-head"><b>بند طلب الشراء</b><button type="button" class="x" data-a="removeprline" aria-label="حذف البند">×</button></div>
+  <label>اختيار صنف مسجل
+   <select data-field="existing_item_id" class="pr-item-select">${purchaseItemOptions()}</select>
+  </label>
+  <label>وصف الصنف أو المعدة<input data-field="item_description" placeholder="اكتب اسم الصنف المطلوب" required></label>
+  <div class="pr-grid">
+   <label>الكمية<input data-field="quantity" type="number" min="0.001" step="0.001" inputmode="decimal" placeholder="1" required></label>
+   <label>الوحدة<input data-field="unit" placeholder="قطعة، متر، طقم"></label>
+   <label>السعر التقديري للوحدة<input data-field="estimated_unit_price" type="number" min="0" step="0.01" inputmode="decimal" placeholder="اختياري"></label>
+   <label>ملاحظات<input data-field="notes" placeholder="مواصفات أو تفاصيل إضافية"></label>
+  </div>
+ </div>`;
+}
+function purchaseList(){
+ if(!purchaseRequests.length)return '<p class="empty">مفيش طلبات شراء لسه. أنشئ أول طلب من النموذج.</p>';
+ const itemsByRequest=new Map();
+ purchaseRequestItems.forEach(x=>{if(!itemsByRequest.has(x.request_id))itemsByRequest.set(x.request_id,[]);itemsByRequest.get(x.request_id).push(x)});
+ return purchaseRequests.map(r=>{
+  const lines=itemsByRequest.get(r.id)||[];
+  const count=lines.length;
+  return `<article class="card pr-card">
+   <div class="row" style="margin:0;justify-content:space-between;align-items:center">
+    <b>${esc(r.request_number)}</b><span class="pr-badge">${esc(purchaseStatusLabel(r.status))}</span>
+   </div>
+   <div class="mute">تاريخ الطلب: ${esc(r.request_date||'-')} | الأولوية: ${esc(({low:'منخفضة',normal:'عادية',high:'عالية',urgent:'عاجلة'})[r.priority]||r.priority||'-')}</div>
+   ${r.required_date?`<div class="mute">مطلوب قبل: ${esc(r.required_date)}</div>`:''}
+   ${r.purpose?`<p>${esc(r.purpose)}</p>`:''}
+   <div class="mute">عدد البنود: ${count}</div>
+   ${count?`<div style="border-top:1px solid var(--border);margin-top:12px;padding-top:8px">${lines.map((x,n)=>`<div class="ln"><div><b>${n+1}. ${esc(x.item_description)}</b><span class="mute">الكمية: ${esc(x.quantity)} ${esc(x.unit||'')}</span>${x.estimated_unit_price!==null&&x.estimated_unit_price!==undefined?`<span class="mute">السعر التقديري: ${esc(x.estimated_unit_price)}</span>`:''}</div></div>`).join('')}</div>`:''}
+  </article>`;
+ }).join('');
+}
+function purchaseView(){
+ const loadNotice=purchaseLoadError?`<div class="pr-empty-note">تعذر تحميل بيانات المشتريات: ${esc(purchaseLoadError)}</div>`:'';
+ const noRefs=!purchaseDepartments.length&&!purchaseProjects.length&&!purchaseSites.length;
+ return `${loadNotice}<div class="pr-summary">
+  <div class="pr-stat"><span class="mute">إجمالي الطلبات</span><b>${purchaseRequests.length}</b></div>
+  <div class="pr-stat"><span class="mute">بانتظار الاعتماد</span><b>${purchaseRequests.filter(x=>['submitted','pending_approval'].includes(x.status)).length}</b></div>
+ </div>
+ <div class="form">
+  <h3 style="margin:0 0 18px">إنشاء طلب شراء جديد</h3>
+  <div class="pr-grid">
+   <label>تاريخ الطلب<input id="pr-date" type="date" value="${today()}"></label>
+   <label>تاريخ الاحتياج<input id="pr-required" type="date"></label>
+   <label>الأولوية<select id="pr-priority"><option value="normal">عادية</option><option value="low">منخفضة</option><option value="high">عالية</option><option value="urgent">عاجلة</option></select></label>
+   <label>القسم<select id="pr-department">${purchaseOptions(purchaseDepartments,'اختياري، اختر القسم')}</select></label>
+   <label>المشروع<select id="pr-project">${purchaseOptions(purchaseProjects,'اختياري، اختر المشروع')}</select></label>
+   <label>الموقع<select id="pr-site">${purchaseOptions(purchaseSites,'اختياري، اختر الموقع')}</select></label>
+  </div>
+  ${noRefs?'<div class="pr-empty-note">الأقسام والمشروعات والمواقع لم تُسجل بعد. تقدر تحفظ الطلب من غير تحديدهم، ونضيف بياناتهم لاحقًا.</div>':''}
+  <label>الغرض من طلب الشراء<textarea id="pr-purpose" style="height:90px;padding:12px 16px" placeholder="اكتب سبب الاحتياج أو تفاصيل الطلب"></textarea></label>
+  <h3 style="margin:22px 0 8px">الأصناف المطلوبة</h3>
+  <div id="pr-lines">${purchaseLineHtml()}</div>
+  <button class="btn ghost" type="button" data-a="addprline">+ إضافة بند آخر</button>
+  <div class="pr-actions">
+   <button class="btn ghost" type="button" data-a="savepr" data-v="draft">حفظ كمسودة</button>
+   <button class="btn" type="button" data-a="savepr" data-v="submitted">حفظ وإرسال للاعتماد</button>
+  </div>
+ </div>
+ <h3 style="margin:28px 0 10px">طلبات الشراء السابقة</h3>
+ <div id="pr-list">${purchaseList()}</div>`;
+}
+async function savePurchaseRequest(status){
+ const val=id=>document.getElementById(id)?.value?.trim()||'';
+ const requestDate=val('pr-date')||today(),requiredDate=val('pr-required');
+ if(requiredDate&&requiredDate<requestDate)return say('تاريخ الاحتياج لازم يكون نفس تاريخ الطلب أو بعده');
+ const lines=[...document.querySelectorAll('#pr-lines .pr-line')].map(el=>{
+  const get=k=>el.querySelector(`[data-field="${k}"]`)?.value?.trim()||'';
+  return {existing_item_id:get('existing_item_id')||null,item_description:get('item_description'),quantity:Number(get('quantity')),unit:get('unit')||null,estimated_unit_price:get('estimated_unit_price')===''?null:Number(get('estimated_unit_price')),notes:get('notes')||null};
+ });
+ if(!lines.length||lines.some(x=>!x.item_description||!Number.isFinite(x.quantity)||x.quantity<=0||x.estimated_unit_price!==null&&(!Number.isFinite(x.estimated_unit_price)||x.estimated_unit_price<0)))return say('راجع وصف كل صنف والكمية والسعر التقديري');
+ const requestNumber=`PR-${requestDate.replaceAll('-','')}-${Date.now().toString().slice(-6)}`;
+ const payload={request_number:requestNumber,requester_id:authSession.user.id,department_id:val('pr-department')||null,project_id:val('pr-project')||null,site_id:val('pr-site')||null,request_date:requestDate,required_date:requiredDate||null,priority:val('pr-priority')||'normal',purpose:val('pr-purpose')||null,status};
+ const buttons=[...document.querySelectorAll('[data-a="savepr"]')];buttons.forEach(b=>b.disabled=true);
+ try{
+  const {data:created,error}=await db.from('erp_purchase_requests').insert(payload).select().single();
+  if(error)throw error;
+  const itemPayload=lines.map(x=>({...x,request_id:created.id}));
+  const {error:itemError}=await db.from('erp_purchase_request_items').insert(itemPayload);
+  if(itemError){
+   console.error('Purchase request item save failed:',itemError);
+   await db.from('erp_purchase_requests').delete().eq('id',created.id);
+   throw new Error('لم يتم حفظ بنود الطلب، تم التراجع عن رأس الطلب. '+itemError.message);
+  }
+  if(status==='submitted'){
+   const {error:approvalError}=await db.from('erp_approvals').insert({document_type:'purchase_request',document_id:created.id,step_number:1,approver_id:null,status:'pending'});
+   if(approvalError){await db.from('erp_purchase_request_items').delete().eq('request_id',created.id);await db.from('erp_purchase_requests').delete().eq('id',created.id);throw new Error('تعذر إنشاء سجل الاعتماد، لم يتم إرسال الطلب. '+approvalError.message);}
+   const {error:statusError}=await db.from('erp_purchase_requests').update({status:'pending_approval',updated_at:new Date().toISOString()}).eq('id',created.id);
+   if(statusError)throw statusError;
+  }
+  await loadDatabase();
+  full();
+  say(`تم حفظ طلب الشراء ${requestNumber}${status==='submitted'?' وإرساله للاعتماد':''}`);
+ }catch(e){
+  console.error('Purchase request save failed:',e);
+  say('فشل حفظ طلب الشراء: '+(e.message||'راجع صلاحيات المشتريات'));
+ }finally{buttons.forEach(b=>b.disabled=false)}
+}
+
+function dashboardView(){
+ const pending=purchaseRequests.filter(x=>['submitted','pending_approval'].includes(x.status)).length;
+ const incoming=M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0);
+ const outgoing=M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0);
+ const modules=[
+  ['stock','📦','إدارة المخزون','الأصناف والأرصدة والحركات'],
+  ['purchases','🧾','المشتريات','طلبات الشراء ومتابعة التوريد'],
+  ['purchaseOrders','📑','أوامر الشراء','أوامر الشراء وبنودها'],
+  ['suppliers','🏢','الموردون','بيانات الموردين'],
+  ['projects','🏗️','المشروعات والمواقع','المشروعات ومواقع التشغيل'],
+  ['assets','⚙️','الأصول والمعدات','تسجيل الأصول ومتابعتها'],
+  ['maintenance','🛠️','الصيانة','أوامر الشغل والصيانة'],
+  ['approvals','✓','الاعتمادات','الطلبات التي تنتظر القرار'],
+  ['employees','👥','الموظفون والصلاحيات','الحسابات والأدوار'],
+  ['finance','💳','الحسابات والتكاليف','التكاليف والقيود'],
+  ['reports','📊','التقارير','مؤشرات وتقارير الإدارة'],
+  ['audit','🧾','سجل المراجعة','تتبع العمليات المسجلة']
+ ];
+ const recent=M.slice(-5).reverse();
+ const stockGroups=[...groups().values()];
+ const lowStock=stockGroups.filter(g=>{const it=itemRows.find(x=>(g.s&&x.serial_number===g.s)||(g.n&&K(x.name)===K(g.n)));return it&&Number(it.min_qty||0)>0&&g.q<=Number(it.min_qty);});
+ const overdueAssets=erpData.assets.filter(x=>x.expected_return_date&&x.expected_return_date<today()&&['assigned','in_use'].includes(String(x.status||'').toLowerCase()));
+ const openMaintenance=erpData.maintenance.filter(x=>!['completed','closed','cancelled'].includes(String(x.status||'').toLowerCase()));
+ return `<div class="erp-wrap dashboard">
+  <section class="hero-panel">
+   <div class="hero-copy"><span class="eyebrow">SIGMA PETROLEUM SERVICES</span><h2>لوحة التحكم</h2><p>متابعة عمليات الشركة والمخزون والمشتريات من مكان واحد.</p><div class="hero-user"><span class="user-avatar">${esc((authProfile?.full_name||'م').trim().slice(0,1))}</span><span><b>${esc(authProfile?.full_name||'مستخدم النظام')}</b><small>مرحباً بعودتك إلى نظام MAKHZAN</small></span></div></div>
+   <div class="hero-side"><span class="hero-orbit orbit-one"></span><span class="hero-orbit orbit-two"></span><div class="hero-symbol">Σ</div><span class="hero-caption">OPERATIONS OVERVIEW</span></div>
+  </section>
+  <div class="dashboard-heading"><div><span class="eyebrow">LIVE SNAPSHOT</span><h3>ملخص التشغيل</h3></div><span class="data-status"><i></i> البيانات المحمّلة من النظام</span></div>
+  <div class="erp-kpis dashboard-kpis">
+   <button class="erp-kpi kpi-click" data-a="tab" data-v="stock"><span>أصناف المخزن</span><b>${itemRows.length}</b><small>عرض سجل المخزون ←</small></button>
+   <button class="erp-kpi kpi-click" data-a="tab" data-v="purchases"><span>طلبات الشراء</span><b>${purchaseRequests.length}</b><small>متابعة الطلبات ←</small></button>
+   <button class="erp-kpi kpi-click attention-kpi" data-a="tab" data-v="approvals"><span>بانتظار الاعتماد</span><b>${pending}</b><small>فتح الاعتمادات ←</small></button>
+   <button class="erp-kpi kpi-click" data-a="tab" data-v="suppliers"><span>الموردون</span><b>${erpCounts.suppliers}</b><small>عرض الموردين ←</small></button>
+   <button class="erp-kpi kpi-click" data-a="tab" data-v="projects"><span>المشروعات</span><b>${erpCounts.projects}</b><small>عرض المشروعات ←</small></button>
+   <button class="erp-kpi kpi-click" data-a="tab" data-v="assets"><span>الأصول المسجلة</span><b>${erpCounts.assets}</b><small>عرض الأصول ←</small></button>
+  </div>
+  <section class="ops-watch"><div class="panel-heading"><div><span class="eyebrow">CONTROL CENTER</span><h3>متابعة تحتاج انتباه</h3></div><span class="erp-tag">مؤشرات تشغيلية</span></div><div class="ops-watch-grid"><button data-a="tab" data-v="stock"><span>أصناف عند حد إعادة الطلب</span><b>${lowStock.length}</b><small>مقارنة الرصيد بالحد الأدنى المسجل</small></button><button data-a="tab" data-v="assets"><span>عهد تجاوزت موعد الإرجاع</span><b>${overdueAssets.length}</b><small>حسب تاريخ الإرجاع المتوقع</small></button><button data-a="tab" data-v="maintenance"><span>أوامر صيانة مفتوحة</span><b>${openMaintenance.length}</b><small>لم يتم إغلاقها بعد</small></button><button data-a="tab" data-v="approvals"><span>طلبات تنتظر الاعتماد</span><b>${pending}</b><small>تحتاج قرار المسؤول</small></button></div></section>
+  <div class="dashboard-heading modules-heading"><div><span class="eyebrow">WORKSPACE</span><h3>وحدات النظام</h3></div><span class="module-count">${modules.length} وحدة</span></div>
+  <div class="erp-modules dashboard-modules">${modules.map(([key,icon,title,desc])=>`<button class="erp-module" data-a="tab" data-v="${key}"><span class="module-top"><span class="ico">${icon}</span><span class="module-arrow">↖</span></span><b>${title}</b><small>${desc}</small><div class="module-foot"><span class="module-open-label">فتح الوحدة</span></div></button>`).join('')}</div>
+  <div class="erp-lower dashboard-lower">
+   <section class="erp-panel"><div class="panel-heading"><div><span class="eyebrow">LATEST ACTIVITY</span><h3>آخر حركات المخزن</h3></div><button class="text-link" data-a="tab" data-v="stock">عرض الكل ←</button></div>${recent.length?recent.map(e=>`<div class="activity-row movement-open" data-a="movement-details" data-i="${e.i}" role="button" tabindex="0"><span class="activity-icon ${e.t==='in'?'activity-in':'activity-out'}">${e.t==='in'?'↓':'↑'}</span><div class="activity-info"><b>${esc(e.n||'صنف مخزني')}</b><small>${esc(e.d||'')} · ${esc(e.p||'بدون جهة')}</small></div><strong class="${e.t==='in'?'positive':'negative'}">${e.t==='in'?'+':'−'}${R(e.q)}</strong></div>`).join(''):'<p class="mute">لا توجد حركات مخزنية مسجلة حتى الآن.</p>'}</section>
+   <section class="erp-panel"><div class="panel-heading"><div><span class="eyebrow">BUSINESS DATA</span><h3>البيانات الأساسية</h3></div></div>${[['الأقسام',erpCounts.departments],['الموردون',erpCounts.suppliers],['المشروعات',erpCounts.projects],['مواقع التشغيل',erpCounts.sites],['المخازن',erpCounts.warehouses]].map(([n,v])=>`<div class="erp-row"><span>${n}</span><b>${v}</b></div>`).join('')}</section>
+  </div>
+  <div class="dashboard-footer"><span>MAKHZAN ERP</span><span>لوحة متابعة داخلية · Sigma Petroleum Services</span></div>
+ </div>`;
+}
+function moduleHeader(title,desc){return `<div class="erp-section-title"><h3>${title}</h3><span class="erp-tag">${desc}</span></div>`}
+function field(label,id,placeholder='',type='text',required=false){return `<label>${label}<input id="${id}" type="${type}" placeholder="${placeholder}" ${required?'required':''}></label>`}
+function selectField(label,id,rows,placeholder='اختر'){return `<label>${label}<select id="${id}"><option value="">${placeholder}</option>${rows.map(x=>`<option value="${esc(x.id)}">${esc(x.name||x.request_number||x.order_number||x.code||x.project_code||x.site_code||x.asset_code||x.id)}</option>`).join('')}</select></label>`}
+function rowsTable(rows,cols,empty){
+ if(!rows?.length)return `<p class="empty">${empty}</p>`;
+ const body=rows.map(r=>`<tr>${cols.map(c=>`<td>${esc(typeof c[2]==='function'?c[2](r):(r[c[0]]??'-'))}</td>`).join('')}</tr>`).join('');
+ return `<div class="erp-table-tools"><input type="search" class="erp-table-search" data-table-search placeholder="ابحث داخل الجدول..." aria-label="بحث داخل الجدول"><span class="erp-table-count">${rows.length} سجل</span></div><div class="erp-table-wrap"><table class="erp-table"><thead><tr>${cols.map(c=>`<th>${c[1]}</th>`).join('')}</tr></thead><tbody>${body}</tbody></table></div>`
+}
+function suppliersView(){const rows=erpData.suppliers;return `${moduleHeader('إدارة الموردين','ملفات الموردين وبيانات التواصل')}<div class="form"><h3>إضافة مورد</h3><div class="pr-grid">${field('كود المورد','sup-code','SUP-001','text',true)}${field('اسم المورد','sup-name','اسم الشركة','text',true)}${field('مسؤول التواصل','sup-contact')}${field('رقم الهاتف','sup-phone','01xxxxxxxxx','tel')}${field('البريد الإلكتروني','sup-email','','email')}${field('الرقم الضريبي','sup-tax')}${field('العنوان','sup-address')}</div><label>ملاحظات<textarea id="sup-notes"></textarea></label><button class="btn" data-a="save-supplier">حفظ المورد</button></div><h3>الموردون المسجلون (${rows.length})</h3>${rowsTable(rows,[['supplier_code','الكود'],['name','اسم المورد'],['contact_person','مسؤول التواصل'],['phone','الهاتف'],['email','البريد'],['tax_number','الرقم الضريبي'],['is_active','الحالة',r=>r.is_active?'نشط':'موقوف']], 'لا توجد بيانات موردين حتى الآن.')}`}
+function projectsView(){const p=erpData.projects,s=erpData.sites;return `${moduleHeader('المشروعات والمواقع','إدارة مشروعات الشركة ومواقع التشغيل')}<div class="form"><h3>إضافة مشروع</h3><div class="pr-grid">${field('كود المشروع','proj-code','PRJ-001','text',true)}${field('اسم المشروع','proj-name','اسم المشروع','text',true)}${field('العميل','proj-client')}${field('تاريخ البداية','proj-start','','date')}${field('تاريخ النهاية','proj-end','','date')}<label>الحالة<select id="proj-status"><option value="active">نشط</option><option value="draft">مسودة</option><option value="on_hold">متوقف مؤقتًا</option><option value="completed">مكتمل</option><option value="cancelled">ملغي</option></select></label></div><label>ملاحظات<textarea id="proj-notes"></textarea></label><button class="btn" data-a="save-project">حفظ المشروع</button></div><h3>المشروعات (${p.length})</h3>${rowsTable(p,[['project_code','الكود'],['name','المشروع'],['client_name','العميل'],['status','الحالة']], 'لا توجد مشروعات مسجلة.')}<div class="form"><h3>إضافة موقع تشغيل</h3><div class="pr-grid">${field('كود الموقع','site-code','SITE-001','text',true)}${field('اسم الموقع','site-name','اسم الموقع','text',true)}${selectField('المشروع','site-project',p,'اختر المشروع')}${field('العنوان','site-address')}</div><button class="btn" data-a="save-site">حفظ الموقع</button></div><h3>مواقع التشغيل (${s.length})</h3>${rowsTable(s,[['site_code','الكود'],['name','الموقع'],['project_id','المشروع',r=>p.find(x=>x.id===r.project_id)?.name||'-'],['address','العنوان'],['status','الحالة']], 'لا توجد مواقع مسجلة.')}`}
+function departmentsView(){const rows=erpData.departments;return `${moduleHeader('إدارة الأقسام','الهيكل الإداري للشركة')}<div class="form"><h3>إضافة قسم</h3><div class="pr-grid">${field('كود القسم','dept-code','DEP-001','text',true)}${field('اسم القسم','dept-name','اسم القسم','text',true)}</div><button class="btn" data-a="save-department">حفظ القسم</button></div><h3>الأقسام (${rows.length})</h3>${rowsTable(rows,[['code','الكود'],['name','اسم القسم'],['is_active','الحالة',r=>r.is_active?'نشط':'موقوف']], 'لا توجد أقسام مسجلة.')}`}
+function warehousesView(){const rows=erpData.warehouses;return `${moduleHeader('إدارة المخازن','تعريف المخازن ومواقعها')}<div class="form"><h3>إضافة مخزن</h3><div class="pr-grid">${field('كود المخزن','wh-code','WH-001','text',true)}${field('اسم المخزن','wh-name','اسم المخزن','text',true)}${field('الموقع','wh-location')}</div><button class="btn" data-a="save-warehouse">حفظ المخزن</button></div><h3>المخازن (${rows.length})</h3>${rowsTable(rows,[['code','الكود'],['name','اسم المخزن'],['location','الموقع'],['is_active','الحالة',r=>r.is_active?'نشط':'موقوف']], 'لا توجد مخازن مسجلة.')}`}
+function assetsView(){const a=erpData.assets,moves=erpData.assetMovements||[];return `${moduleHeader('الأصول والمعدات','إضافة وتعديل وربط المعدات بالمخزن والمواقع')}<div class="form"><h3>تسجيل أصل أو معدة</h3><div class="pr-grid"><input type="hidden" id="asset-edit-id"><label>الصنف المرتبط<select id="asset-item"><option value="">اختر صنفًا</option>${itemRows.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}${x.model?' | '+esc(x.model):''}</option>`).join('')}</select></label>${field('كود الأصل','asset-code','AST-001')}${field('الرقم المسلسل','asset-serial')}${selectField('موقع التشغيل','asset-site',erpData.sites,'بدون موقع')}${selectField('المسؤول','asset-assignee',erpProfiles.map(x=>({id:x.id,name:x.full_name+' ('+x.code+')'})),'بدون مسؤول')} ${field('اسم المسؤول عند الحاجة','asset-person')}${field('تاريخ التسليم','asset-checkout','','date')}${field('موعد الإرجاع المتوقع','asset-return-due','','date')}<label>الحالة<select id="asset-status"><option value="available">متاح</option><option value="assigned">بعهدة موظف</option><option value="in_use">قيد التشغيل</option><option value="maintenance">صيانة</option><option value="retired">مستبعد</option></select></label></div><label>ملاحظات<textarea id="asset-notes"></textarea></label><div class="row"><button class="btn" data-a="save-asset">حفظ الأصل</button><button class="btn ghost" data-a="asset-clear">تفريغ الحقول</button></div></div><h3>الأصول المسجلة (${a.length})</h3>${a.length?a.map(x=>`<article class="card"><div class="row"><b>${esc(x.asset_code||'بدون كود')} | ${esc(itemRows.find(i=>i.id===x.item_id)?.name||x.item_id)}</b><span class="erp-tag">${esc(x.status)}</span></div><p>مسلسل: ${esc(x.serial_number||'-')} | الموقع: ${esc(erpData.sites.find(z=>z.id===x.site_id)?.name||'-')} | المسؤول: ${esc(x.assigned_person||erpProfiles.find(z=>z.id===x.assigned_to)?.full_name||'-')}</p><div class="row"><button class="btn ghost" data-a="asset-edit" data-id="${esc(x.id)}">تعديل</button></div></article>`).join(''):'<p class="empty">لا توجد أصول مسجلة.</p>'}<div class="form"><h3>طلب نقل معدة بين المواقع</h3><div class="pr-grid">${selectField('الأصل','am-asset',a,'اختر الأصل')}${selectField('من موقع','am-from',erpData.sites,'اختر الموقع الحالي')}${selectField('إلى موقع','am-to',erpData.sites,'اختر الموقع الجديد')}</div><label>سبب النقل<textarea id="am-reason"></textarea></label><button class="btn" data-a="save-asset-movement">إرسال طلب النقل</button></div><h3>طلبات نقل المعدات (${moves.length})</h3>${rowsTable(moves,[['asset_id','معرف الأصل'],['from_site_id','من موقع'],['to_site_id','إلى موقع'],['status','الحالة'],['reason','السبب']], 'لا توجد طلبات نقل.')}` }
+function maintenanceView(){const a=erpData.assets,s=erpData.sites,m=erpData.maintenance;return `${moduleHeader('أوامر الصيانة','فتح ومتابعة أوامر الشغل')}<div class="form"><h3>فتح أمر صيانة</h3><div class="pr-grid">${field('رقم أمر الشغل','maint-number',`WO-${today().replaceAll('-','')}-001`,'text',true)}${selectField('الأصل','maint-asset',a,'اختر الأصل')}${selectField('الموقع','maint-site',s,'اختر الموقع')}<label>نوع الصيانة<select id="maint-type"><option value="corrective">تصحيحية</option><option value="preventive">وقائية</option><option value="emergency">طارئة</option><option value="inspection">فحص</option><option value="overhaul">عمرة كاملة</option></select></label><label>الأولوية<select id="maint-priority"><option value="normal">عادية</option><option value="low">منخفضة</option><option value="high">عالية</option><option value="critical">حرجة</option></select></label></div><label>وصف العطل أو المطلوب<textarea id="maint-problem" required></textarea></label><button class="btn" data-a="save-maintenance">إنشاء أمر الصيانة</button></div><h3>أوامر الصيانة (${m.length})</h3>${m.length?m.map(x=>`<article class="card"><div class="row"><b>${esc(x.work_order_number)}</b><span class="erp-tag">${esc(x.status)}</span></div><p>${esc(x.problem_description||'')}</p><p class="mute">${esc(x.maintenance_type)} | ${esc(x.priority)} | ${esc(x.opened_at||'')}</p><div class="row"><button class="btn ghost" data-a="maintenance-status" data-id="${esc(x.id)}" data-v="in_progress">بدء العمل</button><button class="btn ghost" data-a="maintenance-status" data-id="${esc(x.id)}" data-v="waiting_parts">انتظار قطع غيار</button><button class="btn" data-a="maintenance-status" data-id="${esc(x.id)}" data-v="completed">إغلاق الأمر</button></div></article>`).join(''):'<p class="empty">لا توجد أوامر صيانة.</p>'}`}
+function approvalsView(){const a=erpData.approvals;return `${moduleHeader('الاعتمادات','مراجعة القرارات المسجلة')}<h3>طلبات الاعتماد (${a.length})</h3>${a.length?a.map(x=>`<article class="card"><div class="row"><b>${esc(x.document_type)} | ${esc(x.document_id)}</b><span class="erp-tag">${esc(x.status)}</span></div><p class="mute">الخطوة ${esc(x.step_number)} | ${esc(x.created_at||'')}</p>${x.status==='pending'?`<label>ملاحظة القرار<input id="approval-note-${esc(x.id)}" placeholder="سبب القرار أو الملاحظات"></label><div class="row"><button class="btn" data-a="approval" data-id="${esc(x.id)}" data-v="approved">اعتماد</button><button class="btn ghost" data-a="approval" data-id="${esc(x.id)}" data-v="rejected">رفض</button></div>`:''}</article>`).join(''):'<p class="empty">لا توجد طلبات اعتماد مسجلة.</p>'}`}
+function purchaseOrdersView(){const rows=erpData.orders||[];const itemOptions=erpOrderItems.filter(x=>Number(x.quantity)>Number(x.received_quantity||0)).map(x=>({id:x.id,name:(rows.find(o=>o.id===x.order_id)?.order_number||'PO')+' | '+x.description+' | متبقي '+(Number(x.quantity)-Number(x.received_quantity||0))}));return `${moduleHeader('أوامر الشراء','إنشاء أوامر التوريد واستلامها جزئيًا أو كليًا')}<div class="form"><h3>إنشاء أمر شراء</h3><div class="pr-grid">${field('رقم أمر الشراء','po-number',`PO-${today().replaceAll('-','')}-001`,'text',true)}${selectField('المورد','po-supplier',erpData.suppliers.filter(x=>x.is_active!==false),'اختر المورد')}${selectField('طلب الشراء المرتبط','po-request',purchaseRequests,'اختياري')}${selectField('المشروع','po-project',erpData.projects,'اختياري')}${field('تاريخ التسليم المتوقع','po-date','','date')}${field('الضريبة','po-tax','0','number')}</div><div id="po-lines"><div class="pr-line"><div class="pr-grid">${field('وصف الصنف','po-desc-0','وصف الصنف','text',true)}${field('الكمية','po-qty-0','1','number',true)}${field('الوحدة','po-unit-0','قطعة')}${field('سعر الوحدة','po-price-0','0','number',true)}</div><label>ربط بصنف مخزني<select id="po-item-0"><option value="">اختر الصنف المخزني المرتبط بهذا البند</option>${itemRows.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</select></label></div></div><div class="row"><button class="btn ghost" data-a="add-poline">إضافة بند</button><button class="btn" data-a="save-po">حفظ أمر الشراء</button></div><label>ملاحظات<textarea id="po-notes"></textarea></label></div><div class="form"><h3>استلام مشتريات</h3><p class="mute">الاستلام يسجل حركة وارد للمخزن ويحدّث الكمية المستلمة وتكلفة المشتريات في معاملة واحدة. يجب ربط كل بند بصنف مخزني. لا يمكن استلام بند غير مربوط بصنف.</p><div class="pr-grid">${selectField('بند أمر الشراء','receipt-line',itemOptions,'اختر البند')}${field('رقم إذن الاستلام','receipt-number','GRN-001','text',true)}${field('الكمية المستلمة','receipt-qty','1','number',true)}${field('تاريخ الاستلام','receipt-date',today(),'date')}${field('موقع المخزن','receipt-location','المخزن الرئيسي')}</div><label>ملاحظات<textarea id="receipt-notes"></textarea></label><button class="btn" data-a="receive-po">تأكيد الاستلام وترحيل المخزون</button></div><h3>أوامر الشراء (${rows.length})</h3>${rowsTable(rows,[['order_number','رقم الأمر'],['supplier_id','المورد',r=>erpData.suppliers.find(x=>x.id===r.supplier_id)?.name||'-'],['order_date','التاريخ'],['total_amount','الإجمالي'],['status','الحالة']], 'لا توجد أوامر شراء.')}<h3>سجل الاستلام (${erpReceipts.length})</h3>${rowsTable(erpReceipts,[['receipt_number','رقم الإذن'],['quantity','الكمية'],['received_at','التاريخ'],['warehouse_location','المخزن']], 'لا توجد استلامات مسجلة.')}` }
+function employeesView(){return `${moduleHeader('الموظفون والصلاحيات','توزيع أدوار النظام على حسابات الموظفين الموجودة')}<div class="pr-empty-note">إنشاء الحساب يتم عبر وظيفة خادمية محمية، وتعيين الأدوار يتم من خلال صلاحيات المدير الأعلى.</div><div class="form"><h3>إنشاء حساب موظف جديد</h3><div class="pr-grid">${field('كود الموظف','emp-new-code','EMP-001','text',true)}${field('اسم الموظف','emp-new-name','الاسم بالكامل','text',true)}${field('كلمة المرور المؤقتة','emp-new-password','10 أحرف على الأقل','password',true)}${selectField('الدور الأولي','emp-new-role',erpRoles.map(x=>({id:x.id,name:x.role_name+' / '+x.role_key})),'اختر الدور')}</div><button class="btn" data-a="create-employee">إنشاء الحساب</button></div><div class="form"><h3>تعيين دور لموظف موجود</h3>${selectField('الموظف','emp-user',erpProfiles.map(x=>({id:x.id,name:x.full_name+' ('+x.code+')'})),'اختر الموظف')}${selectField('الدور','emp-role',erpRoles.map(x=>({id:x.id,name:x.role_name+' / '+x.role_key})),'اختر الدور')}<button class="btn" data-a="assign-role">تعيين الدور</button></div><h3>حسابات الموظفين (${erpProfiles.length})</h3>${rowsTable(erpProfiles,[['code','الكود'],['full_name','الاسم'],['role','الدور القديم'],['is_active','الحالة',r=>r.is_active?'نشط':'موقوف']], 'لا توجد حسابات ظاهرة أو لا تتوفر الصلاحية.')}<h3>أدوار النظام</h3>${rowsTable(erpRoles,[['role_key','كود الدور'],['role_name','اسم الدور'],['description','الوصف']], 'لم يتم تحميل الأدوار.')}`}
+function financeView(){return `${moduleHeader('الحسابات والتكاليف','تكاليف استلام المشتريات والمشروعات والصيانة')}<div class="erp-kpis"><div class="erp-kpi"><span>إجمالي تكاليف مسجلة</span><b>${R(erpCosts.reduce((n,x)=>n+Number(x.amount||0),0))} EGP</b></div><div class="erp-kpi"><span>عدد القيود</span><b>${erpCosts.length}</b></div></div>${rowsTable(erpCosts,[['entry_date','التاريخ'],['reference_type','المرجع'],['reference_number','رقم المرجع'],['description','البيان'],['amount','القيمة'],['currency','العملة']], 'لا توجد قيود تكلفة بعد تطبيق ترحيل قاعدة البيانات.')}`}
+function notificationsView(){return `${moduleHeader('الإشعارات','تنبيهات انخفاض المخزون وحركة النظام')}<div class="row"><button class="btn ghost" data-a="reload-erp">تحديث الإشعارات</button></div>${rowsTable(erpNotifications,[['created_at','التاريخ'],['title','التنبيه'],['body','التفاصيل'],['severity','الأهمية'],['is_read','الحالة',r=>r.is_read?'مقروء':'جديد']], 'لا توجد إشعارات أو لم يتم تطبيق ملف إعداد قاعدة البيانات.')}`}
+
+function reportsView(){
+ const incoming=M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0),outgoing=M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0),pending=purchaseRequests.filter(x=>['submitted','pending_approval'].includes(x.status)).length;
+ return `${moduleHeader('تقارير الإدارة','مؤشرات تشغيلية وتقارير قابلة للطباعة والتصدير')}<div class="erp-kpis"><div class="erp-kpi"><span>أصناف المخزن</span><b>${itemRows.length}</b></div><div class="erp-kpi"><span>إجمالي الوارد</span><b>${R(incoming)}</b></div><div class="erp-kpi"><span>إجمالي المنصرف</span><b>${R(outgoing)}</b></div><div class="erp-kpi"><span>طلبات الشراء</span><b>${purchaseRequests.length}</b></div><div class="erp-kpi"><span>بانتظار الاعتماد</span><b>${pending}</b></div><div class="erp-kpi"><span>الموردون</span><b>${erpData.suppliers.length}</b></div><div class="erp-kpi"><span>المشروعات</span><b>${erpData.projects.length}</b></div><div class="erp-kpi"><span>أوامر الصيانة</span><b>${erpData.maintenance.length}</b></div><div class="erp-kpi"><span>أوامر الشراء</span><b>${(erpData.orders||[]).length}</b></div><div class="erp-kpi"><span>الأصول</span><b>${erpData.assets.length}</b></div></div><section class="form report-filter"><h3>تقرير حركة المخزون</h3><div class="pr-grid">${field('من تاريخ','report-from','','date')}${field('إلى تاريخ','report-to','','date')}<label>نوع الحركة<select id="report-kind"><option value="all">كل الحركات</option><option value="in">وارد</option><option value="out">منصرف</option></select></label><label>المشروع أو الموقع<input id="report-site" placeholder="اكتب اسم الموقع أو الجهة"></label></div><div class="row"><button class="btn" data-a="report-export">تصدير التقرير Excel</button><button class="btn ghost" data-a="report-print">طباعة التقرير</button></div><p class="mute">يعتمد التقرير على الحركات المحملة من قاعدة البيانات. اختر الفترة والنوع لتصفية النتائج.</p><div id="report-results">${rowsTable(M.slice().sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,100),[['d','التاريخ'],['t','النوع',r=>r.t==='in'?'وارد':'منصرف'],['n','الصنف'],['q','الكمية'],['p','الجهة'],['r','المستلم أو المسلم'],['j','أمر الشغل'],['w','المخزن']], 'لا توجد حركات مسجلة.')}</div></section><div class="row"><button class="btn ghost" data-a="export-erp">تصدير ملخص النظام</button><button class="btn ghost" data-a="reload-erp">تحديث البيانات</button></div>`
+}
+function auditView(){return `${moduleHeader('سجل المراجعة','العمليات المسجلة في قاعدة البيانات')}<p class="mute">يعرض السجل المتاح حسب صلاحيات حسابك.</p>${rowsTable(erpAuditRows,[['created_at','التاريخ'],['actor_id','المستخدم'],['action','العملية'],['module','الوحدة'],['record_table','الجدول'],['record_id','رقم السجل']], 'لا توجد سجلات مراجعة أو لا تتوفر صلاحية العرض.')}`}
+async function saveModule(table,payload,label){return withWriteLock('insert:'+table,async()=>{try{const {data,error}=await db.from(table).insert(payload).select('id').single();if(error)throw error;await writeAudit('create','erp',table,data?.id,payload);await loadDatabase();full();say(`تم حفظ ${label} بنجاح`);}catch(e){console.error(table,e);say(`فشل الحفظ: ${e.message||'تحقق من صلاحيات الجدول وأسماء الحقول'}`)}})}
+async function decideApproval(id,status){try{const note=$(`#approval-note-${CSS.escape(id)}`)?.value?.trim()||null;const {data,error}=await db.from('erp_approvals').update({status,decision_note:note,decided_at:new Date().toISOString()}).eq('id',id).select().single();if(error)throw error;if(data.document_type==='purchase_request'){const next=status==='approved'?'approved':'rejected';const {error:pe}=await db.from('erp_purchase_requests').update({status:next,updated_at:new Date().toISOString()}).eq('id',data.document_id);if(pe)throw pe;}if(data.document_type==='asset_movement'){const {data:move,error:me}=await db.from('erp_asset_movements').update({status:status==='approved'?'approved':'rejected',approved_by:authSession.user.id}).eq('id',data.document_id).select().single();if(me)throw me;if(status==='approved'){const {error:ae}=await db.from('wh_assets').update({site_id:move.to_site_id}).eq('id',move.asset_id);if(ae)throw ae;}}await loadDatabase();full();say(status==='approved'?'تم اعتماد الطلب':'تم رفض الطلب');}catch(e){say('تعذر تسجيل القرار: '+e.message)}}
+
+function opts(){
+ return [...groups().values()].slice(0,500).map(x=>
+ `<option value="${esc(x.s||x.n)}">${esc(x.n)}${x.model?' - '+esc(x.model):''}</option>`
+ ).join('');
+}
+
+function stockView(){
+ const gs=[...groups().values()];
+ const positive=gs.filter(x=>x.q>0);
+ const zero=gs.filter(x=>x.q<=0);
+ const incoming=M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0);
+ const outgoing=M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0);
+ const pending=M.filter(x=>x.t==='out'&&!x.ok).length;
+ const recent=M.slice().sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,5);
+ return `<div class="stock-workspace stock-pro stock-redesign">
+  <section class="stock-hero"><div class="stock-hero-copy"><span class="eyebrow">SIGMA PETROLEUM SERVICES / WAREHOUSE</span><h2>المخزون</h2><p>متابعة الأرصدة والأصناف وتفاصيل كل حركة مخزنية.</p><div class="stock-hero-actions"><button class="btn" data-a="tab" data-v="move">＋ تسجيل حركة</button><button class="btn ghost" data-a="reload-erp">↻ تحديث</button></div></div><div class="stock-hero-side"><span>LIVE STOCK</span><b>Σ</b><small>INVENTORY CONTROL</small></div></section>
+  <section class="stock-kpis stock-kpis-pro">
+   <article class="stock-kpi"><span>إجمالي الأصناف</span><b>${gs.length}</b><small>أصناف مسجلة</small></article>
+   <article class="stock-kpi"><span>أصناف برصيد</span><b>${positive.length}</b><small>${zero.length} صنف بدون رصيد</small></article>
+   <article class="stock-kpi"><span>إجمالي الوارد</span><b>${R(incoming)}</b><small>كمية الحركات الواردة</small></article>
+   <article class="stock-kpi"><span>إجمالي المنصرف</span><b>${R(outgoing)}</b><small>كمية الحركات المنصرفة</small></article>
+   <article class="stock-kpi stock-kpi-alert"><span>صرف يحتاج مراجعة</span><b>${pending}</b><small>حركات غير مراجعة</small></article>
+  </section>
+  <section class="stock-list-shell stock-catalog"><div class="stock-section-top"><div><span class="eyebrow">ITEM MASTER</span><h3>سجل المخزون</h3><p>ابحث بالاسم أو السيريال أو الموديل أو المقاس أو مكان التخزين.</p></div><span class="stock-count">${gs.length} صنف</span></div>
+   <div class="stock-search-pro">
+    <div class="stock-search-main"><span class="stock-search-glass">⌕</span><input id="q" type="search" placeholder="ابحث بالاسم، السيريال، رقم الإذن، الجهة، المستلم، أمر الشغل أو الملاحظات..." value="${esc(q)}" aria-label="بحث شامل في سجل المخزون"><button class="stock-clear-search" type="button" data-a="stock-clear" title="مسح البحث" aria-label="مسح البحث">×</button></div>
+    <div class="stock-search-actions"><button class="btn ghost" data-a="scan" data-v="q">⌕ باركود</button><button class="btn ghost" data-a="exp" data-v="m">↓ تصدير الحركات</button></div>
+    <div class="stock-filter-row" aria-label="تصفية سجل المخزون"><button class="stock-filter ${stockFilter==='all'?'active':''}" data-a="stock-filter" data-v="all">الكل</button><button class="stock-filter ${stockFilter==='in'?'active':''}" data-a="stock-filter" data-v="in">الوارد</button><button class="stock-filter ${stockFilter==='out'?'active':''}" data-a="stock-filter" data-v="out">المنصرف</button><button class="stock-filter ${stockFilter==='pending'?'active':''}" data-a="stock-filter" data-v="pending">بانتظار المراجعة</button><button class="stock-filter ${stockFilter==='zero'?'active':''}" data-a="stock-filter" data-v="zero">بدون رصيد</button></div>
+    <div class="stock-search-hint">البحث يتم داخل قاعدة البيانات ويشمل بيانات الصنف وكل تفاصيل حركاته، مع عرض 25 صنفًا في كل صفحة.</div>
+   </div>
+   <div id="list">${stockList()}</div>
+  </section>
+  <section class="stock-recent stock-recent-pro"><div class="stock-section-top"><div><span class="eyebrow">LATEST MOVEMENTS</span><h3>آخر الحركات المخزنية</h3><p>افتح أي حركة لعرض تفاصيلها.</p></div></div>${recent.length?recent.map(e=>`<div class="activity-row movement-open" data-a="movement-details" data-i="${e.i}" role="button" tabindex="0"><span class="activity-icon ${e.t==='in'?'activity-in':'activity-out'}">${e.t==='in'?'↓':'↑'}</span><div class="activity-info"><b>${esc(e.n||'صنف مخزني')}</b><small>${esc(e.d||'')} · ${esc(e.t==='in'?'وارد من ':'منصرف إلى ')}${esc(e.p||'غير محدد')} · ${esc(e.w||'')}</small></div><strong class="${e.t==='in'?'positive':'negative'}">${e.t==='in'?'+':'−'}${R(e.q)}</strong><span class="stock-open-hint">التفاصيل ›</span></div>`).join(''):'<p class="mute">لا توجد حركات مخزنية مسجلة.</p>'}</section>
+ </div>`;
+}
+
+const views={
+ dashboard:()=>dashboardView(),
+ suppliers:()=>suppliersView(),
+ projects:()=>projectsView(),
+ departments:()=>departmentsView(),
+ warehouses:()=>warehousesView(),
+ purchaseOrders:()=>purchaseOrdersView(),
+ audit:()=>auditView(),
+ assets:()=>assetsView(),
+ employees:()=>employeesView(),
+ finance:()=>financeView(),
+ notifications:()=>notificationsView(),
+ maintenance:()=>maintenanceView(),
+ approvals:()=>approvalsView(),
+ reports:()=>reportsView(),
+ login:()=>`
+ <main class="auth-screen">
+  <section class="auth-panel">
+   <div class="auth-brand-row"><span class="auth-brand-symbol">Σ</span><span class="auth-brand-copy"><b>SIGMA PETROLEUM</b><small>ENTERPRISE RESOURCE PLANNING</small></span></div>
+   <div class="auth-welcome"><span class="auth-kicker">SECURE WORKSPACE ACCESS</span><h2>مرحباً بعودتك</h2><p>سجّل الدخول للوصول إلى نظام إدارة موارد الشركة.</p></div>
+   <div class="auth-fields">
+    <label for="loginCode">كود الموظف</label>
+    <div class="auth-input-wrap"><span class="auth-field-icon">ID</span><input id="loginCode" placeholder="أدخل كود الموظف" autocomplete="username" aria-label="كود الموظف"></div>
+    <label for="loginPass">كلمة المرور</label>
+    <div class="auth-input-wrap"><span class="auth-field-icon">●</span><input id="loginPass" type="password" placeholder="أدخل كلمة المرور" autocomplete="current-password" aria-label="كلمة المرور"></div>
+    <button class="btn auth-submit" data-a="dologin"><span>تسجيل الدخول</span><span class="auth-submit-arrow">←</span></button>
+   </div>
+   <div class="auth-foot"><span class="auth-secure-dot"></span> اتصال آمن ومخصص لموظفي Sigma</div>
+  </section>
+  <aside class="auth-visual"><div class="auth-visual-grid"></div><div class="auth-orbit auth-orbit-one"></div><div class="auth-orbit auth-orbit-two"></div><div class="auth-visual-content"><span class="auth-visual-mark">Σ</span><span class="auth-visual-overline">SIGMA PETROLEUM SERVICES</span><h3>MAKHZAN<br>ERP SYSTEM</h3><p>إدارة المخزون والعمليات والموارد<br>من منصة واحدة.</p></div><div class="auth-visual-bottom"><span>OPERATIONAL CONTROL</span><span>MAKHZAN ERP · 2026</span></div></aside>
+ </main>`, 
+
+ stock:()=>stockView(),
+
+ move:()=>`
+ <div class="seg">
+  <button data-a="type" data-v="in" class="${type==='in'?'on':''}">دخول للمخزن</button>
+  <button data-a="type" data-v="out" class="${type==='out'?'on':''}">خروج من المخزن</button>
+ </div>
+ <div class="form" id="f" data-t="${type}">
+  <label>السيريال أو الباركود
+   <span class="sr">
+    <input id="s" list="sl" autocomplete="off" placeholder="امسح الباركود أو اكتب السيريال">
+    <button class="btn" type="button" data-a="scan" data-v="s">امسح</button>
+   </span>
+  </label>
+  <datalist id="sl">${opts()}</datalist>
+  <button class="btn ghost" type="button" data-a="fill" style="margin-top:6px">املأ بيانات الصنف تلقائيًا</button>
+  <div id="available" class="available">أدخل السيريال لعرض الكمية المتاحة</div>
+  <label>اسم الصنف<input id="n" placeholder="اسم المعدة أو الصنف"></label>
+  <label>الموديل<input id="model" placeholder="رقم أو كود الموديل"></label>
+  <label>المقاس<input id="size" placeholder="مثال: 2 بوصة أو 4 بوصة"></label>
+  <label>شرح / استخدام المعدة أو الجهاز (سطر واحد)<input id="desc" placeholder="فيمَ تُستخدم هذه المعدة أو الجهاز؟"></label>
+  <label>الكمية<input id="qt" type="number" inputmode="decimal" min="0" step="any"></label>
+  <label>التاريخ<input id="d" type="date" value="${today()}"></label>
+  <label class="i">مكان التخزين في المخزن (مثل ZONE 2 أو S1)<input id="w" placeholder="مثال: ZONE 2 أو S1"></label>
+  <label>
+   <span class="i">استُلمت من</span>
+   <span class="o">صُرفت إلى (موقع أو بئر أو عميل)</span>
+   <input id="p">
+  </label>
+  <label>
+   <span class="i">اللي استلمها</span>
+   <span class="o">سُحبت لمين</span>
+   <input id="r">
+  </label>
+  <label>رقم أمر الشغل (لو فيه)<input id="j"></label>
+  <label class="chk o"><input id="ok" type="checkbox"> تمت المراجعة النهائية قبل الخروج</label>
+  <button class="btn" data-a="savem" style="margin-top:14px">موافق، سجّل الحركة</button>
+ </div>`,
+
+ review:()=>`<div id="list">${reviewList()}</div>`,
+
+ jobs:()=>`
+ <div class="form">
+  <label>العميل أو الشركة<input id="jc"></label>
+  <label>الموقع أو البئر<input id="js"></label>
+  <label>نوع الخدمة<input id="jv"></label>
+  <label>التاريخ<input id="jd" type="date" value="${today()}"></label>
+  <button class="btn" data-a="savej" style="margin-top:12px">أضف أمر خدمة</button>
+ </div>
+ <div id="list">${jobList()}</div>`,
+
+ purchases:()=>purchaseView(),
+ about:()=>`
+ <article class="card about-card">
+  <p class="about-dev">MUHAMED KANY</p>
+  <p class="about-ver">MAKHZAN ERP · REFRESH 16</p>
+  ${authProfile?.full_name?`<p class="mute" style="margin: 14px 0">${esc(authProfile.full_name)}</p>`:''}
+  <button class="btn ghost" data-a="logout" style="margin-top:24px">تسجيل الخروج</button>
+ </article>`
+};
+
+const lists={stock:stockList,review:reviewList,jobs:jobList};
+const NAV=[['dashboard','الرئيسية'],['stock','المخزون'],['move','حركة'],['purchases','طلبات الشراء'],['purchaseOrders','أوامر الشراء'],['suppliers','الموردون'],['projects','المشروعات'],['departments','الأقسام'],['warehouses','المخازن'],['assets','الأصول'],['employees','الموظفون والصلاحيات'],['finance','الحسابات والتكاليف'],['notifications','الإشعارات'],['maintenance','الصيانة'],['approvals','الاعتمادات'],['reports','التقارير'],['audit','سجل المراجعة'],['review','مراجعة'],['jobs','الخدمات'],['about','الحساب']];
+
+function nav(){
+ if(!loggedIn){$('#nav').hidden=true;return;}
+ $('#nav').hidden=false;
+ const p=M.filter(e=>e.t==='out'&&!e.ok).length;
+ const groups=[
+  ['الرئيسية',[['dashboard','الرئيسية']]],
+  ['إدارة المخزون',[['stock','المخزون'],['move','حركة مخزنية'],['review','مراجعة الصرف'],['jobs','الخدمات']]],
+  ['المشتريات',[['purchases','طلبات الشراء'],['purchaseOrders','أوامر الشراء'],['suppliers','الموردون']]],
+  ['إدارة الشركة',[['projects','المشروعات والمواقع'],['departments','الأقسام'],['warehouses','المخازن'],['assets','الأصول والمعدات'],['employees','الموظفون والصلاحيات']]],
+  ['الرقابة والتقارير',[['approvals','الاعتمادات'],['maintenance','الصيانة'],['finance','الحسابات والتكاليف'],['notifications','الإشعارات'],['reports','التقارير'],['audit','سجل المراجعة']]],
+  ['الحساب',[['about','إعدادات الحساب']]]
+ ];
+ $('#nav').innerHTML=`<div class="nav-brand"><span class="nav-brand-mark">Σ</span><div><b>MAKHZAN</b><small>ERP WORKSPACE</small></div></div>`+groups.map(([title,items])=>`<div class="nav-group"><span class="nav-group-title">${title}</span>${items.map(([k,l])=>`<button data-a="tab" data-v="${k}" class="${tab===k?'on':''}"><span class="nav-indicator"></span><span>${l}</span>${k==='review'&&p?`<em>${p}</em>`:''}</button>`).join('')}</div>`).join('')+`<div class="nav-bottom"><span class="nav-online"><i></i> متصل بالنظام</span><small>SIGMA PETROLEUM SERVICES</small></div>`;
+}
+function full(){
+ if(!loggedIn){
+  $('#app').innerHTML=views.login();
+  nav();
+  return;
+ }
+ $('#app').innerHTML=views[tab]();
+ nav();
+ const hu=$('#header-user');if(hu)hu.textContent=authProfile?.full_name||'MAKHZAN ERP';
+}
+
+function refresh(){
+ if(!loggedIn)return;
+ if(tab==='dashboard'){full();return;}
+ const el=$('#list');
+ if(el&&lists[tab])el.innerHTML=lists[tab]();
+ const pr=$('#pr-list');if(pr)pr.innerHTML=purchaseList();
+ const s=$('#sl');
+ if(s)s.innerHTML=opts();
+ nav();
+}
+
+async function doLogin(){
+ const code=$('#loginCode')?.value.trim()||'';
+ const pass=$('#loginPass')?.value||'';
+
+ if(!code||!pass){
+  say('اكتب كود المستلم والرقم السري');
+  return;
+ }
+
+ const btn=document.querySelector('[data-a="dologin"]');
+
+ if(btn){
+  btn.disabled=true;
+  btn.textContent='جاري التحقق...';
+ }
+
+ try{
+  const response=await fetch(LOGIN_FUNCTION_URL,{
+   method:'POST',
+   headers:{
+    'Content-Type':'application/json',
+    'apikey':SUPABASE_PUBLISHABLE_KEY
+   },
+   body:JSON.stringify({
+    employee_code:code,
+    password:pass
+   })
+  });
+
+  let result;
+
+  try{
+   result=await response.json();
+  }catch(e){
+   throw new Error('استجابة السيرفر غير مفهومة');
+  }
+
+  if(!response.ok){
+   throw new Error(result.error||'فشل تسجيل الدخول');
+  }
+
+  if(!result.session?.access_token){
+   throw new Error('السيرفر لم يرجع جلسة صالحة');
+  }
+
+  if(!result.profile?.id||!result.profile?.role||result.session.user?.id!==result.profile.id){
+   throw new Error('بيانات الموظف أو الجلسة غير متطابقة');
+  }
+
+  authSession=result.session;
+  authProfile=result.profile;
+
+  sessionStorage.setItem(
+   'warehouse_session',
+   JSON.stringify(authSession)
+  );
+
+  sessionStorage.setItem(
+   'warehouse_profile',
+   JSON.stringify(authProfile)
+  );
+
+  loggedIn=true;
+  touchSession();
+  tab='stock';
+  q='';
+  ready=false;
+  full();
+  say('تم تسجيل الدخول، جاري تحميل بيانات المخزن');
+  await initDatabase();
+  say('أهلاً بك '+(authProfile.full_name||''));
+
+ }catch(error){
+
+  console.error('Login error:',error);
+
+  clearSession();
+  full();
+
+  say(error.message||'تعذر تسجيل الدخول');
+
+ }finally{
+
+  const currentBtn=document.querySelector('[data-a="dologin"]');
+
+  if(currentBtn){
+   currentBtn.disabled=false;
+   currentBtn.textContent='تسجيل الدخول';
+  }
+ }
+}
+
+function logout(){
+ if(db?.auth)db.auth.signOut({scope:'local'}).catch(()=>{});
+ clearSession();
+ tab='stock';
+ q='';
+ full();
+ say('تم تسجيل الخروج');
+}
+
+const activeWrites=new Set();
+async function withWriteLock(key,work){
+ if(activeWrites.has(key)){say('العملية قيد التنفيذ بالفعل. انتظر انتهاء الحفظ');return;}
+ activeWrites.add(key);
+ try{return await work();}finally{activeWrites.delete(key);}
+}
+async function writeAudit(action,module,table,recordId,newData,oldData=null){
+ try{
+  const payload={actor_id:authSession?.user?.id||null,action,module,record_table:table,record_id:recordId||null,old_data:oldData,new_data:newData||null};
+  const {error}=await db.from('erp_audit_logs').insert(payload);
+  if(error)console.warn('Audit log not recorded:',error.message);
+ }catch(e){console.warn('Audit log unavailable:',e.message)}
+}
+
+async function saveM(){
+ return withWriteLock("warehouse-movement",async()=>{
+  const g=id=>$('#'+id)?$('#'+id).value.trim():'';
+  const t=type,rawQty=g('qt'),qty=Number(rawQty),serial=g('s'),name=g('n'),model=g('model'),size=g('size'),desc=g('desc');
+  if(!Number.isFinite(qty)||qty<=0||qty>1000000000||!/^\d+(\.\d{1,3})?$/.test(rawQty)||!(serial||name))return say('راجع الاسم أو السيريال والكمية. الحد الأقصى 3 أرقام عشرية');
+  const existing=findItem(serial||name);
+  if(t==='out'&&(!existing||qty>existing.q))return say(`تم إيقاف الصرف. الرصيد المتاح ${existing?R(existing.q):0} ولا يسمح النظام برصيد سالب.`);
+  try{
+   const item=await findOrCreateDbItem({name:name||(existing&&existing.n)||serial,serial_number:serial||(existing&&existing.s)||'',model:model||(existing&&existing.model)||'',size:size||(existing&&existing.size)||'',description:desc||(existing&&existing.desc)||suggestDesc(name),location:g('w')||(existing&&existing.w)||''});
+   const reviewed=t==='out'&&$('#ok').checked;
+   const idempotencyKey=crypto.randomUUID();
+   const args={
+    p_item_id:item.id,p_kind:t,p_qty:qty,p_party:g('p')||null,p_person:g('r')||null,
+    p_job_ref:g('j')||null,p_note:desc||null,p_created_by:authProfile.id,
+    p_movement_date:g('d')||today(),p_warehouse_location:g('w')||null,
+    p_status:reviewed?'reviewed':'pending',p_reviewed_by:reviewed?authProfile.id:null,
+    p_reviewed_at:reviewed?new Date().toISOString():null,
+    p_reference_number:null,p_site_id:null,p_idempotency_key:idempotencyKey
+   };
+   const {data:movementResult,error}=await db.rpc('wh_register_movement',args);
+   if(error)throw error;
+   if(!movementResult?.id)throw new Error('لم تُرجع قاعدة البيانات رقم الحركة');
+   await loadDatabase();
+   ['s','n','model','size','desc','qt','w','p','r','j'].forEach(k=>{if($('#'+k))$('#'+k).value=''});
+   $('#ok').checked=false;warned=false;selectedItem=null;say(movementResult.duplicate?'الحركة مسجلة بالفعل ولم يتم تكرارها':'اتسجّلت الحركة مع تحديث سجل المراجعة ذريًا');
+  }catch(e){console.error(e);say('فشل حفظ الحركة: '+(e.message||'راجع صلاحيات قاعدة البيانات'));}
+ });
+}
+
+async function saveJ(){
+ const g=id=>$('#'+id).value.trim();
+ if(!g('jc'))return say('اكتب اسم العميل');
+ try{
+  const {error}=await db.from('wh_service_jobs').insert({client:g('jc'),site:g('js')||null,service_type:g('jv')||null,job_date:g('jd')||today(),status:0,created_by:authProfile.id});
+  if(error)throw error;
+  await loadDatabase();
+  ['jc','js','jv'].forEach(k=>$('#'+k).value='');say('اتضاف أمر الخدمة في قاعدة البيانات');
+ }catch(e){console.error(e);say('فشل حفظ أمر الخدمة: '+(e.message||''));}
+}
+
+async function exportCsvSafely(csv,filename){
+ const blob=new Blob([csv],{type:'text/csv;charset=utf-8'});
+ const file=typeof File!=='undefined'?new File([blob],filename,{type:'text/csv;charset=utf-8'}):null;
+ if(file&&navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+  try{await navigator.share({files:[file],title:filename});return;}catch(e){if(e&&e.name==='AbortError')return;}
+ }
+ const old=document.getElementById('csv-export-fallback');if(old)old.remove();
+ const box=document.createElement('div');box.id='csv-export-fallback';
+ box.style.cssText='position:fixed;inset:0;z-index:99999;background:#000b;display:flex;align-items:center;justify-content:center;padding:16px;direction:rtl';
+ box.innerHTML='<div style="background:#18181b;color:#fff;width:min(100%,620px);padding:16px;border-radius:14px"><div style="font-weight:700;margin-bottom:8px">تصدير التقرير</div><div style="font-size:13px;margin-bottom:8px">اضغط نسخ البيانات، ثم الصقها في Excel واحفظها بصيغة CSV.</div><textarea id="csv-export-text" style="width:100%;height:45vh;direction:ltr;background:#09090b;color:#fff;padding:8px;border:1px solid #555;border-radius:8px"></textarea><div style="display:flex;gap:8px;margin-top:10px"><button id="csv-export-copy" style="flex:1;padding:10px">نسخ البيانات</button><button id="csv-export-close" style="padding:10px">إغلاق</button></div></div>';
+ document.body.appendChild(box);const area=box.querySelector('#csv-export-text');area.value=csv;
+ box.querySelector('#csv-export-copy').onclick=async()=>{area.focus();area.select();let ok=false;try{ok=!!(document.execCommand&&document.execCommand('copy'));}catch(e){}if(!ok&&navigator.clipboard?.writeText){try{await navigator.clipboard.writeText(csv);ok=true;}catch(e){}}say(ok?'تم نسخ بيانات التقرير':'حدد النص واضغط نسخ من قائمة الهاتف');};
+ box.querySelector('#csv-export-close').onclick=()=>box.remove();
+}
+
+function excelCell(value){
+ const v=String(value??'');
+ return '<td style="mso-number-format:\\@;border:1px solid #999;padding:6px">'+v.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;')+'</td>';
+}
+async function downloadXls(html,filename){
+ const blob=new Blob(['\ufeff',html],{type:'application/vnd.ms-excel;charset=utf-8'});
+ const url=URL.createObjectURL(blob);
+ const link=document.createElement('a');link.href=url;link.download=filename;link.style.display='none';
+ document.body.appendChild(link);link.click();link.remove();
+ setTimeout(()=>URL.revokeObjectURL(url),30000);
+ say('بدأ تنزيل ملف Excel بصيغة XLS');
+}
+async function exp(v){
+ const rows=v==='m'
+ ?[['التاريخ','النوع','السيريال','الصنف','الموديل','المقاس','شرح المعدة','الكمية','مكان التخزين','من أو إلى','الشخص','أمر الشغل','الملاحظات','رقم المرجع','الحالة','المراجعة النهائية'],...M.map(e=>[e.d,e.t==='in'?'دخول':'خروج',e.s,e.n,e.model||'',e.size,e.desc||'',e.q,e.w,e.p,e.r,e.j,e.note||'',e.reference_number||'',e.status||'',e.t==='out'?(e.ok?'تمت':'لسه'): ''])]
+ :[['التاريخ','العميل','الموقع','الخدمة','الحالة'],...J.map(j=>[j.d,j.cl,j.st,j.sv,ST[j.s]])];
+ const esc=x=>String(x??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+ const table='<table dir="rtl" style="border-collapse:collapse;font-family:Arial;direction:rtl"><thead><tr>'+rows[0].map(x=>'<th style="background:#d9e2f3;border:1px solid #666;padding:8px;font-weight:bold">'+esc(x)+'</th>').join('')+'</tr></thead><tbody>'+rows.slice(1).map(row=>'<tr>'+row.map(x=>'<td style="mso-number-format:\'@\';border:1px solid #999;padding:6px">'+esc(x)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+ const excel='<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:x="urn:schemas-microsoft-com:office:excel" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><style>table{direction:rtl}th,td{white-space:normal}</style></head><body>'+table+'</body></html>';
+ await downloadXls(excel,v==='m'?'Sigma_Warehouse_Movements.xls':'Sigma_Service_Jobs.xls');
+}
+function showMovementDetails(id){
+ const e=M.find(x=>String(x.i)===String(id));if(!e)return say('الحركة غير موجودة في البيانات الحالية');
+ const item=itemRows.find(x=>String(x.id)===String(e.item_id))||{};
+ const rows=[['نوع العملية',e.t==='in'?'استلام / وارد':'صرف / منصرف'],['الصنف',e.n||item.name||'-'],['الكمية',R(e.q)+' '+(item.unit||'')],['السيريال',e.s||'-'],['الموديل',e.model||'-'],['المقاس',e.size||'-'],['التاريخ',e.d||'-'],['المخزن / المكان',e.w||'-'],[e.t==='in'?'المورد / جهة التوريد':'الجهة المستلمة',e.p||'-'],['المسؤول / المستلم',e.r||'-'],['أمر الشغل',e.j||'-'],['رقم المرجع',e.reference_number||'-'],['الملاحظات',e.note||'-'],['حالة العملية',e.status||'-'],['المراجعة',e.ok?'تمت المراجعة':(e.t==='out'?'بانتظار المراجعة':'غير مطلوبة')],['تاريخ التسجيل',e.created_at||'-']];
+ const old=document.getElementById('movement-details-modal');if(old)old.remove();
+ const box=document.createElement('div');box.id='movement-details-modal';box.style.cssText='position:fixed;inset:0;z-index:100000;background:#000c;display:flex;align-items:center;justify-content:center;padding:14px;direction:rtl';
+ box.innerHTML='<section style="width:min(100%,680px);max-height:88%;overflow:auto;background:#151a23;color:#eef2f7;border:1px solid #394252;border-radius:16px;padding:18px"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><div><small style="color:#e66a70">MOVEMENT DETAILS</small><h3 style="margin:5px 0 12px">تفاصيل العملية المخزنية</h3></div><button type="button" id="movement-details-close" style="padding:8px 13px;border-radius:8px">إغلاق</button></div><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px">'+rows.map(([k,val])=>'<div style="background:#202734;border:1px solid #343e4d;border-radius:9px;padding:10px"><small style="display:block;color:#9ba8b8;margin-bottom:4px">'+esc(k)+'</small><b style="font-size:13px;overflow-wrap:anywhere">'+esc(val)+'</b></div>').join('')+'</div><div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button type="button" id="movement-details-item" style="padding:10px 13px;border-radius:8px">فتح الصنف في المخزن</button></div></section>';
+ document.body.appendChild(box);
+ box.querySelector('#movement-details-close').onclick=()=>box.remove();
+ box.addEventListener('click',ev=>{if(ev.target===box)box.remove()});
+ box.querySelector('#movement-details-item').onclick=()=>{box.remove();tab='stock';q=e.n||e.s||'';full();};
+}
+
+let stream=null,st=0;
+
+async function scan(target){
+ if(!('BarcodeDetector' in window))
+  return say('الكاميرا هنا مش بتقرا الباركود. اكتب الرقم أو استخدم سكانر');
+
+ try{
+  stream=await navigator.mediaDevices.getUserMedia({
+   video:{facingMode:{ideal:'environment'}},audio:false
+  });
+ }catch(e){
+  return say('اسمح للتطبيق باستخدام الكاميرا');
+ }
+
+ const v=$('#sv');
+ v.srcObject=stream;
+ try{await v.play()}catch(e){}
+ $('#scan').hidden=false;
+
+ const det=new BarcodeDetector();
+
+ const tick=async()=>{
+  if(!stream)return;
+  try{
+   const r=await det.detect(v);
+   if(r.length&&r[0].rawValue){
+    const val=r[0].rawValue;
+    scanStop();
+    navigator.vibrate&&navigator.vibrate(80);
+    got(target,val);
+    return;
+   }
   }catch(e){}
-  try{const o=JSON.parse(localStorage.getItem('wh')||'{}');chunks=o.chunks||{};J=o.J||[]}catch(e){}
-  rebuild();ready=true;refresh();
+  st=setTimeout(tick,250);
+ };
+ tick();
+}
+
+function scanStop(){
+ clearTimeout(st);
+ if(stream)stream.getTracks().forEach(t=>t.stop());
+ stream=null;
+ $('#scan').hidden=true;
+}
+
+function got(target,val){
+ const el=$('#'+target);
+ if(!el)return;
+ if(target==='q'){
+  const parsed=parseScan(val);
+  const searchVal=parsed.serial||parsed.name||val;
+  el.value=searchVal;
+  q=searchVal;
+  more=100;
+  refresh();
+  return;
+ }
+ if(target==='s'){
+  applyScannedText(val,true);
+  ($('#n').value?$('#qt'):$('#n')).focus();
+ }
+}
+
+document.addEventListener('input',ev=>{
+ const search=ev.target.closest('[data-table-search]');
+ if(search){const wrap=search.closest('.erp-table-tools')?.nextElementSibling;const rows=wrap?.querySelectorAll('tbody tr')||[];const term=K(search.value);let shown=0;rows.forEach(row=>{const match=K(row.textContent).includes(term);row.hidden=!match;if(match)shown++;});const count=search.parentElement.querySelector('.erp-table-count');if(count)count.textContent=`${shown} من ${rows.length} سجل`;}
+ if(['report-from','report-to','report-kind','report-site'].includes(ev.target.id)){
+  const from=$('#report-from')?.value||'',to=$('#report-to')?.value||'',kind=$('#report-kind')?.value||'all',term=K($('#report-site')?.value||'');
+  if(from&&to&&from>to)return;
+  const rows=M.filter(x=>(!from||x.d>=from)&&(!to||x.d<=to)&&(kind==='all'||x.t===kind)&&(!term||K([x.p,x.w,x.n,x.j].join(' ')).includes(term))).sort((a,b)=>String(b.d).localeCompare(String(a.d))).slice(0,250);
+  const box=$('#report-results');if(box)box.innerHTML=rowsTable(rows,[['d','التاريخ'],['t','النوع',r=>r.t==='in'?'وارد':'منصرف'],['n','الصنف'],['q','الكمية'],['p','الجهة'],['r','المستلم أو المسلم'],['j','أمر الشغل'],['w','المخزن']], 'لا توجد حركات مطابقة للفلاتر.');
+ }
+});
+
+document.addEventListener('click',async ev=>{
+ const b=ev.target.closest('[data-a]');
+ if(!b)return;
+
+ const a=b.dataset.a;
+ const v=b.dataset.v;
+ const i=b.dataset.i;
+
+ if(a==='dologin'){
+  doLogin();
+  return;
+ }
+
+ if(a==='logout'){
+  logout();
+  return;
+ }
+
+ if(!loggedIn)return;
+
+ if(a==='tab'){
+  tab=v;
+  more=100;
+  full();
+  if(v==='stock')loadStockSearch(true);
+ }
+ else if(a==='more'){
+  more+=100;
+  refresh();
+ }
+ else if(a==='stock-page'){
+  stockSearchPage=Math.max(0,stockSearchPage+(v==='next'?1:-1));
+  loadStockSearch(false);
+ }
+ else if(a==='stock-retry'){
+  loadStockSearch(false);
+ }
+ else if(a==='stock-filter'){
+  stockFilter=v;
+  more=100;
+  refresh();
+  loadStockSearch(true);
+ }
+ else if(a==='stock-clear'){
+  q='';stockFilter='all';more=100;stockSearchPage=0;
+  refresh();
+  loadStockSearch(true);
+ }
+ else if(a==='type'){
+  type=v;
+  $('#f').dataset.t=v;
+  document.querySelectorAll('.seg button').forEach(x=>
+   x.classList.toggle('on',x.dataset.v===v)
+  );
+  warned=false;
+  if(v==='out'&&$('#s').value)fillItem(false);
+ }
+ else if(a==='fill'){
+  fillItem();
+ }
+ else if(a==='savem'){
+  saveM();
+ }
+ else if(a==='movement-details'){
+  showMovementDetails(i);
+ }
+ else if(a==='del'){
+  if(!isAdmin())return say('الحذف متاح لمسؤول المخزن فقط');
+  const e=M.find(x=>x.i===i);
+  if(e&&sure(i)){
+   db.from('wh_movements').delete().eq('id',i).then(async r=>{if(r.error)say('فشل حذف الحركة');else{await loadDatabase();if(tab==='stock')await loadStockSearch(true);say('تم حذف الحركة');}});
+  }
+ }
+ else if(a==='chk'){
+  if(!isAdmin())return say('اعتماد الحركات متاح لمسؤول المخزن فقط');
+  const e=M.find(x=>x.i===i);
+  if(e){
+   db.from('wh_movements').update({status:'reviewed',reviewed_by:authProfile.id,reviewed_at:new Date().toISOString()}).eq('id',i).then(async r=>{if(r.error)say('فشلت المراجعة');else{await loadDatabase();if(tab==='stock')await loadStockSearch(true);say('تمت المراجعة');}});
+  }
+ }
+ else if(a==='save-supplier'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('sup-code')||!v('sup-name'))return say('اكتب كود واسم المورد');
+  saveModule('erp_suppliers',{supplier_code:v('sup-code'),name:v('sup-name'),contact_person:v('sup-contact')||null,phone:v('sup-phone')||null,email:v('sup-email')||null,tax_number:v('sup-tax')||null,address:v('sup-address')||null,notes:v('sup-notes')||null,created_by:authSession.user.id},'المورد');
+ }
+ else if(a==='save-project'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('proj-code')||!v('proj-name'))return say('اكتب كود واسم المشروع');if(v('proj-start')&&v('proj-end')&&v('proj-end')<v('proj-start'))return say('تاريخ النهاية يسبق البداية');
+  saveModule('erp_projects',{project_code:v('proj-code'),name:v('proj-name'),client_name:v('proj-client')||null,start_date:v('proj-start')||null,end_date:v('proj-end')||null,status:v('proj-status')||'active',notes:v('proj-notes')||null,created_by:authSession.user.id},'المشروع');
+ }
+ else if(a==='save-site'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('site-code')||!v('site-name'))return say('اكتب كود واسم الموقع');saveModule('erp_sites',{site_code:v('site-code'),name:v('site-name'),project_id:v('site-project')||null,address:v('site-address')||null,created_by:authSession.user.id},'الموقع');
+ }
+ else if(a==='save-department'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('dept-code')||!v('dept-name'))return say('اكتب كود واسم القسم');saveModule('erp_departments',{code:v('dept-code'),name:v('dept-name')},'القسم');
+ }
+ else if(a==='save-warehouse'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('wh-code')||!v('wh-name'))return say('اكتب كود واسم المخزن');saveModule('erp_warehouses',{code:v('wh-code'),name:v('wh-name'),location:v('wh-location')||null,created_by:authSession.user.id},'المخزن');
+ }
+ else if(a==='save-asset'){
+  const v=id=>$('#'+id)?.value?.trim()||'';const id=v('asset-edit-id');const item=v('asset-item');if(!item)return say('اختر الصنف المرتبط بالأصل');
+  const payload={item_id:item,asset_code:v('asset-code')||null,serial_number:v('asset-serial')||null,site_id:v('asset-site')||null,assigned_to:v('asset-assignee')||null,assigned_person:v('asset-person')||null,checkout_date:v('asset-checkout')||null,expected_return_date:v('asset-return-due')||null,status:v('asset-status'),notes:v('asset-notes')||null};
+  try{let q=id?db.from('wh_assets').update(payload).eq('id',id):db.from('wh_assets').insert({...payload,created_by:authSession.user.id});const {error}=await q;if(error)throw error;await loadDatabase();full();say(id?'تم تعديل الأصل':'تم تسجيل الأصل');}catch(e){say('تعذر حفظ الأصل: '+e.message)}
+ }
+ else if(a==='asset-edit'){
+  const x=erpData.assets.find(z=>z.id===i);if(!x)return;const set=(id,val)=>{const el=$('#'+id);if(el)el.value=val??''};set('asset-edit-id',x.id);set('asset-item',x.item_id);set('asset-code',x.asset_code);set('asset-serial',x.serial_number);set('asset-site',x.site_id);set('asset-assignee',x.assigned_to);set('asset-person',x.assigned_person);set('asset-checkout',x.checkout_date);set('asset-return-due',x.expected_return_date);set('asset-status',x.status);set('asset-notes',x.notes);say('تم تحميل بيانات الأصل للتعديل');
+ }
+ else if(a==='asset-clear'){['asset-edit-id','asset-item','asset-code','asset-serial','asset-site','asset-assignee','asset-person','asset-checkout','asset-return-due','asset-status','asset-notes'].forEach(id=>{const x=$('#'+id);if(x)x.value=id==='asset-status'?'available':''});}
+ else if(a==='create-employee'){
+  const code=$('#emp-new-code')?.value?.trim(),name=$('#emp-new-name')?.value?.trim(),password=$('#emp-new-password')?.value,role=$('#emp-new-role')?.value||null;
+  if(!code||!name||!password||password.length<10)return say('أدخل كود واسم الموظف وكلمة مرور 10 أحرف على الأقل');
+  try{const response=await fetch(`${SUPABASE_URL}/functions/v1/admin-create-employee`,{method:'POST',headers:{'Content-Type':'application/json','Authorization':`Bearer ${authSession.access_token}`,'apikey':SUPABASE_PUBLISHABLE_KEY},body:JSON.stringify({code,full_name:name,password,role_id:role})});const result=await response.json();if(!response.ok)throw new Error(result.error||'فشل إنشاء الحساب');await loadDatabase();full();say('تم إنشاء حساب الموظف بنجاح');}catch(e){say('تعذر إنشاء الحساب. تأكد من نشر admin-create-employee: '+e.message)}
+ }
+ else if(a==='assign-role'){
+  const user=$('#emp-user')?.value,role=$('#emp-role')?.value;if(!user||!role)return say('اختر الموظف والدور');try{const {error}=await db.from('erp_user_roles').upsert({user_id:user,role_id:role,assigned_by:authSession.user.id},{onConflict:'user_id,role_id'});if(error)throw error;await loadDatabase();full();say('تم تعيين الدور للحساب');}catch(e){say('تعذر تعيين الدور: '+e.message)}
+ }
+ else if(a==='save-asset-movement'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('am-asset')||!v('am-to'))return say('اختر الأصل والموقع الجديد');if(v('am-from')===v('am-to'))return say('الموقع الحالي والجديد متطابقان');
+  try{const payload={asset_id:v('am-asset'),from_site_id:v('am-from')||null,to_site_id:v('am-to'),reason:v('am-reason')||null,requested_by:authSession.user.id,status:'pending'};const {data,error}=await db.from('erp_asset_movements').insert(payload).select().single();if(error)throw error;const {error:ae}=await db.from('erp_approvals').insert({document_type:'asset_movement',document_id:data.id,step_number:1,status:'pending'});if(ae)throw ae;await loadDatabase();full();say('تم إرسال طلب نقل المعدة للاعتماد');}catch(e){say('تعذر إنشاء طلب النقل: '+e.message)}
+ }
+ else if(a==='save-po'){
+  const v=id=>$('#'+id)?.value?.trim()||'';const supplier=v('po-supplier'),number=v('po-number');if(!supplier||!number)return say('أدخل رقم الأمر واختر المورد');
+  const lines=[...document.querySelectorAll('#po-lines .pr-line')].map((el,i)=>({description:el.querySelector('[id^="po-desc-"]')?.value.trim()||'',quantity:Number(el.querySelector('[id^="po-qty-"]')?.value),unit:el.querySelector('[id^="po-unit-"]')?.value.trim()||null,unit_price:Number(el.querySelector('[id^="po-price-"]')?.value),existing_item_id:el.querySelector('[id^="po-item-"]')?.value||null}));
+  if(!lines.length||lines.some(x=>!x.description||!(x.quantity>0)||!Number.isFinite(x.quantity)||!(x.unit_price>=0)||!Number.isFinite(x.unit_price)||!x.existing_item_id))return say('اربط كل بند بصنف مخزني، وراجع الوصف والكمية والسعر');
+  try{
+   const requestId=v('po-request')||null;
+   if(requestId){const request=purchaseRequests.find(x=>x.id===requestId);if(!request||request.status!=='approved')throw new Error('لا يمكن إصدار أمر شراء قبل اعتماد طلب الشراء المرتبط.');}
+   const subtotal=lines.reduce((n,x)=>n+x.quantity*x.unit_price,0),tax=Number(v('po-tax')||0);if(!Number.isFinite(tax)||tax<0)throw new Error('قيمة الضريبة غير صحيحة');
+   const {data:po,error}=await db.from('erp_purchase_orders').insert({order_number:number,supplier_id:supplier,request_id:requestId,project_id:v('po-project')||null,expected_delivery_date:v('po-date')||null,subtotal,tax_amount:tax,total_amount:subtotal+tax,notes:v('po-notes')||null,created_by:authSession.user.id,status:'ordered'}).select().single();if(error)throw error;
+   const {error:ie}=await db.from('erp_purchase_order_items').insert(lines.map(x=>({...x,order_id:po.id,line_total:x.quantity*x.unit_price,received_quantity:0})));if(ie){await db.from('erp_purchase_orders').delete().eq('id',po.id);throw new Error('فشل حفظ بنود أمر الشراء وتم التراجع عن رأس الأمر. '+ie.message);}
+   if(requestId){const {error:re}=await db.from('erp_purchase_requests').update({status:'ordered',updated_at:new Date().toISOString()}).eq('id',requestId);if(re)throw re;}
+   await loadDatabase();full();say('تم إصدار أمر الشراء وربطه بطلبه المعتمد');
+  }catch(e){say('فشل إنشاء أمر الشراء: '+e.message)}
+ }
+ else if(a==='receive-po'){
+  const line=$('#receipt-line')?.value,number=$('#receipt-number')?.value?.trim(),qty=Number($('#receipt-qty')?.value),date=$('#receipt-date')?.value||today(),location=$('#receipt-location')?.value?.trim()||null,notes=$('#receipt-notes')?.value?.trim()||null;
+  if(!line||!number||!(qty>0)||!Number.isFinite(qty))return say('اختر بند أمر الشراء وأدخل رقم الإذن والكمية');
+  const selectedLine=erpOrderItems.find(x=>x.id===line);if(!selectedLine)return say('بند أمر الشراء غير موجود، حدّث البيانات');
+  const remaining=Number(selectedLine.quantity)-Number(selectedLine.received_quantity||0);if(qty>remaining+1e-9)return say(`الكمية أكبر من المتبقي. المتبقي ${remaining}`);
+  try{const {data,error}=await db.rpc('erp_receive_purchase_order_item',{p_order_item_id:line,p_quantity:qty,p_receipt_number:number,p_idempotency_key:nid(),p_received_at:date,p_warehouse_location:location,p_notes:notes});if(error)throw error;await loadDatabase();full();say('تم الاستلام وتحديث رصيد المخزن والتكلفة. رقم العملية: '+data);}catch(e){say('فشل الاستلام: '+e.message)}
+ }
+ else if(a==='add-poline'){
+  const box=$('#po-lines');if(!box)return;const i=box.querySelectorAll('.pr-line').length;box.insertAdjacentHTML('beforeend',`<div class="pr-line"><div class="pr-grid">${field('وصف الصنف',`po-desc-${i}`,'وصف الصنف','text',true)}${field('الكمية',`po-qty-${i}`,'1','number',true)}${field('الوحدة',`po-unit-${i}`,'قطعة')}${field('سعر الوحدة',`po-price-${i}`,'0','number',true)}</div><label>ربط بصنف مخزني<select id="po-item-${i}"><option value="">اختر الصنف المخزني المرتبط بهذا البند</option>${itemRows.map(x=>`<option value="${esc(x.id)}">${esc(x.name)}</option>`).join('')}</select></label><button class="btn ghost" type="button" data-a="remove-poline">حذف البند</button></div>`);
+ }
+ else if(a==='remove-poline'){b.closest('.pr-line')?.remove();}
+ else if(a==='maintenance-status'){
+  const next=v;try{const patch={status:next,updated_at:new Date().toISOString()};if(next==='in_progress')patch.started_at=new Date().toISOString();if(next==='completed')patch.completed_at=new Date().toISOString();const {error}=await db.from('erp_maintenance_orders').update(patch).eq('id',i);if(error)throw error;await loadDatabase();full();say('تم تحديث حالة أمر الصيانة');}catch(e){say('تعذر تحديث أمر الصيانة: '+e.message)}
+ }
+ else if(a==='save-maintenance'){
+  const v=id=>$('#'+id)?.value?.trim()||'';if(!v('maint-number')||!v('maint-asset')||!v('maint-problem'))return say('أكمل رقم الأمر والأصل ووصف العطل');saveModule('erp_maintenance_orders',{work_order_number:v('maint-number'),asset_id:v('maint-asset'),site_id:v('maint-site')||null,maintenance_type:v('maint-type'),priority:v('maint-priority'),problem_description:v('maint-problem'),reported_by:authSession.user.id},'أمر الصيانة');
+ }
+ else if(a==='approval'){
+  decideApproval(b.dataset.id,v);
+ }
+ else if(a==='reload-erp'){
+  loadDatabase().then(()=>{full();if(tab==='stock')loadStockSearch(true);say('تم تحديث بيانات النظام')}).catch(e=>say('تعذر تحديث البيانات: '+e.message));
+ }
+ else if(a==='report-export'||a==='report-print'){
+  const from=$('#report-from')?.value||'',to=$('#report-to')?.value||'',kind=$('#report-kind')?.value||'all',term=K($('#report-site')?.value||'');
+  if(from&&to&&from>to)return say('تاريخ البداية أكبر من تاريخ النهاية');
+  const rows=M.filter(x=>(!from||x.d>=from)&&(!to||x.d<=to)&&(kind==='all'||x.t===kind)&&(!term||K([x.p,x.w,x.n,x.j].join(' ')).includes(term))).sort((a,b)=>String(a.d).localeCompare(String(b.d)));
+  const reportRows=[['التاريخ','النوع','الصنف','السيريال','الموديل','المقاس','الكمية','الجهة','المسؤول','أمر الشغل','المخزن','رقم المرجع','ملاحظات'],...rows.map(x=>[x.d,x.t==='in'?'وارد':'منصرف',x.n,x.s,x.model,x.size,x.q,x.p,x.r,x.j,x.w,x.reference_number,x.note])];
+  if(a==='report-print'){
+   const w=window.open('','_blank');if(!w)return say('اسمح بفتح نافذة الطباعة');
+   const h=reportRows.map((r,i)=>'<tr>'+r.map(c=>'<'+(i?'td':'th')+'>'+esc(c)+'</'+(i?'td':'th')+'>').join('')+'</tr>').join('');
+   w.document.write('<html lang="ar" dir="rtl"><meta charset="utf-8"><title>تقرير حركة المخزون</title><style>body{font-family:Arial;padding:24px}h2{margin-bottom:6px}table{width:100%;border-collapse:collapse;font-size:11px}td,th{border:1px solid #bbb;padding:7px;text-align:right}th{background:#eee}</style><h2>Sigma Petroleum Services</h2><p>تقرير حركة المخزون</p><table>'+h+'</table></html>');w.document.close();w.focus();w.print();
+  }else{
+   const safe=x=>String(x??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+   const h=reportRows.map((r,i)=>'<tr>'+r.map(c=>'<'+(i?'td':'th')+'>'+safe(c)+'</'+(i?'td':'th')+'>').join('')+'</tr>').join('');
+   await downloadXls('<html><head><meta charset="utf-8"></head><body><h2>Sigma Petroleum Services</h2><table border="1">'+h+'</table></body></html>','Sigma_Inventory_Movements.xls');
+  }
+  say(`تم تجهيز التقرير. عدد الحركات: ${rows.length}`);
+ }
+ else if(a==='export-erp'){
+  const rows=[['المؤشر','القيمة'],['أصناف المخزن',itemRows.length],['إجمالي الوارد',M.filter(x=>x.t==='in').reduce((n,x)=>n+x.q,0)],['إجمالي المنصرف',M.filter(x=>x.t==='out').reduce((n,x)=>n+x.q,0)],['طلبات الشراء',purchaseRequests.length],['الموردون',erpData.suppliers.length],['المشروعات',erpData.projects.length],['المواقع',erpData.sites.length],['الأصول',erpData.assets.length],['أوامر الصيانة',erpData.maintenance.length]];
+  const safe=x=>String(x??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  const table='<table dir="rtl"><tr><th>المؤشر</th><th>القيمة</th></tr>'+rows.slice(1).map(r=>'<tr>'+r.map(x=>'<td>'+safe(x)+'</td>').join('')+'</tr>').join('')+'</table>';
+  await downloadXls('<html><head><meta charset="utf-8"></head><body>'+table+'</body></html>','Sigma_ERP_Report.xls');
+ }
+ else if(a==='addprline'){
+  $('#pr-lines')?.insertAdjacentHTML('beforeend',purchaseLineHtml());
+ }
+ else if(a==='removeprline'){
+  const line=b.closest('.pr-line');
+  if(document.querySelectorAll('#pr-lines .pr-line').length>1)line?.remove();
+  else say('لازم يكون فيه بند واحد على الأقل');
+ }
+ else if(a==='savepr'){
+  savePurchaseRequest(v);
+ }
+ else if(a==='savej'){
+  saveJ();
+ }
+ else if(a==='cyc'){
+  if(!isAdmin())return say('تعديل حالة أمر الخدمة متاح لمسؤول المخزن فقط');
+  const j=J.find(x=>x.i===i);
+  if(j){
+   const next=(j.s+1)%3;
+   db.from('wh_service_jobs').update({status:next}).eq('id',i).then(async r=>{if(r.error)say('فشل تحديث الحالة');else await loadDatabase();});
+  }
+ }
+ else if(a==='delj'){
+  if(!isAdmin())return say('حذف أوامر الخدمة متاح لمسؤول المخزن فقط');
+  if(sure(i)){
+   db.from('wh_service_jobs').delete().eq('id',i).then(async r=>{if(r.error)say('فشل حذف أمر الخدمة');else{await loadDatabase();say('تم حذف أمر الخدمة');}});
+  }
+ }
+ else if(a==='scan'){
+  scan(v);
+ }
+ else if(a==='scanx'){
+  scanStop();
+ }
+ else if(a==='exp'){
+  exp(v);
+ }
+});
+
+document.addEventListener('input',ev=>{
+ warned=false;
+
+ if(ev.target.id==='q'){
+  q=ev.target.value;
+  more=100;
+  scheduleStockSearch();
+ }
+
+ if(ev.target.id==='s'){
+  const val=ev.target.value.trim();
+  if(val){
+   const parsed=parseScan(val);
+   if(parsed.hasTags){
+    if(parsed.name&&!$('#n').value)$('#n').value=parsed.name;
+    if(parsed.model&&!$('#model').value)$('#model').value=parsed.model;
+    if(parsed.location&&!$('#w').value)$('#w').value=parsed.location;
+    if(parsed.size&&!$('#size').value)$('#size').value=parsed.size;
+   }
+
+   const x=findItem(parsed.serial||val);
+   if(x){
+    selectedItem=x;
+    $('#n').value=x.n||'';
+    if($('#model'))$('#model').value=x.model||'';
+    $('#size').value=x.size||'';
+    if($('#desc'))$('#desc').value=x.desc||'';
+    $('#w').value=x.w||'';
+    updateAvailable(x.q,true);
+   }else{
+    selectedItem=null;
+    updateAvailable(0,false);
+   }
+  }else{
+   selectedItem=null;
+   updateAvailable(0,false);
+  }
+ }
+
+ if(ev.target.id==='n'){
+  const val=ev.target.value.trim();
+  if(val&&$('#desc')&&!$('#desc').value.trim()){
+   const hint=suggestDesc(val);
+   if(hint)$('#desc').value=hint;
+  }
+ }
+});
+
+document.addEventListener('change',ev=>{
+ if(ev.target.id==='s')fillItem();
+ if(ev.target.matches('.pr-item-select')){
+  const item=itemRows.find(x=>x.id===ev.target.value);
+  const line=ev.target.closest('.pr-line');
+  if(item&&line){
+   line.querySelector('[data-field="item_description"]').value=item.name||'';
+   line.querySelector('[data-field="unit"]').value=item.unit||'قطعة';
+  }
+ }
+});
+
+document.addEventListener('keydown',ev=>{
+ if(ev.key==='Enter'&&ev.target.id==='s'){
+  ev.preventDefault();
+  fillItem();
+  ($('#qt').value?$('#qt'):$('#n')).focus();
+ }
+});
+
+full();
+
+(async()=>{
+ if(!loggedIn){ready=true;full();return;}
+ try{
+  await initDatabase();
+ }catch(e){
+  console.error('Database connection error:',e);
+  ready=false;
+  say('تعذر تحميل بيانات المخزن: '+(e.message||'تحقق من الاتصال والصلاحيات'));
+  $('#app').innerHTML='<p class="empty">تعذر الاتصال بقاعدة البيانات. سجّل الخروج ثم ادخل مرة أخرى.</p>';
+ }
 })();
-if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
-try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
+
+if('serviceWorker' in navigator){
+ navigator.serviceWorker.register('sw.js').catch(()=>{});
+}
+
+try{
+ navigator.storage&&navigator.storage.persist&&navigator.storage.persist();
+}catch(e){}
 </script>
 </body>
 </html>
